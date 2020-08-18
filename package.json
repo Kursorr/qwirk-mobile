@@ -25,11 +25,13 @@
   },
   "dependencies": {
     "@nativescript/core": "^6.5.15",
+    "@teammaestro/nativescript-svg": "^1.0.1",
     "@vue/devtools": "^5.3.3",
     "nativescript-socketio": "^3.3.1",
     "nativescript-toasty": "^3.0.0-alpha.2",
     "nativescript-vue": "^2.6.1",
     "nativescript-vue-devtools": "^1.4.0",
+    "nativescript-vue-shadow": "^0.1.0",
     "vue-class-component": "^7.2.5",
     "vue-property-decorator": "^9.0.0",
     "vuex": "^3.3.0"
