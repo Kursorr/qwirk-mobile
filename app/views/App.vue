@@ -257,6 +257,6 @@
   .footer {
     transform: translateY(100);
     background-color: $darkerFirst;
-    padding: 20;
+    padding: 15 0;
   }
 </style>
