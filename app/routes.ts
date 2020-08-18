@@ -1,9 +1,9 @@
-import Main from './views/Main.vue'
+import App from './views/App.vue'
 import Profile from './views/Profile.vue'
 
 export const routes = {
-  '/main': {
-    component: Main
+  '/app': {
+    component: App
   },
   '/profile': {
     component: Profile
