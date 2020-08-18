@@ -6,11 +6,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
 
-@Component
-export default class Tchat extends Vue {
-}
+  @Component
+  export default class Tchat extends Vue {
+  }
 </script>
 
 <style lang="scss">

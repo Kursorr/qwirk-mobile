@@ -1,8 +1,8 @@
 <template>
   <Page :actionBarHidden="true">
     <GridLayout backgroundColor="#000" rows="*, auto" columns="*">
-      <StackLayout ref="left" class="content chatlist" :marginRight="drawerMargin" borderRadius="10">
-        <GridLayout borderRadius="10" rows="*" columns="auto, *">
+      <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
+        <GridLayout rows="*" columns="auto, *">
           <Servers />
           <Channels column="1"/>
         </GridLayout>
@@ -11,8 +11,7 @@
       <StackLayout ref="right"
                    rowSpan="2"
                    col="1"
-                   style="background: #333"
-                   class="content userlist"
+                   class="content serversList"
                    :marginLeft="drawerMargin"
                    borderRadius="10">
         <UserList />
@@ -23,8 +22,7 @@
                    ref="mainContent"
                    rowSpan="2"
                    colSpan="2"
-                   borderRadius="10"
-                   :class="`content  ${onPage ? 'lighterColor' : 'darkerColor'}`">
+                   :class="`mainContent content ${onPage ? 'darkerColor' : 'lighterColor'}`">
         <GridLayout rows="*" columns="*">
           <Tchat />
         </GridLayout>
@@ -46,6 +44,10 @@
   import UserList from '../components/UserList.vue'
   import Tchat from '../components/Tchat.vue'
   import Footer from '../components/Footer.vue'
+
+  const DOWN = 1
+  const PANNING = 2
+  const UP = 3
 
   @Component({
     components: {
@@ -91,7 +93,7 @@
       })
     }
 
-    animateTo(direction) {
+    animateTo (direction: string) {
       if (this.isAnimating) return
 
       this.isAnimating = true
@@ -126,7 +128,7 @@
       })
     }
 
-    checkDirection(delta) {
+    checkDirection (delta: number) {
       if (delta > this.leftDrawerSize / 2 && (this.onPage == null || this.onPage == 'right')) {
         this.deltaX = this.leftDrawerSize
         this.onPage = 'left'
@@ -193,7 +195,7 @@
       }
     }
 
-    displayContent(args) {
+    displayContent (args) {
       if (args.deltaX < this.slideSensitivity && args.deltaX > -1 * this.slideSensitivity) return
 
       if (this.onPage != null) args.deltaX += this.deltaX
@@ -222,7 +224,7 @@
         duration: 0
       })
 
-      if (args.state == 3) {
+      if (args.state == UP) {
         this.checkDirection(args.deltaX)
       }
     }
@@ -230,24 +232,31 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../style/variables.scss';
+
+  .mainContent {
+    border-top-left-radius: 10;
+    border-top-right-radius: 10;
+  }
+
   .content {
     &.darkerColor {
-      background-color: #333333;
+      background-color: $darkerThird;
     }
 
     &.lighterColor {
-      background-color: #222222;
+      background-color: $darkerLight;
     }
   }
 
-  .chatlist,
-  .userlist {
-    background-color: yellow;
+  .chat,
+  .serversList {
+    background-color: $darkerSecond;
   }
 
   .footer {
     transform: translateY(100);
-    background-color: green;
+    background-color: $darkerFirst;
     padding: 20;
   }
 </style>

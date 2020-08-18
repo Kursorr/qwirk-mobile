@@ -1,13 +1,8 @@
 <template>
   <StackLayout>
-    <Label fontSize="20" fontWeight="bold"
-           text="🙈 Channels"></Label>
-    <Image width="60" height="60"
-           borderRadius="100"
-           v-for="a in 10"
+    <Image v-for="a in 10"
            :key="a"
-           :src="`https://avatars3.githubusercontent.com/u/1331813${a}`">
-    </Image>
+           :src="`https://avatars3.githubusercontent.com/u/1331813${a}`"/>
   </StackLayout>
 </template>
 
@@ -17,3 +12,16 @@
   @Component
   export default class Users extends Vue {}
 </script>
+
+<style lang="scss" scoped>
+  StackLayout {
+    padding: 0 12;
+  }
+
+  Image {
+    width: 50;
+    height: 50;
+    border-radius: 50%;
+    margin-bottom: 14;
+  }
+</style>

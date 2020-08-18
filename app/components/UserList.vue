@@ -11,15 +11,23 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
 
-@Component
-export default class UserList extends Vue {
-}
+  @Component
+  export default class UserList extends Vue {
+  }
 </script>
 
 <style lang="scss" scoped>
-Label {
-  color: #FFF;
-}
+  @import '../style/variables.scss';
+
+  StackLayout {
+    background-color: $darkerLight;
+    height: 100%;
+    border-top-left-radius: 10;
+  }
+
+  Label {
+    color: #FFF;
+  }
 </style>
