@@ -1,7 +1,6 @@
 # Qwirk Mobile
 
-Qwirk Mobile is a phone application that allow you to tchat with your friends and more with Qwirk-Sound that allow
- you to create your own song using your voice.
+Qwirk Mobile is a phone application that allow you to tchat with your friends and more with Qwirk-Sound that allow you to create your own song using your voice.
 
 ## Getting Started
 
@@ -28,8 +27,9 @@ If you want to play with the project, here fews command :
 
 ## Built with
 
+* [Nativescript](https://nativescript.org/) - Create Native iOS and Android apps with JavaScript
+* [Nativescript-Vue](https://nativescript-vue.org/en/docs/introduction/) - Plugin which allows you to use Vue.js to craft your mobile application.
 * [NodeJS](https://nodejs.org/en/) - Free and opensource server environment
-* [VueJS 2](https://vuejs.org/) - Front End Framework
 * [ES6](http://es6-features.org/) - Following ES6 Specifications
 * [TypeScript](https://www.typescriptlang.org/) - Superset of JavaScript
 
