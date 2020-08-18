@@ -1,12 +1,8 @@
 import Vue from 'nativescript-vue'
 import VueDevtools from 'nativescript-vue-devtools'
 
-import NSVueShadow from 'nativescript-vue-shadow'
-
 import App from './views/App.vue'
 import store from './store'
-
-Vue.use(NSVueShadow)
 
 Vue.registerElement('SVGImage', () => require('@teammaestro/nativescript-svg').SVGImage)
 
