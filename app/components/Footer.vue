@@ -2,6 +2,7 @@
   <StackLayout>
     <SVGImage src="~/assets/images/logo.svg"
               class="selected"
+              @tap="gotoProfile"
               height="25"
               width="25"/>
   </StackLayout>
@@ -12,6 +13,10 @@
 
   @Component
   export default class Footer extends Vue {
+    gotoProfile () {
+      // @ts-ignore
+      this.$navigator.navigate('/profile', { clearHistory: true })
+    }
   }
 </script>
 
