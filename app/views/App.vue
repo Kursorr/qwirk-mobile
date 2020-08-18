@@ -3,7 +3,7 @@
     <GridLayout backgroundColor="#000" rows="*, auto" columns="*">
       <StackLayout ref="left" class="content chatlist" :marginRight="drawerMargin" borderRadius="10">
         <GridLayout borderRadius="10" rows="*" columns="auto, *">
-          <Users />
+          <Servers />
           <Channels column="1"/>
         </GridLayout>
       </StackLayout>
@@ -41,7 +41,7 @@
 
   import { animate } from '../animation'
 
-  import Users from '../components/Users.vue'
+  import Servers from '../components/Servers.vue'
   import Channels from '../components/Channels.vue'
   import UserList from '../components/UserList.vue'
   import Tchat from '../components/Tchat.vue'
@@ -49,7 +49,7 @@
 
   @Component({
     components: {
-      Users,
+      Servers,
       Channels,
       UserList,
       Tchat,
