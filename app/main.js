@@ -3,8 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var tslib_1 = require("tslib");
 var nativescript_vue_1 = tslib_1.__importDefault(require("nativescript-vue"));
 var nativescript_vue_devtools_1 = tslib_1.__importDefault(require("nativescript-vue-devtools"));
+var nativescript_vue_shadow_1 = tslib_1.__importDefault(require("nativescript-vue-shadow"));
 var App_vue_1 = tslib_1.__importDefault(require("./views/App.vue"));
 var store_1 = tslib_1.__importDefault(require("./store"));
+nativescript_vue_1.default.use(nativescript_vue_shadow_1.default);
+nativescript_vue_1.default.registerElement('SVGImage', function () { return require('@teammaestro/nativescript-svg').SVGImage; });
 if (TNS_ENV !== 'production') {
     nativescript_vue_1.default.use(nativescript_vue_devtools_1.default);
 }
