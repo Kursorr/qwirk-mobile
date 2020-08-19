@@ -70,7 +70,7 @@
 
     private leftDrawerSize: number = screen.mainScreen.widthPixels * (1 / 3)
     private rightDrawerSize: number = screen.mainScreen.widthPixels * (1 / 3)
-    private drawerMargin: number = (screen.mainScreen.widthPixels * (1 / 7)) / 2
+    private drawerMargin: number = (screen.mainScreen.widthPixels * (1 / 9)) / 2
 
     closeIfOpen () {
       if (this.onPage == null) return
