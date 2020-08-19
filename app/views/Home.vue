@@ -24,11 +24,7 @@
                    colSpan="2"
                    :class="`mainContent content ${onPage ? 'darkerColor' : 'lighterColor'}`">
         <GridLayout rows="*" columns="*">
-          <Label fontSize="18"
-                 verticalAlignment="center"
-                 textAlignment="center"
-                 color="#FFF"
-                 text="👈🏾 slide to the left or slide to the right 👉🏾" />
+          <Tchat row="0" col="0"/>
         </GridLayout>
       </StackLayout>
     </GridLayout>
@@ -41,10 +37,12 @@
 
   import { animate } from '../animation'
 
-  import Servers from '../components/Servers.vue'
-  import Channels from '../components/Channels.vue'
-  import Users from '../components/Users.vue'
-  import {mapActions} from "vuex";
+  import Servers from '@/components/Servers.vue'
+  import Channels from '@/components/Channels.vue'
+  import Users from '@/components/Users.vue'
+  import Tchat from '@/components/Tchat.vue'
+
+  import { mapActions } from 'vuex'
 
   const DOWN = 1
   const PANNING = 2
@@ -55,7 +53,7 @@
       Servers,
       Channels,
       Users,
-      Tchat
+      Tchat,
     },
     methods: {
       ...mapActions({
@@ -63,7 +61,7 @@
       })
     }
   })
-  export default class Tchat extends Vue {
+  export default class Home extends Vue {
     private isAnimating: boolean = false
 
     private deltaX: number = 0

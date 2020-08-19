@@ -1,7 +1,7 @@
 <template>
   <GridLayout rows="*, auto" columns="*">
     <ContentView row="0">
-      <Navigator :defaultRoute="isLoggedIn ? 'tchat' : 'profile'"/>
+      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
     </ContentView>
 
     <Footer v-if="gfooter"
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts">
-  import { Component, Watch, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
 
   import Footer from '../components/Footer.vue'
   import { mapGetters } from 'vuex'
