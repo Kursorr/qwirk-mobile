@@ -3,11 +3,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.routes = void 0;
 var tslib_1 = require("tslib");
 var App_vue_1 = tslib_1.__importDefault(require("../views/App.vue"));
+var Tchat_vue_1 = tslib_1.__importDefault(require("../views/Tchat.vue"));
 var Profile_vue_1 = tslib_1.__importDefault(require("../views/Profile.vue"));
 var Friends_vue_1 = tslib_1.__importDefault(require("../views/Friends.vue"));
 exports.routes = {
     app: {
         component: App_vue_1.default
+    },
+    tchat: {
+        component: Tchat_vue_1.default
     },
     profile: {
         component: Profile_vue_1.default,
