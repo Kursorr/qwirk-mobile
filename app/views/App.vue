@@ -14,7 +14,7 @@
                    class="content serversList"
                    :marginLeft="drawerMargin"
                    borderRadius="10">
-        <UserList />
+        <Users />
       </StackLayout>
 
       <StackLayout @pan="displayContent"
@@ -44,7 +44,7 @@ import { animate } from '../animation'
 
 import Servers from '../components/Servers.vue'
 import Channels from '../components/Channels.vue'
-import UserList from '../components/UserList.vue'
+import Users from '../components/Users.vue'
 import Tchat from '../components/Tchat.vue'
 import Footer from '../components/Footer.vue'
 
@@ -56,7 +56,7 @@ const UP = 3
   components: {
     Servers,
     Channels,
-    UserList,
+    Users,
     Tchat,
     Footer
   }

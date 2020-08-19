@@ -10,7 +10,12 @@
   import { Component, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class Profile extends Vue {}
+  export default class Profile extends Vue {
+    created () {
+      // @ts-ignore
+      console.log(this.$mustShowFooter)
+    }
+  }
 </script>
 
 <style lang="scss" scoped>
