@@ -1,34 +1,37 @@
 <template>
   <Page :actionBarHidden="true">
-    <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
-      <GridLayout rows="*" columns="auto, *">
-        <Servers />
-        <Channels column="1"/>
-      </GridLayout>
-    </StackLayout>
+    <GridLayout backgroundColor="#202225">
+      <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
+        <GridLayout rows="*" columns="auto, *">
+          <Servers />
+          <Channels column="1"/>
+        </GridLayout>
+      </StackLayout>
 
-    <StackLayout ref="right"
-                 rowSpan="2"
-                 col="1"
-                 class="content serversList"
-                 :marginLeft="drawerMargin"
-                 borderRadius="10">
-      <Users />
-    </StackLayout>
+      <StackLayout ref="right"
+                   rowSpan="2"
+                   col="1"
+                   class="content serversList"
+                   :marginLeft="drawerMargin"
+                   borderRadius="10">
+        <Users />
+      </StackLayout>
 
-    <StackLayout @pan="displayContent"
-                 @tap="closeIfOpen"
-                 ref="mainContent"
-                 rowSpan="2"
-                 colSpan="2"
-                 :class="`mainContent content ${onPage ? 'darkerColor' : 'lighterColor'}`">
-      <GridLayout rows="*" columns="*">
-        <Label fontSize="18"
-               verticalAlignment="center"
-               textAlignment="center"
-               text="👈🏾 slide to the left or slide to the right 👉🏾" />
-      </GridLayout>
-    </StackLayout>
+      <StackLayout @pan="displayContent"
+                   @tap="closeIfOpen"
+                   ref="mainContent"
+                   rowSpan="2"
+                   colSpan="2"
+                   :class="`mainContent content ${onPage ? 'darkerColor' : 'lighterColor'}`">
+        <GridLayout rows="*" columns="*">
+          <Label fontSize="18"
+                 verticalAlignment="center"
+                 textAlignment="center"
+                 color="#FFF"
+                 text="👈🏾 slide to the left or slide to the right 👉🏾" />
+        </GridLayout>
+      </StackLayout>
+    </GridLayout>
   </Page>
 </template>
 
@@ -38,9 +41,10 @@
 
   import { animate } from '../animation'
 
-  import Servers from '../components/Servers.js'
-  import Channels from '../components/Channels.js'
-  import Users from '../components/Users.js'
+  import Servers from '../components/Servers.vue'
+  import Channels from '../components/Channels.vue'
+  import Users from '../components/Users.vue'
+  import {mapActions} from "vuex";
 
   const DOWN = 1
   const PANNING = 2
@@ -52,6 +56,11 @@
       Channels,
       Users,
       Tchat
+    },
+    methods: {
+      ...mapActions({
+        sfooter: 'layout/sfooter'
+      })
     }
   })
   export default class Tchat extends Vue {
@@ -139,13 +148,7 @@
         })
 
         // @ts-ignore
-        this.$refs.footer.nativeView.animate({
-          translate: {
-            x: 0,
-            y: 0
-          },
-          duration: 200
-        })
+        this.sfooter(true)
       } else if (delta < (-1 * this.rightDrawerSize) / 2 && (this.onPage == null || this.onPage == 'left')) {
         this.deltaX = -1 * this.rightDrawerSize
         this.onPage = 'right'
@@ -160,13 +163,7 @@
         })
 
         // @ts-ignore
-        this.$refs.footer.nativeView.animate({
-          translate: {
-            x: 0,
-            y: 100
-          },
-          duration: 200
-        })
+        this.sfooter(false)
       } else {
         this.onPage = null
         this.deltaX = 0
@@ -181,13 +178,7 @@
         })
 
         // @ts-ignore
-        this.$refs.footer.nativeView.animate({
-          translate: {
-            x: 0,
-            y: 100
-          },
-          duration: 200
-        })
+        this.sfooter(false)
       }
     }
 
@@ -224,11 +215,30 @@
         this.checkDirection(args.deltaX)
       }
     }
+
   }
 </script>
 
 <style lang="scss">
-  Label {
-    color: #FFF;
+  @import '../style/variables.scss';
+
+  .mainContent {
+    border-top-left-radius: 10;
+    border-top-right-radius: 10;
+  }
+
+  .content {
+    &.darkerColor {
+      background-color: $darkerThird;
+    }
+
+    &.lighterColor {
+      background-color: $darkerLight;
+    }
+  }
+
+  .chat,
+  .serversList {
+    background-color: $darkerSecond;
   }
 </style>
