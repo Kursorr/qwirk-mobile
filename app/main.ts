@@ -3,10 +3,10 @@ import VueDevtools from 'nativescript-vue-devtools'
 
 import Navigator from 'nativescript-vue-navigator'
 
-import Main from './views/Main.vue'
+import App from './views/App.vue'
 
-import { routes } from './routes'
-import store from './store'
+import { routes } from './routes/'
+import store from './store/'
 
 Vue.use(Navigator, { routes })
 
@@ -20,5 +20,5 @@ Vue.config.silent = (TNS_ENV === 'production')
 
 new Vue({
   store,
-  render: h => h(Main)
+  render: (h) => h(App),
 }).$start()
