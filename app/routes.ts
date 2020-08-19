@@ -1,5 +1,6 @@
 import App from './views/App.vue'
 import Profile from './views/Profile.vue'
+import Friends from './views/Friends.vue'
 
 export const routes = {
   '/app': {
@@ -7,5 +8,8 @@ export const routes = {
   },
   '/profile': {
     component: Profile
+  },
+  '/friends': {
+    component: Friends
   }
 }
