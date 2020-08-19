@@ -187,17 +187,17 @@
 
       if (this.onPage !== null || (args.deltaX === 0 || this.deltaX === 0)) {
         // @ts-ignore
-        this.$refs.right.nativeView.visibility = 'visible'
-        // @ts-ignore
-        this.$refs.left.nativeView.visibility = 'visible'
-      }
-
-      if (args.deltaX > this.leftDrawerSize / 2) {
-        // @ts-ignore
         this.$refs.right.nativeView.visibility = 'collapse'
-      } else if (args.deltaX < (-1 * this.rightDrawerSize) / 2) {
         // @ts-ignore
         this.$refs.left.nativeView.visibility = 'collapse'
+      }
+
+      if (args.deltaX > this.leftDrawerSize / 100) {
+        // @ts-ignore
+        this.$refs.left.nativeView.visibility = 'visible'
+      } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
+        // @ts-ignore
+        this.$refs.right.nativeView.visibility = 'visible'
       }
 
       // @ts-ignore
