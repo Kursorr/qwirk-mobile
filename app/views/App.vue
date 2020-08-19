@@ -1,6 +1,6 @@
 <template>
   <Page :actionBarHidden="true">
-    <GridLayout backgroundColor="#000" rows="*, auto" columns="*">
+    <GridLayout backgroundColor="#202225" rows="*, auto" columns="*">
       <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
         <GridLayout rows="*" columns="auto, *">
           <Servers />
