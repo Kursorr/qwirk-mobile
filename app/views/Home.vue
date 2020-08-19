@@ -73,7 +73,7 @@
     private drawerMargin: number = (screen.mainScreen.widthPixels * (1 / 9)) / 2
 
     closeIfOpen () {
-      if (this.onPage == null) return
+      if (this.onPage === null) return
       if (this.isAnimating) return
 
       this.isAnimating = true
@@ -101,12 +101,12 @@
 
       this.isAnimating = true
 
-      if (direction == 'left') {
+      if (direction === 'left') {
         // @ts-ignore
         this.$refs.left.nativeView.visibility = 'visible'
         // @ts-ignore
         this.$refs.right.nativeView.visibility = 'collapse'
-      } else if (direction == 'right') {
+      } else if (direction === 'right') {
         // @ts-ignore
         this.$refs.left.nativeView.visibility = 'collapse'
         // @ts-ignore
@@ -132,7 +132,7 @@
     }
 
     checkDirection (delta: number) {
-      if (delta > this.leftDrawerSize / 2 && (this.onPage == null || this.onPage == 'right')) {
+      if (delta > this.leftDrawerSize / 2 && (this.onPage === null || this.onPage === 'right')) {
         this.deltaX = this.leftDrawerSize
         this.onPage = 'left'
 
@@ -147,7 +147,7 @@
 
         // @ts-ignore
         this.sfooter(true)
-      } else if (delta < (-1 * this.rightDrawerSize) / 2 && (this.onPage == null || this.onPage == 'left')) {
+      } else if (delta < (-1 * this.rightDrawerSize) / 2 && (this.onPage === null || this.onPage === 'left')) {
         this.deltaX = -1 * this.rightDrawerSize
         this.onPage = 'right'
 
@@ -183,9 +183,9 @@
     displayContent (args) {
       if (args.deltaX < this.slideSensitivity && args.deltaX > -1 * this.slideSensitivity) return
 
-      if (this.onPage != null) args.deltaX += this.deltaX
+      if (this.onPage !== null) args.deltaX += this.deltaX
 
-      if (this.onPage != null || (args.deltaX == 0 || this.deltaX == 0)) {
+      if (this.onPage !== null || (args.deltaX === 0 || this.deltaX === 0)) {
         // @ts-ignore
         this.$refs.right.nativeView.visibility = 'visible'
         // @ts-ignore
@@ -209,7 +209,7 @@
         duration: 0
       })
 
-      if (args.state == UP) {
+      if (args.state === UP) {
         this.checkDirection(args.deltaX)
       }
     }
