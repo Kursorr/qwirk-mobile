@@ -1,19 +1,19 @@
 export default {
   namespaced: true,
   state: {
-    footer: 'lol'
+    footer: false
   },
   getters: {
-    gfooterComponent: state => state.footer
+    gfooter: state => state.footer
   },
   actions: {
-    sfooterComponent (store, element) {
-      store.commit('SET_ELEMENT', element)
+    sfooter (store, bool) {
+      store.commit('SET_ELEMENT', bool)
     }
   },
   mutations: {
-    SET_ELEMENT (state, element) {
-      state.footer = element
+    SET_ELEMENT (state, bool) {
+      state.footer = bool
     }
   }
 }

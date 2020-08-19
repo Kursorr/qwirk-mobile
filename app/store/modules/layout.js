@@ -3,19 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = {
     namespaced: true,
     state: {
-        footer: 'lol'
+        footer: false
     },
     getters: {
-        gfooterComponent: function (state) { return state.footer; }
+        gfooter: function (state) { return state.footer; }
     },
     actions: {
-        sfooterComponent: function (store, element) {
-            store.commit('SET_ELEMENT', element);
+        sfooter: function (store, bool) {
+            store.commit('SET_ELEMENT', bool);
         }
     },
     mutations: {
-        SET_ELEMENT: function (state, element) {
-            state.footer = element;
+        SET_ELEMENT: function (state, bool) {
+            state.footer = bool;
         }
     }
 };
