@@ -15,10 +15,10 @@
   @Component
   export default class Channels extends Vue {
     private loremTexts = [
-      '😇 You like this?',
-      '🤗 I saw the emojis from Discord',
-      '😎 I think they look cool',
-      '😁 I changed the colours as well'
+      '😇 Channels ! :)',
+      '🤗 Emojis from Discord',
+      '😎 They look cool',
+      '😁 Colours as well'
     ]
   }
 </script>
