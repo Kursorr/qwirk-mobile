@@ -37,7 +37,6 @@
   .footer {
     transform: translateY(0);
     background-color: $darkerFirst;
-    padding: 15 30;
 
     .without {
       transform: translateY(100);
