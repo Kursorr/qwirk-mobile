@@ -1,11 +1,17 @@
 <template>
-  <StackLayout>
+  <FlexboxLayout class="container">
     <SVGImage src="~/assets/images/logo.svg"
               class="selected"
               @tap="gotoProfile"
-              height="25"
-              width="25"/>
-  </StackLayout>
+              height="20"
+              width="20"/>
+
+    <SVGImage src="~/assets/images/friends.svg"
+              class="selected"
+              @tap="gotoFriends"
+              height="20"
+              width="20"/>
+  </FlexboxLayout>
 </template>
 
 <script lang="ts">
@@ -25,11 +31,29 @@
         }
       })
     }
+
+    gotoFriends () {
+      // @ts-ignore
+      this.$navigator.navigate('friends', {
+        frame: 'navigator',
+        animated: true,
+        transition: {
+          name: 'slideLeft',
+          duration: 200,
+          curve: 'easeOut'
+        }
+      })
+    }
   }
 </script>
 
 <style lang="scss">
-  .selected {
-    opacity: 0.5;
+  .container {
+    align-items: center;
+    justify-content: space-between;
+
+    .selected {
+      opacity: 0.5;
+    }
   }
 </style>
