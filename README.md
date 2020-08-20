@@ -15,7 +15,6 @@ You need Nativescript and Nativescript-vue installed
 
 - clone the project
 - `npm i`
-- `npm run { OS }` android or ios
 
 ## Running the project
 
