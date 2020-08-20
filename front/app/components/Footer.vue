@@ -39,19 +39,31 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+  import { mapActions } from 'vuex'
 
-  @Component
+  @Component({
+    methods: {
+      ...mapActions({
+        sfooter: 'layout/sfooter'
+      })
+    }
+  })
   export default class Footer extends Vue {
     gotoApp () {
       // @ts-ignore
-      this.$navigator.navigate('home', {
-        frame: 'navigator',
-        animated: true,
-        transition: {
-          name: 'slideRight',
-          duration: 200,
-          curve: 'easeOut'
-        }
+      this.sfooter(false)
+
+      setTimeout(() => {
+        // @ts-ignore
+        this.$navigator.navigate('home', {
+          frame: 'navigator',
+          animated: true,
+          transition: {
+            name: 'slideRight',
+            duration: 200,
+            curve: 'easeOut'
+          }
+        })
       })
     }
 
