@@ -15,5 +15,5 @@ if (TNS_ENV !== 'production')
 nativescript_vue_1.default.config.silent = (TNS_ENV === 'production');
 new nativescript_vue_1.default({
     store: store_1.default,
-    render: function (h) { return h(App_vue_1.default); },
+    render: function (h) { return h(App_vue_1.default); }
 }).$start();
