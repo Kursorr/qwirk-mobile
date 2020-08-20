@@ -32,15 +32,15 @@
 </script>
 
 <style lang="scss">
-@import '../style/variables.scss';
+  @import '../style/variables.scss';
 
-.footer {
-  transform: translateY(0);
-  background-color: $darkerFirst;
-  padding: 15 30;
+  .footer {
+    transform: translateY(0);
+    background-color: $darkerFirst;
+    padding: 15 30;
 
-  .without {
-    transform: translateY(100);
+    .without {
+      transform: translateY(100);
+    }
   }
-}
 </style>
