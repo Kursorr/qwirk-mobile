@@ -1,26 +1,39 @@
 <template>
   <FlexboxLayout class="container">
-    <SVGImage src="~/assets/images/logo.svg"
-              class="selected"
-              @tap="gotoProfile"
-              height="20"
-              width="20"/>
+    <StackLayout class="imageContainer" @tap="gotoApp">
+      <SVGImage src="~/assets/images/logo.svg"
+                class="selected"
+                height="20"
+                width="20"/>
+    </StackLayout>
 
-    <SVGImage src="~/assets/images/friends.svg"
-              class="selected"
-              @tap="gotoFriends"
-              height="20"
-              width="20"/>
+    <StackLayout class="imageContainer" @tap="gotoFriends">
+      <SVGImage src="~/assets/images/friends.svg"
+                class="selected"
+                height="20"
+                width="20"/>
+    </StackLayout>
 
-    <SVGImage src="~/assets/images/search.svg"
-              class="selected"
-              height="20"
-              width="20"/>
+    <StackLayout class="imageContainer">
+      <SVGImage src="~/assets/images/search.svg"
+                class="selected"
+                height="20"
+                width="20"/>
+    </StackLayout>
 
-    <SVGImage src="~/assets/images/at.svg"
-              class="selected"
-              height="20"
-              width="20"/>
+    <StackLayout class="imageContainer">
+      <SVGImage src="~/assets/images/at.svg"
+                class="selected"
+                height="20"
+                width="20"/>
+    </StackLayout>
+
+    <StackLayout class="imageContainer">
+      <SVGImage src="~/assets/images/art.svg"
+                class="selected"
+                height="20"
+                width="20"/>
+    </StackLayout>
   </FlexboxLayout>
 </template>
 
@@ -29,13 +42,13 @@
 
   @Component
   export default class Footer extends Vue {
-    gotoProfile () {
+    gotoApp () {
       // @ts-ignore
-      this.$navigator.navigate('profile', {
+      this.$navigator.navigate('home', {
         frame: 'navigator',
         animated: true,
         transition: {
-          name: 'slideLeft',
+          name: 'slideRight',
           duration: 200,
           curve: 'easeOut'
         }
@@ -60,10 +73,17 @@
 <style lang="scss">
   .container {
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0 10;
 
-    .selected {
-      opacity: 0.5;
+    .imageContainer {
+      height: 100%;
+      width: 20%;
+      padding: 15 0;
+
+      .selected {
+        opacity: 0.5;
+      }
     }
   }
 </style>
