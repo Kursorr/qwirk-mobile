@@ -11,6 +11,16 @@
               @tap="gotoFriends"
               height="20"
               width="20"/>
+
+    <SVGImage src="~/assets/images/search.svg"
+              class="selected"
+              height="20"
+              width="20"/>
+
+    <SVGImage src="~/assets/images/at.svg"
+              class="selected"
+              height="20"
+              width="20"/>
   </FlexboxLayout>
 </template>
 
