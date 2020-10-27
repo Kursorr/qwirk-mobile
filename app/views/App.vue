@@ -1,5 +1,5 @@
 <template>
-  <GridLayout rows="*, auto" columns="*">
+  <GridLayout rows="*, auto" columns="*" :class="theme">
     <ContentView row="0">
       <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
     </ContentView>
@@ -22,7 +22,8 @@
     },
     computed: {
       ...mapGetters({
-        gfooter: 'layout/gfooter'
+        gfooter: 'layout/gfooter',
+        theme: 'theme/theme'
       })
     }
   })
@@ -36,7 +37,6 @@
 
   .footer {
     transform: translateY(0);
-    background-color: $darkerFirst;
 
     .without {
       transform: translateY(100);
