@@ -1,0 +1,67 @@
+{
+	"title": "The Superheroes War",
+	"start": 0,
+	"end": 100,
+	"characters": [
+		{
+			"name": "Iron Man",
+			"representativeImg": "~/assets/images/devices/teddy.svg",
+			"backgroundColor": "#A13F00",
+			"id": 0,
+			"speeches": [
+				{
+					"id": 0,
+					"file": "~/assets/audio/heart.mp4",
+					"start": 20,
+					"end": 25
+				},
+				{
+					"id": 1,
+					"file": "~/assets/audio/heart.mp4",
+					"start": 36,
+					"end": 48
+				}
+			]
+		},
+		{
+			"name": "Hulk",
+			"backgroundColor": "#00FF00",
+			"representativeImg": "~/assets/images/devices/frog.svg",
+			"id": 1,
+			"speeches": [
+				{
+					"id": 0,
+					"file": "~/assets/audio/heart.mp4",
+					"start": 15,
+					"end": 25
+				},
+				{
+					"id": 1,
+					"file": "~/assets/audio/rocks.mp4",
+					"start": 26,
+					"end": 35
+				}
+			]
+		},
+		{
+			"name": "Captain America",
+			"backgroundColor": "#0000FF",
+			"representativeImg": "~/assets/images/devices/hippo.svg",
+			"id": 2,
+			"speeches": [
+				{
+					"id": 0,
+					"file": "~/assets/audio/heart.mp4",
+					"start": 24,
+					"end": 36
+				},
+				{
+					"id": 1,
+					"file": "~/assets/audio/rocks.mp4",
+					"start": 48,
+					"end": 69
+				}
+			]
+		}
+	]
+}
