@@ -12,11 +12,24 @@
 }
 
 .darker {
-  .channels {
+  .server {
     background-color: $darkerLight;
 
     Label {
       color: $white;
+
+      &.categoryName {
+        color: #8E9297;
+      }
+
+      &.ico.down {
+        color: #8E9297;
+      }
+
+      &.ico.hashtag, &.name {
+        color: #8E9297;
+      }
+
     }
   }
 
