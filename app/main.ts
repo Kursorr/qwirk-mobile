@@ -21,6 +21,15 @@ if (TNS_ENV !== 'production')
 
 Vue.prototype.$orientation = orientation
 Vue.prototype.$icons = icons
+Vue.prototype.$globalState = new Vue({
+  data: {
+    footer: false
+  },
+  methods: {
+    showFooter () { this.footer = true },
+    hideFooter () { this.footer = false }
+  }
+})
 
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')

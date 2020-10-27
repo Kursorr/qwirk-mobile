@@ -17,6 +17,15 @@ if (TNS_ENV !== 'production')
     nativescript_vue_1.default.use(nativescript_vue_devtools_1.default);
 nativescript_vue_1.default.prototype.$orientation = orientation;
 nativescript_vue_1.default.prototype.$icons = icons;
+nativescript_vue_1.default.prototype.$globalState = new nativescript_vue_1.default({
+    data: {
+        footer: false
+    },
+    methods: {
+        showFooter: function () { this.footer = true; },
+        hideFooter: function () { this.footer = false; }
+    }
+});
 // Prints Vue logs when --env.production is *NOT* set while building
 nativescript_vue_1.default.config.silent = (TNS_ENV === 'production');
 new nativescript_vue_1.default({

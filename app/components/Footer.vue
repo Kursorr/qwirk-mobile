@@ -46,13 +46,7 @@
   import { Component, Vue } from 'vue-property-decorator'
   import { mapActions } from 'vuex'
 
-  @Component({
-    methods: {
-      ...mapActions({
-        sfooter: 'layout/sfooter'
-      })
-    }
-  })
+  @Component
   export default class Footer extends Vue {
     public activeHome: boolean = true
     public activeFriends: boolean = false
@@ -79,7 +73,7 @@
 
       if (route === 'home') {
         // @ts-ignore
-        this.sfooter(false)
+        this.$globalState.hideFooter()
         this.activeHome = true
 
         setTimeout(() => {

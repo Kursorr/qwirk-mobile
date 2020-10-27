@@ -4,9 +4,9 @@
       <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
     </ContentView>
 
-    <Footer v-if="gfooter"
+    <Footer v-if="$globalState.footer"
             row="1"
-            :class="[gfooter ? 'footer' : 'footer without']"/>
+            :class="[$globalState.footer ? 'footer' : 'footer without']"/>
   </GridLayout>
 </template>
 
@@ -22,7 +22,6 @@
     },
     computed: {
       ...mapGetters({
-        gfooter: 'layout/gfooter',
         theme: 'theme/theme'
       })
     }

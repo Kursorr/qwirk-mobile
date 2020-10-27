@@ -54,11 +54,6 @@
       Channels,
       Users,
       Tchat,
-    },
-    methods: {
-      ...mapActions({
-        sfooter: 'layout/sfooter'
-      })
     }
   })
   export default class Home extends Vue {
@@ -146,7 +141,7 @@
         })
 
         // @ts-ignore
-        this.sfooter(true)
+        this.$globalState.showFooter()
       } else if (delta < (-1 * this.rightDrawerSize) / 2 && (this.onPage === null || this.onPage === 'left')) {
         this.deltaX = -1 * this.rightDrawerSize
         this.onPage = 'right'
@@ -161,7 +156,7 @@
         })
 
         // @ts-ignore
-        this.sfooter(false)
+        this.$globalState.hideFooter()
       } else {
         this.onPage = null
         this.deltaX = 0
@@ -176,7 +171,7 @@
         })
 
         // @ts-ignore
-        this.sfooter(false)
+        this.$globalState.hideFooter()
       }
     }
 
@@ -221,7 +216,7 @@
       this.onPage = 'left'
 
       // @ts-ignore
-      this.sfooter(true)
+      this.$globalState.showFooter()
     }*/
   }
 </script>
