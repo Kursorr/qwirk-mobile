@@ -2,6 +2,7 @@ import App from '../views/App.vue'
 import Home from '../views/Home.vue'
 import Profile from '../views/Profile.vue'
 import Friends from '../views/Friends.vue'
+import Editor from '../views/Editor.vue'
 
 export const routes = {
   app: {
@@ -16,5 +17,8 @@ export const routes = {
   },
   friends: {
     component: Friends
+  },
+  editor: {
+    component: Editor
   }
 }

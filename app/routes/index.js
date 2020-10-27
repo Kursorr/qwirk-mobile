@@ -6,6 +6,7 @@ var App_vue_1 = tslib_1.__importDefault(require("../views/App.vue"));
 var Home_vue_1 = tslib_1.__importDefault(require("../views/Home.vue"));
 var Profile_vue_1 = tslib_1.__importDefault(require("../views/Profile.vue"));
 var Friends_vue_1 = tslib_1.__importDefault(require("../views/Friends.vue"));
+var Editor_vue_1 = tslib_1.__importDefault(require("../views/Editor.vue"));
 exports.routes = {
     app: {
         component: App_vue_1.default
@@ -19,5 +20,8 @@ exports.routes = {
     },
     friends: {
         component: Friends_vue_1.default
+    },
+    editor: {
+        component: Editor_vue_1.default
     }
 };
