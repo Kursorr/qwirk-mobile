@@ -82,7 +82,7 @@
 
     .channels {
       align-items: center;
-      margin-left: 12;
+      margin-left: 15;
       margin-bottom: 14;
     }
 
@@ -105,6 +105,7 @@
 
     .ico.down {
       font-size: 11;
+      margin:0 2;
     }
   }
 </style>
