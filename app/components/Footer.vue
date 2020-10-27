@@ -1,39 +1,44 @@
 <template>
   <FlexboxLayout class="container">
-    <StackLayout class="imageContainer" @tap="gotoApp">
-      <SVGImage src="~/assets/images/logo.svg"
-                class="selected"
-                height="20"
-                width="20"/>
-    </StackLayout>
+    <FlexboxLayout @tap="gotoLink('home')">
+      <Label textWrap="true"
+             :text="String.fromCharCode($icons.logo)"
+             class="ico footer"
+             :class="[activeHome ? 'enable' : 'disabled']"
+             color="#FFF"/>
+    </FlexboxLayout>
 
-    <StackLayout class="imageContainer" @tap="gotoFriends">
-      <SVGImage src="~/assets/images/friends.svg"
-                class="selected"
-                height="20"
-                width="20"/>
-    </StackLayout>
+    <FlexboxLayout @tap="gotoLink('friends')">
+       <Label textWrap="true"
+              :text="String.fromCharCode($icons.friends)"
+              class="ico footer"
+              :class="[activeFriends ? 'enable' : 'disabled']"
+              color="#FFF"/>
+    </FlexboxLayout>
 
-    <StackLayout class="imageContainer">
-      <SVGImage src="~/assets/images/search.svg"
-                class="selected"
-                height="20"
-                width="20"/>
-    </StackLayout>
+    <FlexboxLayout>
+      <Label textWrap="true"
+           :text="String.fromCharCode($icons.search)"
+           class="ico footer"
+           :class="[activeSearch ? 'enable' : 'disabled']"
+           color="#FFF"/>
+    </FlexboxLayout>
 
-    <StackLayout class="imageContainer">
-      <SVGImage src="~/assets/images/at.svg"
-                class="selected"
-                height="20"
-                width="20"/>
-    </StackLayout>
+    <FlexboxLayout @tap="gotoLink('editor')">
+      <Label textWrap="true"
+           :text="String.fromCharCode($icons.editor)"
+           class="ico footer"
+           :class="[activeEditor ? 'enable' : 'disabled']"
+           color="#FFF"/>
+    </FlexboxLayout>
 
-    <StackLayout class="imageContainer">
-      <SVGImage src="~/assets/images/art.svg"
-                class="selected"
-                height="20"
-                width="20"/>
-    </StackLayout>
+    <FlexboxLayout>
+      <Label textWrap="true"
+             :text="String.fromCharCode($icons.arobase)"
+             class="ico footer"
+             :class="[activeProfil ? 'enable' : 'disabled']"
+             color="#FFF"/>
+    </FlexboxLayout>
   </FlexboxLayout>
 </template>
 
@@ -49,51 +54,69 @@
     }
   })
   export default class Footer extends Vue {
-    gotoApp () {
-      // @ts-ignore
-      this.sfooter(false)
+    public activeHome: boolean = true
+    public activeFriends: boolean = false
+    public activeSearch: boolean = false
+    public activeEditor: boolean = false
+    public activeProfil: boolean = false
 
-      setTimeout(() => {
+    private options = {
+      frame: 'navigator',
+      animated: true,
+      transition: {
+        name: 'slideRight',
+        duration: 200,
+        curve: 'easeOut'
+      }
+    }
+
+    gotoLink (route) {
+      this.activeHome = false
+      this.activeFriends = false
+      this.activeSearch = false
+      this.activeEditor = false
+      this.activeProfil = false
+
+      if (route === 'home') {
         // @ts-ignore
-        this.$navigator.navigate('home', {
-          frame: 'navigator',
-          animated: true,
-          transition: {
-            name: 'slideRight',
-            duration: 200,
-            curve: 'easeOut'
-          }
+        this.sfooter(false)
+        this.activeHome = true
+
+        setTimeout(() => {
+          // @ts-ignore
+          this.$navigator.navigate('home', this.options)
         })
-      })
+      } else if (route === 'friends') {
+        this.activeFriends = true
+        // @ts-ignore
+        this.$navigator.navigate('friends', this.options)
+      } else if (route === 'editor') {
+        this.activeEditor = true
+        // @ts-ignore
+        this.$navigator.navigate('editor', this.options)
+      }
     }
 
-    gotoFriends () {
-      // @ts-ignore
-      this.$navigator.navigate('friends', {
-        frame: 'navigator',
-        animated: true,
-        transition: {
-          name: 'slideLeft',
-          duration: 200,
-          curve: 'easeOut'
-        }
-      })
-    }
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .container {
     align-items: center;
     justify-content: space-around;
-    padding: 0 10;
 
-    .imageContainer {
-      height: 100%;
+    FlexboxLayout {
+      padding: 16 0;
       width: 20%;
-      padding: 15 0;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
-      .selected {
+      .enable {
+        opacity: 1;
+      }
+
+      .disabled {
         opacity: 0.5;
       }
     }
