@@ -32,10 +32,10 @@
 </template>
 
 <script lang="ts">
-  import { screen } from '@nativescript/core/platform'
+  import { Screen } from '@nativescript/core/platform'
   import { Component, Vue } from 'vue-property-decorator'
 
-  import { animate } from '../animation'
+  import { animate } from '@/animation'
 
   import Servers from '@/components/Servers.vue'
   import Channels from '@/components/Channels.vue'
@@ -68,9 +68,9 @@
     private slideSensitivity: number = 3
     private onPage: string = null
 
-    private leftDrawerSize: number = screen.mainScreen.widthPixels * (1 / 3)
-    private rightDrawerSize: number = screen.mainScreen.widthPixels * (1 / 3)
-    private drawerMargin: number = (screen.mainScreen.widthPixels * (1 / 9)) / 2
+    private leftDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
+    private rightDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
+    private drawerMargin: number = (Screen.mainScreen.widthPixels * (1 / 9)) / 2
 
     closeIfOpen () {
       if (this.onPage === null) return
@@ -214,6 +214,15 @@
       }
     }
 
+    /*
+    @navigatingTo="navigatingTo"
+    navigatingTo () {
+      this.animateTo('left')
+      this.onPage = 'left'
+
+      // @ts-ignore
+      this.sfooter(true)
+    }*/
   }
 </script>
 
@@ -223,20 +232,5 @@
   .mainContent {
     border-top-left-radius: 10;
     border-top-right-radius: 10;
-  }
-
-  .content {
-    &.darkerColor {
-      background-color: $darkerThird;
-    }
-
-    &.lighterColor {
-      background-color: $darkerLight;
-    }
-  }
-
-  .chat,
-  .serversList {
-    background-color: $darkerSecond;
   }
 </style>
