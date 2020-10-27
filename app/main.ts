@@ -1,19 +1,26 @@
 import Vue from 'nativescript-vue'
-import VueDevtools from 'nativescript-vue-devtools'
-
+import Copilot from '@nativescript-copilot/vue'
 import Navigator from 'nativescript-vue-navigator'
+import * as orientation from 'nativescript-screen-orientation'
+
+import VueDevtools from 'nativescript-vue-devtools'
 
 import App from './views/App.vue'
 
 import { routes } from './routes/'
 import store from './store/'
 
-Vue.use(Navigator, { routes })
+require('./app.scss')
+const icons = require('./assets/icons/icons.json')
 
-Vue.registerElement('SVGImage', () => require('@teammaestro/nativescript-svg').SVGImage)
+Vue.use(Copilot)
+Vue.use(Navigator, { routes })
 
 if (TNS_ENV !== 'production')
   Vue.use(VueDevtools)
+
+Vue.prototype.$orientation = orientation
+Vue.prototype.$icons = icons
 
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = (TNS_ENV === 'production')
