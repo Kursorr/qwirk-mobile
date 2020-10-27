@@ -32,12 +32,13 @@
            color="#FFF"/>
     </FlexboxLayout>
 
-    <FlexboxLayout>
-      <Label textWrap="true"
-             :text="String.fromCharCode($icons.arobase)"
-             class="ico footer"
-             :class="[activeProfil ? 'enable' : 'disabled']"
-             color="#FFF"/>
+    <FlexboxLayout @tap="gotoLink('profile')">
+      <AbsoluteLayout id="profil" :class="[activeProfile ? 'enable' : 'disabled']">
+        <Image src="~/assets/images/avatar.jpeg"
+               stretch="aspectFill"/>
+        <StackLayout class="status online"/>
+      </AbsoluteLayout>
+
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
@@ -52,7 +53,7 @@
     public activeFriends: boolean = false
     public activeSearch: boolean = false
     public activeEditor: boolean = false
-    public activeProfil: boolean = false
+    public activeProfile: boolean = false
 
     private options = {
       frame: 'navigator',
@@ -69,7 +70,7 @@
       this.activeFriends = false
       this.activeSearch = false
       this.activeEditor = false
-      this.activeProfil = false
+      this.activeProfile = false
 
       if (route === 'home') {
         // @ts-ignore
@@ -88,6 +89,10 @@
         this.activeEditor = true
         // @ts-ignore
         this.$navigator.navigate('editor', this.options)
+      } else if (route === 'profile') {
+        this.activeProfile = true
+        // @ts-ignore
+        this.$navigator.navigate('profile', this.options)
       }
     }
 
@@ -112,6 +117,21 @@
 
       .disabled {
         opacity: 0.5;
+      }
+
+      Image {
+        height: 22;
+        width: 22;
+        border-radius: 50%;
+      }
+
+      .status {
+        height: 10;
+        width: 10;
+        left: 14;
+        top: 14;
+        border-width: 1;
+        border-radius: 50%;
       }
     }
   }
