@@ -29,7 +29,7 @@
   }
 
   .profileSection {
-    background-color: #1C1E22;
+    background-color: $darkerFirst;
 
     Label {
       color: $white;
@@ -52,7 +52,7 @@
   }
 
   .friendsSection {
-    background-color: #1C1E22;
+    background-color: $darkerFirst;
 
     Label {
       color: $white;
@@ -66,6 +66,30 @@
 
 .lighter {
   .channels {
-    background-color: #FAFAFA;
+    background-color: $white;
+  }
+}
+
+// Profile
+
+AbsoluteLayout#profil {
+  StackLayout.status {
+    border-color: $darkerFirst;
+
+    &.online {
+      background-color: $green;
+    }
+
+    &.idle {
+      background-color: $orange;
+    }
+
+    &.busy {
+      background-color: $red;
+    }
+
+    &.invisible {
+      background-color: $grey;
+    }
   }
 }
