@@ -1,10 +1,71 @@
 // Global SCSS styling
 // @see https://docs.nativescript.org/ui/styling
 
+@import './style/variables';
+
 .ico {
   font-family: icomoon, icomoon;
+
+  &.footer {
+    font-size: 18;
+  }
 }
 
-* {
-  background-color: red!important;
+.darker {
+  .channels {
+    background-color: $darkerLight;
+
+    Label {
+      color: $white;
+    }
+  }
+
+  .usersSection {
+    background-color: $darkerLight;
+
+    Label {
+      color: $white;
+    }
+  }
+
+  .profileSection {
+    background-color: #1C1E22;
+
+    Label {
+      color: $white;
+    }
+  }
+
+  .chat,
+  .serversList {
+    background-color: $darkerSecond;
+  }
+
+  .content {
+    &.darkerColor {
+      background-color: $darkerThird;
+    }
+
+    &.lighterColor {
+      background-color: $darkerLight;
+    }
+  }
+
+  .friendsSection {
+    background-color: #1C1E22;
+
+    Label {
+      color: $white;
+    }
+  }
+
+  .footer {
+    background-color: $darkerFirst;
+  }
+}
+
+.lighter {
+  .channels {
+    background-color: #FAFAFA;
+  }
 }
