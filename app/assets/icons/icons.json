@@ -4,5 +4,8 @@
 	"friends": "0xe904",
 	"search": "0xe90e",
 	"arobase": "0xe902",
-	"editor": "0xe909"
+	"editor": "0xe909",
+	"chevronDown": "0xe911",
+	"hashtag": "0xe915",
+	"verticalDots": "0xe916"
 }
