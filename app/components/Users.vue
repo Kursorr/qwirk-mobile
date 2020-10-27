@@ -1,5 +1,5 @@
 <template>
-  <StackLayout>
+  <StackLayout class="usersSection">
     <Label fontSize="20"
            fontWeight="bold"
            text="🔔 Notifications"/>
@@ -19,15 +19,8 @@
 </script>
 
 <style lang="scss" scoped>
-  @import '../style/variables.scss';
-
   StackLayout {
-    background-color: $darkerLight;
     height: 100%;
     border-top-left-radius: 10;
-  }
-
-  Label {
-    color: #FFF;
   }
 </style>
