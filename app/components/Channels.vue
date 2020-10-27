@@ -1,5 +1,5 @@
 <template>
-  <StackLayout>
+  <StackLayout class="channels">
     <label fontSize="16"
            :textWrap="true"
            :key="i"
@@ -26,12 +26,7 @@
 <style lang="scss" scoped>
   @import '../style/variables.scss';
 
-  StackLayout {
-    background-color: $darkerLight;
+  .channels {
     border-top-right-radius: 10;
-  }
-
-  Label {
-    color: #FFF;
   }
 </style>
