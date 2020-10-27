@@ -1,6 +1,6 @@
 <template>
   <Page :actionBarHidden="true">
-    <StackLayout>
+    <StackLayout class="friendsSection">
       <Label text="Friends view ! :) OK"/>
     </StackLayout>
   </Page>
@@ -14,11 +14,4 @@
 </script>
 
 <style lang="scss" scoped>
-  StackLayout {
-    background-color: #1C1E22;
-  }
-
-  Label {
-    color: #FFF;
-  }
 </style>
