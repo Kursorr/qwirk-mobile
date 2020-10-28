@@ -9,7 +9,7 @@
       <Label :text="String.fromCharCode($icons.verticalDots)" class="ico"/>
     </FlexboxLayout>
 
-    <ScrollView @scroll="inScrolling" height="100%">
+    <ScrollView @scroll="inScrolling" height="100%" :scrollBarIndicatorVisible="false">
       <StackLayout>
         <StackLayout class="chan" v-for="category in server.categories">
           <FlexboxLayout alignItems="center" marginBottom="18">
