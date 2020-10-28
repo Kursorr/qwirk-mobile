@@ -9,5 +9,6 @@
 	"editor": "0xe909",
 	"chevronDown": "0xe911",
 	"hashtag": "0xe915",
-	"verticalDots": "0xe916"
+	"verticalDots": "0xe916",
+	"camera":"0xe91a"
 }
