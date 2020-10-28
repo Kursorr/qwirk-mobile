@@ -15,6 +15,10 @@
   .server {
     background-color: $darkerLight;
 
+    .serverInfo {
+      border-color: $darkerFirst;
+    }
+
     Label {
       color: $white;
 

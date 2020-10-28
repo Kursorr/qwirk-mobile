@@ -1,6 +1,6 @@
 <template>
   <StackLayout class="server">
-    <FlexboxLayout padding="15 20 15 10" justifyContent="space-between" alignItems="center">
+    <FlexboxLayout :class="[scrollY > 0 ? 'serverInfo addBorder' : 'serverInfo']">
       <FlexboxLayout alignItems="center">
         <Label text="X" marginRight="5"/>
         <Label :text="server.name" class="serverName"/>
@@ -9,17 +9,21 @@
       <Label :text="String.fromCharCode($icons.verticalDots)" class="ico"/>
     </FlexboxLayout>
 
-    <StackLayout class="chan" v-for="category in server.categories">
-      <FlexboxLayout alignItems="center" marginBottom="18">
-        <Label :text="String.fromCharCode($icons.chevronDown)" class="ico down"/>
-        <Label :text="category.title" class="categoryName"/>
-      </FlexboxLayout>
+    <ScrollView @scroll="inScrolling" height="100%">
+      <StackLayout>
+        <StackLayout class="chan" v-for="category in server.categories">
+          <FlexboxLayout alignItems="center" marginBottom="18">
+            <Label :text="String.fromCharCode($icons.chevronDown)" class="ico down"/>
+            <Label :text="category.title" class="categoryName"/>
+          </FlexboxLayout>
 
-      <FlexboxLayout v-for="channels in category.channels" class="channels">
-        <Label :text="String.fromCharCode($icons.hashtag)" class="ico hashtag" marginRight="5"/>
-        <Label :text="channels.name" class="name"/>
-      </FlexboxLayout>
-    </StackLayout>
+          <FlexboxLayout v-for="channels in category.channels" class="channels">
+            <Label :text="String.fromCharCode($icons.hashtag)" class="ico hashtag" marginRight="5"/>
+            <Label :text="channels.name" class="name"/>
+          </FlexboxLayout>
+        </StackLayout>
+      </StackLayout>
+    </ScrollView>
   </StackLayout>
 </template>
 
@@ -28,6 +32,7 @@
 
   @Component
   export default class Channels extends Vue {
+    private scrollY = 0
     private server = {
       name: 'La bande à ExSou',
       categories: [
@@ -62,8 +67,68 @@
               name: 'hardware'
             }
           ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
         }
       ]
+    }
+
+    public inScrolling (e) {
+      this.scrollY = e.scrollY
     }
   }
 </script>
@@ -71,6 +136,16 @@
 <style lang="scss" scoped>
   StackLayout.server {
     border-top-right-radius: 10;
+
+    .serverInfo {
+      justify-content: space-between;
+      align-items: center;
+      padding: 18 20 18 10;
+
+      &.addBorder {
+        border-bottom-width: 0.5;
+      }
+    }
 
     .chan {
       margin-bottom: 20;
@@ -83,20 +158,21 @@
     .channels {
       align-items: center;
       margin-left: 15;
-      margin-bottom: 14;
+      margin-bottom: 17;
     }
 
     &.serverName {
+      font-size: 16;
       font-weight: 500;
     }
 
     .categoryName {
-      font-size: 12;
+      font-size: 14;
       text-transform: uppercase;
     }
 
     .name {
-      font-size: 12;
+      font-size: 14;
     }
 
     .ico.hashtag {
