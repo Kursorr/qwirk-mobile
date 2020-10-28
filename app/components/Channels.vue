@@ -84,6 +84,8 @@
     public onSelectChannel (channel, index) {
       this.currentChannelId = index
       this.currentChannelName = channel.name
+
+      this.$emit('onChannelChange')
     }
   }
 </script>

@@ -4,7 +4,7 @@
       <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
         <GridLayout rows="*" columns="auto, *">
           <Servers />
-          <Channels column="1"/>
+          <Channels column="1" @onChannelChange="channelChange"/>
         </GridLayout>
       </StackLayout>
 
@@ -67,7 +67,24 @@
     private rightDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
     private drawerMargin: number = (Screen.mainScreen.widthPixels * (1 / 9)) / 2
 
-    closeIfOpen () {
+    public channelChange () {
+      this.onPage = null
+      this.deltaX = 0
+
+      // @ts-ignore
+      this.$refs.mainContent.nativeView.animate({
+        translate: {
+          x: 0,
+          y: 0
+        },
+        duration: 200
+      })
+
+      // @ts-ignore
+      this.$globalState.hideFooter()
+    }
+
+    public closeIfOpen () {
       if (this.onPage === null) return
       if (this.isAnimating) return
 
@@ -91,7 +108,7 @@
       })
     }
 
-    animateTo (direction: string) {
+    public animateTo (direction: string) {
       if (this.isAnimating) return
 
       this.isAnimating = true
@@ -126,7 +143,7 @@
       })
     }
 
-    checkDirection (delta: number) {
+    public checkDirection (delta: number) {
       if (delta > this.leftDrawerSize / 2 && (this.onPage === null || this.onPage === 'right')) {
         this.deltaX = this.leftDrawerSize
         this.onPage = 'left'
@@ -175,7 +192,7 @@
       }
     }
 
-    displayContent (args) {
+    public displayContent (args) {
       if (args.deltaX < this.slideSensitivity && args.deltaX > -1 * this.slideSensitivity) return
 
       if (this.onPage !== null) args.deltaX += this.deltaX
