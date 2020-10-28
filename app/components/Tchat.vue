@@ -19,7 +19,35 @@
       </FlexboxLayout>
     </FlexboxLayout>
 
-    <Label text="OK ! :)"/>
+    <ScrollView>
+      <StackLayout marginTop="5">
+
+        <StackLayout margin="5 0">
+          <FlexboxLayout justifyContent="center">
+            <StackLayout height="40" width="80">
+              <Image src="~/assets/images/avatar.jpeg"
+                     height="40"
+                     width="40"
+                     borderRadius="25"
+                     stretch="aspectFill"/>
+            </StackLayout>
+
+            <StackLayout class="textInfos">
+              <FlexboxLayout alignItems="center">
+                <Label text="Kursorr" class="author"/>
+                <Label text="Aujourd'hui à 20:58" class="time"/>
+              </FlexboxLayout>
+              <Label :textWrap="true"
+                     class="text"
+                     text="A super long text, long that should wrap correctly at the bottom... Let's prey that happen correctly"/>
+            </StackLayout>
+
+          </FlexboxLayout>
+        </StackLayout>
+
+      </StackLayout>
+
+    </ScrollView>
   </StackLayout>
 </template>
 
@@ -58,5 +86,22 @@
         }
       }
     }
+
+    .textInfos {
+      width: 90%;
+      padding-right: 10;
+
+      .author {
+        margin-right: 7;
+        font-size: 16;
+      }
+
+      .time {
+        font-size: 11;
+        margin-bottom: 2;
+        align-self: flex-end;
+      }
+    }
+
   }
 </style>

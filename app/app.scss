@@ -63,6 +63,21 @@
         color: $white;
       }
     }
+
+    .textInfos {
+      .author {
+        color: $white;
+      }
+
+      .time {
+        color: #72767D;
+      }
+
+      .text {
+        line-height: 4;
+        color: $white;
+      }
+    }
   }
 
   .usersSection {
