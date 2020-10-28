@@ -13,7 +13,7 @@
 
 .darker {
   .server {
-    background-color: $darkerLight;
+    background-color: #2F3136;
 
     .serverInfo {
       border-color: $darkerFirst;
@@ -43,8 +43,30 @@
     }
   }
 
+  .tchat {
+    .headerSection {
+      background-color: #2F3136;
+      border-top-left-radius: 10;
+      border-top-right-radius: 10;
+    }
+
+    .header {
+      .ico.menu, .ico.search, .ico.users {
+        color: $white;
+      }
+
+      .ico.hashtag {
+        color: #72767D;
+      }
+
+      .title {
+        color: $white;
+      }
+    }
+  }
+
   .usersSection {
-    background-color: $darkerLight;
+    background-color: #2F3136;
 
     Label {
       color: $white;
@@ -59,7 +81,6 @@
     }
   }
 
-  .chat,
   .serversList {
     background-color: $darkerSecond;
   }
