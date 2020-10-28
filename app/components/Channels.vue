@@ -70,6 +70,62 @@
               name: 'hardware'
             }
           ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
+        },
+        {
+          id: 1,
+          title: "la zone 42",
+          channels: [
+            {
+              id: 0,
+              name: 'dev-informatique'
+            },
+            {
+              id: 1,
+              name: 'hardware'
+            }
+          ]
         }
       ]
     }
