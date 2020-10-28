@@ -35,6 +35,12 @@
       }
 
     }
+
+    .channels.selected {
+      Label {
+        color: $white;
+      }
+    }
   }
 
   .usersSection {

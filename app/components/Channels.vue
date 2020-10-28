@@ -12,14 +12,17 @@
     <ScrollView @scroll="inScrolling" height="100%" :scrollBarIndicatorVisible="false">
       <StackLayout>
         <StackLayout class="chan" v-for="category in server.categories">
-          <FlexboxLayout alignItems="center" marginBottom="18">
+          <FlexboxLayout alignItems="center" marginBottom="10">
             <Label :text="String.fromCharCode($icons.chevronDown)" class="ico down"/>
             <Label :text="category.title" class="categoryName"/>
           </FlexboxLayout>
 
-          <FlexboxLayout v-for="channels in category.channels" class="channels">
+          <FlexboxLayout v-for="(channel, index) in category.channels"
+                         @tap="onSelectChannel(channel, index)"
+                         :class="[currentChannelId === index && currentChannelName === channel.name
+                          ? 'channels selected' : 'channels']">
             <Label :text="String.fromCharCode($icons.hashtag)" class="ico hashtag" marginRight="5"/>
-            <Label :text="channels.name" class="name"/>
+            <Label :text="channel.name" class="name"/>
           </FlexboxLayout>
         </StackLayout>
       </StackLayout>
@@ -67,68 +70,20 @@
               name: 'hardware'
             }
           ]
-        },
-        {
-          id: 1,
-          title: "la zone 42",
-          channels: [
-            {
-              id: 0,
-              name: 'dev-informatique'
-            },
-            {
-              id: 1,
-              name: 'hardware'
-            }
-          ]
-        },
-        {
-          id: 1,
-          title: "la zone 42",
-          channels: [
-            {
-              id: 0,
-              name: 'dev-informatique'
-            },
-            {
-              id: 1,
-              name: 'hardware'
-            }
-          ]
-        },
-        {
-          id: 1,
-          title: "la zone 42",
-          channels: [
-            {
-              id: 0,
-              name: 'dev-informatique'
-            },
-            {
-              id: 1,
-              name: 'hardware'
-            }
-          ]
-        },
-        {
-          id: 1,
-          title: "la zone 42",
-          channels: [
-            {
-              id: 0,
-              name: 'dev-informatique'
-            },
-            {
-              id: 1,
-              name: 'hardware'
-            }
-          ]
         }
       ]
     }
 
+    private currentChannelId = this.server.categories[0].channels[1].id
+    private currentChannelName = this.server.categories[0].channels[1].name
+
     public inScrolling (e) {
       this.scrollY = e.scrollY
+    }
+
+    public onSelectChannel (channel, index) {
+      this.currentChannelId = index
+      this.currentChannelName = channel.name
     }
   }
 </script>
@@ -148,7 +103,7 @@
     }
 
     .chan {
-      margin-bottom: 20;
+      margin-bottom: 15;
     }
 
     Label.title {
@@ -157,8 +112,14 @@
 
     .channels {
       align-items: center;
-      margin-left: 15;
-      margin-bottom: 17;
+      margin: 0 10 5 8;
+      padding: 8 0 8 7;
+
+      &.selected {
+        background-color: rgba(79, 84, 92, 0.32);
+        border-radius: 4;
+        color: #FFF;
+      }
     }
 
     &.serverName {
