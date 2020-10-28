@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="tchat" :class="$globalState.footer ? 'addOpacity' : ''">
+  <StackLayout class="tchat" :class="$globalState.removeOpacity ? 'opacity' : ''">
     <FlexboxLayout class="headerSection">
       <FlexboxLayout class="header">
         <FlexboxLayout alignItems="center">
@@ -32,7 +32,7 @@
 
 <style lang="scss" scoped>
   .tchat {
-    &.addOpacity {
+    &.opacity {
       opacity: 0.6;
     }
 

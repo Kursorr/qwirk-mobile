@@ -23,11 +23,13 @@ Vue.prototype.$orientation = orientation
 Vue.prototype.$icons = icons
 Vue.prototype.$globalState = new Vue({
   data: {
-    footer: false
+    footer: false,
+    removeOpacity: false
   },
   methods: {
     showFooter () { this.footer = true },
-    hideFooter () { this.footer = false }
+    hideFooter () { this.footer = false },
+    swipeOpacity () { this.removeOpacity = !this.removeOpacity }
   }
 })
 
