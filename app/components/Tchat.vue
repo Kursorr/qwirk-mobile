@@ -53,7 +53,10 @@
     </ScrollView>
 
     <StackLayout row="2">
-
+      <Label textWrap="true"
+             :text="String.fromCharCode($icons.camera)"
+             class="ico camera"
+             color="#FFF"/>
     </StackLayout>
   </GridLayout>
 </template>
