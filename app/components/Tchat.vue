@@ -1,6 +1,9 @@
 <template>
-  <StackLayout class="tchat" :class="$globalState.opacity ? 'opacity' : ''">
-    <FlexboxLayout class="headerSection">
+  <GridLayout class="tchat"
+              columns="*"
+              rows="auto, *, auto"
+              :class="$globalState.opacity ? 'opacity' : ''">
+    <FlexboxLayout class="headerSection" row="0">
       <FlexboxLayout class="header">
         <FlexboxLayout alignItems="center">
           <Label :text="String.fromCharCode($icons.menu)"
@@ -19,13 +22,13 @@
       </FlexboxLayout>
     </FlexboxLayout>
 
-    <ScrollView>
+    <ScrollView row="1">
       <StackLayout marginTop="5">
 
-        <StackLayout margin="5 0">
+        <StackLayout margin="5 0" v-for="(discussion, index) in discussions">
           <FlexboxLayout justifyContent="center">
             <StackLayout height="40" width="80">
-              <Image src="~/assets/images/avatar.jpeg"
+              <Image :src="discussion.avatar"
                      height="40"
                      width="40"
                      borderRadius="25"
@@ -34,12 +37,12 @@
 
             <StackLayout class="textInfos">
               <FlexboxLayout alignItems="center">
-                <Label text="Kursorr" class="author"/>
-                <Label text="Aujourd'hui à 20:58" class="time"/>
+                <Label :text="discussion.pseudo" class="author"/>
+                <Label :text="discussion.date" class="time"/>
               </FlexboxLayout>
               <Label :textWrap="true"
                      class="text"
-                     text="A super long text, long that should wrap correctly at the bottom... Let's prey that happen correctly"/>
+                     :text="discussion.text"/>
             </StackLayout>
 
           </FlexboxLayout>
@@ -48,14 +51,28 @@
       </StackLayout>
 
     </ScrollView>
-  </StackLayout>
+
+    <StackLayout row="2">
+
+    </StackLayout>
+  </GridLayout>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class Tchat extends Vue {}
+  export default class Tchat extends Vue {
+    private discussions = [
+      {
+        id: 0,
+        avatar: '~/assets/images/avatar.jpeg',
+        pseudo: 'Kursorr',
+        date: 'Aujourd\'hui à 20:58',
+        text: 'A super long text, long that should wrap correctly at the bottom... Let\'s prey that happen correctly'
+      }
+    ]
+  }
 </script>
 
 <style lang="scss" scoped>
