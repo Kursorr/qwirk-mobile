@@ -113,7 +113,7 @@
     .channels {
       align-items: center;
       margin: 0 10 5 8;
-      padding: 8 0 8 7;
+      padding: 10 0 10 7;
 
       &.selected {
         background-color: rgba(79, 84, 92, 0.32);
