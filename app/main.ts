@@ -24,12 +24,13 @@ Vue.prototype.$icons = icons
 Vue.prototype.$globalState = new Vue({
   data: {
     footer: false,
-    removeOpacity: false
+    opacity: false
   },
   methods: {
     showFooter () { this.footer = true },
     hideFooter () { this.footer = false },
-    swipeOpacity () { this.removeOpacity = !this.removeOpacity }
+    addOpacity () { this.opacity = true },
+    removeOpacity () { this.opacity = false }
   }
 })
 

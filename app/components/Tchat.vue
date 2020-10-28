@@ -1,5 +1,5 @@
 <template>
-  <StackLayout class="tchat" :class="$globalState.removeOpacity ? 'opacity' : ''">
+  <StackLayout class="tchat" :class="$globalState.opacity ? 'opacity' : ''">
     <FlexboxLayout class="headerSection">
       <FlexboxLayout class="header">
         <FlexboxLayout alignItems="center">

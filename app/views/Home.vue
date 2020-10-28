@@ -160,7 +160,7 @@
         // @ts-ignore
         this.$globalState.showFooter()
         // @ts-ignore
-        this.$globalState.swipeOpacity()
+        this.$globalState.addOpacity()
       } else if (delta < (-1 * this.rightDrawerSize) / 2 && (this.onPage === null || this.onPage === 'left')) {
         this.deltaX = -1 * this.rightDrawerSize
         this.onPage = 'right'
@@ -177,7 +177,7 @@
         // @ts-ignore
         this.$globalState.hideFooter()
         // @ts-ignore
-        this.$globalState.swipeOpacity()
+        this.$globalState.addOpacity()
       } else {
         this.onPage = null
         this.deltaX = 0
@@ -194,7 +194,7 @@
         // @ts-ignore
         this.$globalState.hideFooter()
         // @ts-ignore
-        this.$globalState.swipeOpacity()
+        this.$globalState.removeOpacity()
       }
     }
 

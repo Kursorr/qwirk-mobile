@@ -20,12 +20,13 @@ nativescript_vue_1.default.prototype.$icons = icons;
 nativescript_vue_1.default.prototype.$globalState = new nativescript_vue_1.default({
     data: {
         footer: false,
-        removeOpacity: false
+        opacity: false
     },
     methods: {
         showFooter: function () { this.footer = true; },
         hideFooter: function () { this.footer = false; },
-        swipeOpacity: function () { this.removeOpacity = !this.removeOpacity; }
+        addOpacity: function () { this.opacity = true; },
+        removeOpacity: function () { this.opacity = false; }
     }
 });
 // Prints Vue logs when --env.production is *NOT* set while building
