@@ -31,7 +31,7 @@
                 <Image :src="discussion.avatar"
                        height="40"
                        width="40"
-                       borderRadius="25"
+                       borderRadius="20"
                        stretch="aspectFill"/>
               </StackLayout>
 
