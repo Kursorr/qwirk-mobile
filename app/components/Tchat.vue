@@ -1,64 +1,67 @@
 <template>
-  <GridLayout class="tchat"
-              columns="*"
-              rows="auto, *, auto"
-              :class="$globalState.opacity ? 'opacity' : ''">
-    <FlexboxLayout class="headerSection" row="0">
-      <FlexboxLayout class="header">
-        <FlexboxLayout alignItems="center">
-          <Label :text="String.fromCharCode($icons.menu)"
-                 class="ico menu"/>
-          <Label :text="String.fromCharCode($icons.hashtag)"
-                 class="ico hashtag"/>
-          <Label text="general"
-                 class="title"/>
-        </FlexboxLayout>
-        <FlexboxLayout>
-          <Label :text="String.fromCharCode($icons.search)"
-                 class="ico search"/>
-          <Label :text="String.fromCharCode($icons.users)"
-                 class="ico users"/>
+  <StackLayout>
+    <GridLayout class="tchat"
+                columns="*"
+                rows="auto, *, auto"
+                :class="$globalState.opacity ? 'opacity' : ''">
+      <FlexboxLayout class="headerSection" row="0">
+        <FlexboxLayout class="header">
+          <FlexboxLayout alignItems="center">
+            <Label :text="String.fromCharCode($icons.menu)"
+                   class="ico menu"/>
+            <Label :text="String.fromCharCode($icons.hashtag)"
+                   class="ico hashtag"/>
+            <Label text="general"
+                   class="title"/>
+          </FlexboxLayout>
+          <FlexboxLayout>
+            <Label :text="String.fromCharCode($icons.search)"
+                   class="ico search"/>
+            <Label :text="String.fromCharCode($icons.users)"
+                   class="ico users"/>
+          </FlexboxLayout>
         </FlexboxLayout>
       </FlexboxLayout>
-    </FlexboxLayout>
 
-    <ScrollView row="1">
-      <StackLayout marginTop="5">
+      <StackLayout row="1">
+        <ScrollView>
+          <StackLayout marginTop="5">
+            <StackLayout margin="5 0" v-for="(discussion, index) in discussions">
+              <FlexboxLayout justifyContent="center">
+                <StackLayout height="40" width="80">
+                  <Image :src="discussion.avatar"
+                         height="40"
+                         width="40"
+                         borderRadius="25"
+                         stretch="aspectFill"/>
+                </StackLayout>
 
-        <StackLayout margin="5 0" v-for="(discussion, index) in discussions">
-          <FlexboxLayout justifyContent="center">
-            <StackLayout height="40" width="80">
-              <Image :src="discussion.avatar"
-                     height="40"
-                     width="40"
-                     borderRadius="25"
-                     stretch="aspectFill"/>
-            </StackLayout>
+                <StackLayout class="textInfos">
+                  <FlexboxLayout alignItems="center">
+                    <Label :text="discussion.pseudo" class="author"/>
+                    <Label :text="discussion.date" class="time"/>
+                  </FlexboxLayout>
+                  <Label :textWrap="true"
+                         class="text"
+                         :text="discussion.text"/>
+                </StackLayout>
 
-            <StackLayout class="textInfos">
-              <FlexboxLayout alignItems="center">
-                <Label :text="discussion.pseudo" class="author"/>
-                <Label :text="discussion.date" class="time"/>
               </FlexboxLayout>
-              <Label :textWrap="true"
-                     class="text"
-                     :text="discussion.text"/>
             </StackLayout>
 
-          </FlexboxLayout>
-        </StackLayout>
+          </StackLayout>
 
+        </ScrollView>
       </StackLayout>
 
-    </ScrollView>
-
-    <StackLayout row="2">
-      <Label textWrap="true"
-             :text="String.fromCharCode($icons.camera)"
-             class="ico camera"
-             color="#FFF"/>
-    </StackLayout>
-  </GridLayout>
+      <StackLayout row="2">
+        <Label textWrap="true"
+               :text="String.fromCharCode($icons.camera)"
+               class="ico camera"
+               color="#FFF"/>
+      </StackLayout>
+    </GridLayout>
+  </StackLayout>
 </template>
 
 <script lang="ts">
