@@ -23,10 +23,12 @@
         </FlexboxLayout>
       </FlexboxLayout>
 
-      <ScrollView row="1" @swipe="onSwipe">
-        <StackLayout>
-          <StackLayout margin="5 0" v-for="(discussion, index) in discussions">
-            <FlexboxLayout justifyContent="center">
+      <ListView row="1"
+                v-for="(discussion, index) in discussions"
+                separatorColor="transparent">
+        <v-template>
+          <StackLayout>
+            <FlexboxLayout justifyContent="center" margin="5 0">
               <StackLayout height="40" width="80">
                 <Image :src="discussion.avatar"
                        height="40"
@@ -46,8 +48,8 @@
               </StackLayout>
             </FlexboxLayout>
           </StackLayout>
-        </StackLayout>
-      </ScrollView>
+        </v-template>
+      </ListView>
 
       <StackLayout row="2">
         <Label textWrap="true"
@@ -61,7 +63,6 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import { SwipeDirection } from '@nativescript/core'
 
   @Component
   export default class Tchat extends Vue {
@@ -172,18 +173,6 @@
         text: 'A super long text, long that should wrap correctly at the bottom... Let\'s prey that happen correctly'
       }
     ]
-
-    onSwipe (args) {
-      let direction =
-          args.direction == SwipeDirection.down
-              ? "down"
-              : args.direction == SwipeDirection.up
-              ? "up"
-              : args.direction == SwipeDirection.left
-                  ? "left"
-                  : "right";
-      console.log(`You performed a ${direction} swipe`)
-    }
   }
 </script>
 
