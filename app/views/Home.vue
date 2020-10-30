@@ -42,8 +42,6 @@
   import Users from '@/components/Users.vue'
   import Tchat from '@/components/Tchat.vue'
 
-  import { mapActions } from 'vuex'
-
   const DOWN = 1
   const PANNING = 2
   const UP = 3
