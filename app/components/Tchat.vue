@@ -24,7 +24,7 @@
       </FlexboxLayout>
 
       <ListView row="1"
-                v-for="(discussion, index) in discussions"
+                for="(discussion, index) in discussions"
                 separatorColor="transparent">
         <v-template>
           <StackLayout>
@@ -52,10 +52,31 @@
       </ListView>
 
       <StackLayout row="2">
-        <Label textWrap="true"
-               :text="String.fromCharCode($icons.camera)"
-               class="ico camera"
-               color="#FFF"/>
+        <FlexboxLayout id="tchat">
+          <FlexboxLayout class="rad">
+            <Label textWrap="true"
+                   :text="String.fromCharCode($icons.camera)"
+                   class="ico camera"
+                   color="#FFF"/>
+          </FlexboxLayout>
+
+          <FlexboxLayout class="rad" margin="0 10">
+            <Label textWrap="true"
+                   :text="String.fromCharCode($icons.gallery)"
+                   class="ico camera"
+                   color="#FFF"/>
+          </FlexboxLayout>
+
+          <FlexboxLayout class="textfieldsection">
+            <TextField hint="Envoyez un message à @quenti77"/>
+
+            <Label textWrap="true"
+                   :text="String.fromCharCode($icons.emote)"
+                   class="ico camera"
+                   fontSize="20"
+                   color="#FFF"/>
+          </FlexboxLayout>
+        </FlexboxLayout>
       </StackLayout>
     </GridLayout>
   </StackLayout>
@@ -221,5 +242,31 @@
       }
     }
 
+    #tchat {
+      align-items: center;
+      justify-content: space-around;
+      padding: 5 15;
+
+      FlexboxLayout.rad {
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #2F3136;
+        height: 40;
+        width: 40;
+
+        Label {
+          font-size: 20;
+        }
+      }
+
+      TextField {
+        font-size: 14;
+        padding: 0 10;
+        margin: 0;
+        width: 88%;
+        border-width: 0 0 1 0;
+      }
+    }
   }
 </style>

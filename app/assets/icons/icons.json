@@ -10,5 +10,7 @@
 	"chevronDown": "0xe911",
 	"hashtag": "0xe915",
 	"verticalDots": "0xe916",
-	"camera":"0xe91a"
+	"camera":"0xe91a",
+	"gallery": "0xe905",
+	"emote": "0xe91b"
 }

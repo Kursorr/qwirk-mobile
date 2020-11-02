@@ -78,6 +78,20 @@
         color: $white;
       }
     }
+
+    .textfieldsection {
+      width: 70%;
+      background-color: #2F3136;
+      border-radius: 30;
+      height: 40;
+      align-items: center;
+
+      TextField {
+        color: #FAFAFA;
+        border-bottom-color: transparent;
+        placeholder-color: #72767D;
+      }
+    }
   }
 
   .usersSection {
