@@ -245,7 +245,7 @@
     #tchat {
       align-items: center;
       justify-content: space-around;
-      padding: 5 15;
+      padding: 10 15;
 
       FlexboxLayout.rad {
         align-items: center;
