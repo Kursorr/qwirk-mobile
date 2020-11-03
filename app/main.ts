@@ -6,12 +6,15 @@ import * as orientation from 'nativescript-screen-orientation'
 import VueDevtools from 'nativescript-vue-devtools'
 
 import App from './views/App.vue'
+import Header from './components/Layout/Header.vue'
 
 import { routes } from './routes/'
 import store from './store/'
 
 require('./app.scss')
 const icons = require('./assets/icons/icons.json')
+
+Vue.component('Header', Header)
 
 Vue.use(Copilot)
 Vue.use(Navigator, { routes })
