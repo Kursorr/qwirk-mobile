@@ -44,26 +44,6 @@
   }
 
   .tchat {
-    .headerSection {
-      background-color: #2F3136;
-      border-top-left-radius: 10;
-      border-top-right-radius: 10;
-    }
-
-    .header {
-      .ico.menu, .ico.search, .ico.users {
-        color: $white;
-      }
-
-      .ico.hashtag {
-        color: #72767D;
-      }
-
-      .title {
-        color: $white;
-      }
-    }
-
     .textInfos {
       .author {
         color: $white;
@@ -129,6 +109,44 @@
 
     Label {
       color: $white;
+    }
+  }
+
+  .headerSection {
+    background-color: #2F3136;
+    border-top-left-radius: 10;
+    border-top-right-radius: 10;
+
+    Label {
+      font-size: 18;
+    }
+
+    .header {
+      padding: 15 0;
+      margin: 0 20;
+      width: 100%;
+      justify-content: space-between;
+
+      .ico {
+        color: $white;
+      }
+
+      .menu {
+        margin-right: 20;
+      }
+
+      .ico.hashtag {
+        color: #72767D;
+        margin-right: 5;
+      }
+
+      .search {
+        margin-right: 30;
+      }
+
+      .title {
+        color: $white;
+      }
     }
   }
 

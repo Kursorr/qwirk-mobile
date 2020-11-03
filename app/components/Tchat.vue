@@ -201,29 +201,6 @@
       opacity: 0.6;
     }
 
-    .header {
-      padding: 15 0;
-      margin: 0 20;
-      width: 100%;
-      justify-content: space-between;
-
-      Label {
-        font-size: 18;
-
-        &.menu {
-          margin-right: 20;
-        }
-
-        &.hashtag {
-          margin-right: 5;
-        }
-
-        &.search {
-          margin-right: 30;
-        }
-      }
-    }
-
     .textInfos {
       width: 90%;
       padding-right: 10;
