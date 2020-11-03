@@ -1,85 +1,83 @@
 <template>
-  <StackLayout>
-    <GridLayout class="tchat"
-                columns="*"
-                rows="auto, *, auto"
-                :class="$globalState.opacity ? 'opacity' : ''">
-      <FlexboxLayout class="headerSection" row="0">
-        <FlexboxLayout class="header">
-          <FlexboxLayout alignItems="center">
-            <Label :text="String.fromCharCode($icons.menu)"
-                   class="ico menu"/>
-            <Label :text="String.fromCharCode($icons.hashtag)"
-                   class="ico hashtag"/>
-            <Label text="general"
-                   class="title"/>
-          </FlexboxLayout>
-          <FlexboxLayout>
-            <Label :text="String.fromCharCode($icons.search)"
-                   class="ico search"/>
-            <Label :text="String.fromCharCode($icons.users)"
-                   class="ico users"/>
-          </FlexboxLayout>
+  <GridLayout class="tchat"
+              columns="*"
+              rows="auto, *, auto"
+              :class="$globalState.opacity ? 'opacity' : ''">
+    <FlexboxLayout class="headerSection" row="0">
+      <FlexboxLayout class="header">
+        <FlexboxLayout alignItems="center">
+          <Label :text="String.fromCharCode($icons.menu)"
+                 class="ico menu"/>
+          <Label :text="String.fromCharCode($icons.hashtag)"
+                 class="ico hashtag"/>
+          <Label text="general"
+                 class="title"/>
+        </FlexboxLayout>
+        <FlexboxLayout>
+          <Label :text="String.fromCharCode($icons.search)"
+                 class="ico search"/>
+          <Label :text="String.fromCharCode($icons.users)"
+                 class="ico users"/>
         </FlexboxLayout>
       </FlexboxLayout>
+    </FlexboxLayout>
 
-      <ListView row="1"
-                for="(discussion, index) in discussions"
-                separatorColor="transparent">
-        <v-template>
-          <StackLayout>
-            <FlexboxLayout justifyContent="center" margin="5 0">
-              <StackLayout height="40" width="80">
-                <Image :src="discussion.avatar"
-                       height="40"
-                       width="40"
-                       borderRadius="20"
-                       stretch="aspectFill"/>
-              </StackLayout>
+    <ListView row="1"
+              for="(discussion, index) in discussions"
+              separatorColor="transparent">
+      <v-template>
+        <StackLayout>
+          <FlexboxLayout justifyContent="center" margin="5 0">
+            <StackLayout height="40" width="80">
+              <Image :src="discussion.avatar"
+                     height="40"
+                     width="40"
+                     borderRadius="20"
+                     stretch="aspectFill"/>
+            </StackLayout>
 
-              <StackLayout class="textInfos">
-                <FlexboxLayout alignItems="center">
-                  <Label :text="discussion.pseudo" class="author"/>
-                  <Label :text="discussion.date" class="time"/>
-                </FlexboxLayout>
-                <Label :textWrap="true"
-                       class="text"
-                       :text="discussion.text"/>
-              </StackLayout>
-            </FlexboxLayout>
-          </StackLayout>
-        </v-template>
-      </ListView>
-
-      <StackLayout row="2">
-        <FlexboxLayout id="tchat">
-          <FlexboxLayout class="rad">
-            <Label textWrap="true"
-                   :text="String.fromCharCode($icons.camera)"
-                   class="ico camera"
-                   color="#FFF"/>
+            <StackLayout class="textInfos">
+              <FlexboxLayout alignItems="center">
+                <Label :text="discussion.pseudo" class="author"/>
+                <Label :text="discussion.date" class="time"/>
+              </FlexboxLayout>
+              <Label :textWrap="true"
+                     class="text"
+                     :text="discussion.text"/>
+            </StackLayout>
           </FlexboxLayout>
+        </StackLayout>
+      </v-template>
+    </ListView>
 
-          <FlexboxLayout class="rad" margin="0 10">
-            <Label textWrap="true"
-                   :text="String.fromCharCode($icons.gallery)"
-                   class="ico camera"
-                   color="#FFF"/>
-          </FlexboxLayout>
-
-          <FlexboxLayout class="textfieldsection">
-            <TextField hint="Envoyez un message à @quenti77"/>
-
-            <Label textWrap="true"
-                   :text="String.fromCharCode($icons.emote)"
-                   class="ico camera"
-                   fontSize="20"
-                   color="#FFF"/>
-          </FlexboxLayout>
+    <StackLayout row="2">
+      <FlexboxLayout id="tchat">
+        <FlexboxLayout class="rad">
+          <Label textWrap="true"
+                 :text="String.fromCharCode($icons.camera)"
+                 class="ico camera"
+                 color="#FFF"/>
         </FlexboxLayout>
-      </StackLayout>
-    </GridLayout>
-  </StackLayout>
+
+        <FlexboxLayout class="rad" margin="0 10">
+          <Label textWrap="true"
+                 :text="String.fromCharCode($icons.gallery)"
+                 class="ico camera"
+                 color="#FFF"/>
+        </FlexboxLayout>
+
+        <FlexboxLayout class="textfieldsection">
+          <TextField hint="Envoyez un message à @quenti77"/>
+
+          <Label textWrap="true"
+                 :text="String.fromCharCode($icons.emote)"
+                 class="ico camera"
+                 fontSize="20"
+                 color="#FFF"/>
+        </FlexboxLayout>
+      </FlexboxLayout>
+    </StackLayout>
+  </GridLayout>
 </template>
 
 <script lang="ts">
