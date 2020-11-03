@@ -6,8 +6,8 @@
 
     <Footer v-if="$globalState.footer"
             :top="top"
-            width="100%"
-            :class="[$globalState.footer ? 'footer' : 'footer without']"/>
+            class="footer"
+            width="100%"/>
   </AbsoluteLayout>
 </template>
 
@@ -34,22 +34,6 @@
 
     mounted () {
       this.top = Screen.mainScreen.heightDIPs - 80
-
-      setTimeout(() => {
-        console.log(Screen.mainScreen.heightDIPs)
-      }, 1000)
     }
   }
 </script>
-
-<style lang="scss">
-  @import '../style/variables.scss';
-
-  .footer {
-    transform: translateY(0);
-
-    .without {
-      transform: translateY(50);
-    }
-  }
-</style>
