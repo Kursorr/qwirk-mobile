@@ -19,6 +19,7 @@
     "@nativescript/core": "7.0.0",
     "@vue/devtools": "^5.3.3",
     "nativescript-audio": "^6.1.0",
+    "nativescript-mediafilepicker": "^4.0.1",
     "nativescript-screen-orientation": "^2.0.0",
     "nativescript-socketio": "^3.3.1",
     "nativescript-toasty": "^3.0.0-alpha.2",
