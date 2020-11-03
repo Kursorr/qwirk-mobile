@@ -39,7 +39,7 @@
 
   import Servers from '@/components/Layout/Home/Servers.vue'
   import Channels from '@/components/Layout/Home/Channels.vue'
-  import Users from '@/components/Users.vue'
+  import Users from '@/components/Layout/Home/Users.vue'
   import Tchat from '@/components/Layout/Home/Tchat.vue'
 
   const DOWN = 1
