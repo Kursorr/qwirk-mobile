@@ -1,26 +1,20 @@
 <template>
-  <FlexboxLayout class="headerSection" row="0">
+  <FlexboxLayout :class="displayBorderRadius ? 'headerSection onMain': 'headerSection'">
     <FlexboxLayout class="header">
-      <FlexboxLayout alignItems="center">
-        <Label :text="String.fromCharCode($icons.menu)"
-               class="ico menu"/>
-        <Label :text="String.fromCharCode($icons.hashtag)"
-               class="ico hashtag"/>
-        <Label text="general"
-               class="title"/>
-      </FlexboxLayout>
-      <FlexboxLayout>
-        <Label :text="String.fromCharCode($icons.search)"
-               class="ico search"/>
-        <Label :text="String.fromCharCode($icons.users)"
-               class="ico users"/>
-      </FlexboxLayout>
+      <slot name="left"/>
+      <slot name="right"/>
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
 
 <script lang="ts">
+  import { Vue, Component, Prop } from 'vue-property-decorator'
 
+  @Component
+  export default class Header extends Vue {
+    @Prop({default: false})
+    displayBorderRadius: boolean
+  }
 </script>
 
 <style lang="scss" scoped>

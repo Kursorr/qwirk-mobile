@@ -3,24 +3,23 @@
               columns="*"
               rows="auto, *, auto"
               :class="$globalState.opacity ? 'opacity' : ''">
-    <FlexboxLayout class="headerSection onMain" row="0">
-      <FlexboxLayout class="header">
-        <FlexboxLayout alignItems="center">
-          <Label :text="String.fromCharCode($icons.menu)"
-                 class="ico menu"/>
-          <Label :text="String.fromCharCode($icons.hashtag)"
-                 class="ico hashtag"/>
-          <Label text="general"
-                 class="title"/>
-        </FlexboxLayout>
-        <FlexboxLayout>
-          <Label :text="String.fromCharCode($icons.search)"
-                 class="ico search"/>
-          <Label :text="String.fromCharCode($icons.users)"
-                 class="ico users"/>
-        </FlexboxLayout>
+
+    <Header :displayBorderRadius="true">
+      <FlexboxLayout alignItems="center" slot="left">
+        <Label :text="String.fromCharCode($icons.menu)"
+               class="ico menu"/>
+        <Label :text="String.fromCharCode($icons.hashtag)"
+               class="ico hashtag"/>
+        <Label text="general"
+               class="title"/>
       </FlexboxLayout>
-    </FlexboxLayout>
+      <FlexboxLayout slot="right">
+        <Label :text="String.fromCharCode($icons.search)"
+               class="ico search"/>
+        <Label :text="String.fromCharCode($icons.users)"
+               class="ico users"/>
+      </FlexboxLayout>
+    </Header>
 
     <ListView row="1"
               for="(discussion, index) in discussions"
