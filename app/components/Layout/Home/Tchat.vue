@@ -6,11 +6,8 @@
 
     <Header :displayBorderRadius="true">
       <FlexboxLayout alignItems="center" slot="left">
-        <Icon :icon="$icons.menu"/>
-        <Label :text="String.fromCharCode($icons.menu)"
-               class="ico menu"/>
-        <Label :text="String.fromCharCode($icons.hashtag)"
-               class="ico hashtag"/>
+        <Icon :icon="$icons.menu" class="menu"/>
+        <Icon :icon="$icons.hashtag" class="hashtag"/>
         <Label text="general"
                class="title"/>
       </FlexboxLayout>

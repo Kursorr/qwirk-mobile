@@ -1,6 +1,6 @@
 <template>
   <Label :text="String.fromCharCode(icon)"
-         class="ico users"/>
+         class="ico"/>
 </template>
 
 <script lang="ts">
