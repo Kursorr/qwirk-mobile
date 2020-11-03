@@ -51,7 +51,7 @@
       Servers,
       Channels,
       Users,
-      Tchat,
+      Tchat
     }
   })
   export default class Home extends Vue {
