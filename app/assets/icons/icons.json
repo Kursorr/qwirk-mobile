@@ -12,5 +12,9 @@
 	"verticalDots": "0xe916",
 	"camera":"0xe91a",
 	"gallery": "0xe905",
-	"emote": "0xe91b"
+	"emote": "0xe91b",
+	"addFriend": "0xe91d",
+	"addConv": "0xe91e",
+	"call": "0xe921",
+	"conv": "0xe91f"
 }
