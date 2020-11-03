@@ -1,17 +1,19 @@
 <template>
-  <GridLayout rows="*, auto" columns="*" :class="theme">
-    <ContentView row="0">
+  <AbsoluteLayout :class="theme">
+    <ContentView height="100%" width="100%">
       <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
     </ContentView>
 
     <Footer v-if="$globalState.footer"
-            row="1"
+            :top="top"
+            width="100%"
             :class="[$globalState.footer ? 'footer' : 'footer without']"/>
-  </GridLayout>
+  </AbsoluteLayout>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+  import { Screen } from '@nativescript/core'
 
   import Footer from '../components/Footer.vue'
   import { mapGetters } from 'vuex'
@@ -28,6 +30,15 @@
   })
   export default class App extends Vue {
     private isLoggedIn: boolean = true
+    private top: number = 0
+
+    mounted () {
+      this.top = Screen.mainScreen.heightDIPs - 80
+
+      setTimeout(() => {
+        console.log(Screen.mainScreen.heightDIPs)
+      }, 1000)
+    }
   }
 </script>
 
@@ -38,7 +49,7 @@
     transform: translateY(0);
 
     .without {
-      transform: translateY(100);
+      transform: translateY(50);
     }
   }
 </style>

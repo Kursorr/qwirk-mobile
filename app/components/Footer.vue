@@ -1,5 +1,5 @@
 <template>
-  <FlexboxLayout class="container">
+  <FlexboxLayout class="container" ref="footer">
     <FlexboxLayout @tap="gotoLink('home')">
       <Label textWrap="true"
              :text="String.fromCharCode($icons.logo)"
