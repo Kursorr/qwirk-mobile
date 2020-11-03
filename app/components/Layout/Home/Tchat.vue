@@ -6,6 +6,7 @@
 
     <Header :displayBorderRadius="true">
       <FlexboxLayout alignItems="center" slot="left">
+        <Icon :icon="$icons.menu"/>
         <Label :text="String.fromCharCode($icons.menu)"
                class="ico menu"/>
         <Label :text="String.fromCharCode($icons.hashtag)"
