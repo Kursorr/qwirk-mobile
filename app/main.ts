@@ -7,6 +7,7 @@ import VueDevtools from 'nativescript-vue-devtools'
 
 import App from './views/App.vue'
 import Header from './components/Layout/Global/Header.vue'
+import Icon from './components/Icon.vue'
 
 import { routes } from './routes/'
 import store from './store/'
@@ -15,6 +16,7 @@ require('./app.scss')
 const icons = require('./assets/icons/icons.json')
 
 Vue.component('Header', Header)
+Vue.component('Icon', Icon)
 
 Vue.use(Copilot)
 Vue.use(Navigator, { routes })
