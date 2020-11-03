@@ -114,8 +114,11 @@
 
   .headerSection {
     background-color: #2F3136;
-    border-top-left-radius: 10;
-    border-top-right-radius: 10;
+
+    &.onMain {
+      border-top-left-radius: 10;
+      border-top-right-radius: 10;
+    }
 
     Label {
       font-size: 18;

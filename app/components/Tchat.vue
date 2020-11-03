@@ -3,7 +3,7 @@
               columns="*"
               rows="auto, *, auto"
               :class="$globalState.opacity ? 'opacity' : ''">
-    <FlexboxLayout class="headerSection" row="0">
+    <FlexboxLayout class="headerSection onMain" row="0">
       <FlexboxLayout class="header">
         <FlexboxLayout alignItems="center">
           <Label :text="String.fromCharCode($icons.menu)"

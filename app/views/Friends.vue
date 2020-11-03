@@ -33,8 +33,4 @@
 </script>
 
 <style lang="scss" scoped>
-  .headerSection {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
 </style>
