@@ -7,7 +7,7 @@ var nativescript_vue_navigator_1 = tslib_1.__importDefault(require("nativescript
 var orientation = tslib_1.__importStar(require("nativescript-screen-orientation"));
 var nativescript_vue_devtools_1 = tslib_1.__importDefault(require("nativescript-vue-devtools"));
 var App_vue_1 = tslib_1.__importDefault(require("./views/App.vue"));
-var Header_vue_1 = tslib_1.__importDefault(require("./components/Layout/Header.vue"));
+var Header_vue_1 = tslib_1.__importDefault(require("./components/Layout/Global/Header.vue"));
 var routes_1 = require("./routes/");
 var store_1 = tslib_1.__importDefault(require("./store/"));
 require('./app.scss');

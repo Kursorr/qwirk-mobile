@@ -13,7 +13,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
 
-  import Footer from '../components/Layout/Footer.vue'
+  import Footer from '../components/Layout/Global/Footer.vue'
   import { mapGetters } from 'vuex'
 
   @Component({

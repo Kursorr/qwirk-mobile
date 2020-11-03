@@ -37,10 +37,10 @@
 
   import { animate } from '@/animation'
 
-  import Servers from '@/components/Servers.vue'
-  import Channels from '@/components/Channels.vue'
+  import Servers from '@/components/Layout/Home/Servers.vue'
+  import Channels from '@/components/Layout/Home/Channels.vue'
   import Users from '@/components/Users.vue'
-  import Tchat from '@/components/Tchat.vue'
+  import Tchat from '@/components/Layout/Home/Tchat.vue'
 
   const DOWN = 1
   const PANNING = 2
