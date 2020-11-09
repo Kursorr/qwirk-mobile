@@ -18,5 +18,49 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../style/variables';
 
+  .headerSection {
+    &.onMain {
+      border-top-left-radius: 10;
+      border-top-right-radius: 10;
+    }
+
+    Label {
+      font-size: 18;
+    }
+
+    .header {
+      padding: 15 0;
+      margin: 0 20;
+      width: 100%;
+      justify-content: space-between;
+
+      .menu {
+        margin-right: 20;
+      }
+
+      .hashtag {
+        margin-right: 5;
+      }
+
+      .search {
+        margin-right: 30;
+      }
+    }
+  }
+
+  .darker {
+    .headerSection {
+      background-color: #2F3136;
+
+      .hashtag {
+        color: $grey;
+      }
+
+      .title {
+        color: $white;
+      }
+    }
+  }
 </style>
