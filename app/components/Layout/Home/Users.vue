@@ -19,6 +19,18 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../style/variables';
+
+  .darker {
+    .usersSection {
+      background-color: #2F3136;
+
+      Label {
+        color: $white;
+      }
+    }
+  }
+
   StackLayout {
     height: 100%;
     border-top-left-radius: 10;
