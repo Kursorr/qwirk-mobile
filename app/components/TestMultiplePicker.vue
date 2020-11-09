@@ -25,6 +25,7 @@ import { Application, Button, ShowModalOptions, ImageSource, Image } from '@nati
 import { Mediafilepicker, ImagePickerOptions, VideoPickerOptions, AudioPickerOptions, FilePickerOptions } from 'nativescript-mediafilepicker'
 import {Component, Vue} from "vue-property-decorator"
 declare const AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh, AVCaptureSessionPresetLow, kUTTypePDF, kUTTypeText
+import { File } from "@nativescript/core";
 
 @Component
 export default class TestMultiplePicker extends Vue {
@@ -74,43 +75,12 @@ export default class TestMultiplePicker extends Vue {
 
           let file = result.file;
 
-          console.log(`this is a file : ${file}`);
+          const imageFile = File.fromPath(file);
+          const binarySource = imageFile.readSync(err => { console.log("Error:" + err); });
+          console.log(binarySource);
 
-          if (result.file && Application.ios && !options.ios.isCaptureMood) {
-            // We can copy the image to app directory for futher proccess. This will create a new directory name "filepicker". So, after your work you can delete it for reducing memory use.
-            /* let fileName = file.replace(/^.*[\/]/, '');
-            mediafilepicker.copyPHImageToAppDirectory(result.rawData, fileName).then((res: any) => {
-                console.dir(res);
-            }).catch((e) => {
-                console.dir(e);
-            })*/
-
-            // or can get UIImage to display
-            /*mediafilepicker.convertPHImageToUIImage(result.rawData).then(res => {
-                console.log(res);
-            });*/
-          } else if (result.file && Application.ios) {
-            // So we have taken image & will get UIImage
-
-            // We can copy it to app directory, if need
-            let fileName = "myTmpImage.jpg";
-            mediafilepicker.copyUIImageToAppDirectory(result.rawData, fileName).then((res: any) => {
-              console.log('je ne suis pas ici')
-              console.dir(res);
-            }).catch(e => {
-              console.dir(e);
-            });
-          } else {
-
-            const img = new Image()
-            img.src = file
-            this.selectedChoosenOne = img.src
-
-            console.log(this.selectedChoosenOne);
-            const imgSource = await ImageSource.fromFile(this.selectedChoosenOne)
-            console.log(imgSource)
-          }
-
+          const img = await ImageSource.fromFile(file);
+          console.log(img.toBase64String('png'));
         }
       }
     });
