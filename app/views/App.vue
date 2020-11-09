@@ -34,6 +34,12 @@
 <style lang="scss">
   @import '../style/variables.scss';
 
+  .darker {
+    .footer {
+      background-color: $darkerFirst;
+    }
+  }
+
   .footer {
     transform: translateY(0);
 
