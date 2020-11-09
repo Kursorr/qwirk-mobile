@@ -14,8 +14,6 @@
           <Icon :icon="$icons.addConv" class="addConv"/>
         </FlexboxLayout>
       </Header>
-
-
     </GridLayout>
   </Page>
 </template>
