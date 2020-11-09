@@ -245,8 +245,26 @@
 <style lang="scss">
   @import '../style/variables.scss';
 
-  .mainContent {
-    border-top-left-radius: 10;
-    border-top-right-radius: 10;
+  GridLayout {
+    .mainContent {
+      border-top-left-radius: 10;
+      border-top-right-radius: 10;
+    }
+  }
+
+  .darker {
+    .content {
+      &.darkerColor {
+        background-color: $darkerThird;
+      }
+
+      &.lighterColor {
+        background-color: $darkerLight;
+      }
+    }
+
+    .serversList {
+      background-color: $darkerSecond;
+    }
   }
 </style>
