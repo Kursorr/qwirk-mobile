@@ -1,5 +1,6 @@
 <template>
   <Label :text="String.fromCharCode(icon)"
+         @tap="tapEvent"
          class="ico"/>
 </template>
 
@@ -9,5 +10,9 @@
   @Component
   export default class Icon extends Vue {
     @Prop() icon
+
+    tapEvent () {
+      this.$emit('event')
+    }
   }
 </script>
