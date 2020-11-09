@@ -40,6 +40,12 @@
     }
   }
 
+  .lighter {
+    .footer {
+      background-color: red;
+    }
+  }
+
   .footer {
     transform: translateY(0);
 

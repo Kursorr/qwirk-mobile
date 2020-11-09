@@ -167,15 +167,7 @@
       Label {
         color: $white;
 
-        &.categoryName {
-          color: $grey;
-        }
-
-        &.ico.down {
-          color: $grey;
-        }
-
-        &.ico.hashtag, &.name {
+        &.categoryName, &.hashtag, &.name, &.down {
           color: $grey;
         }
       }
@@ -185,6 +177,12 @@
           color: $white;
         }
       }
+    }
+  }
+
+  .lighter {
+    .server {
+      background-color: $white;
     }
   }
 

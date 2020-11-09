@@ -31,6 +31,12 @@
     }
   }
 
+  .lighter {
+    .usersSection {
+      background-color: red;
+    }
+  }
+
   StackLayout {
     height: 100%;
     border-top-left-radius: 10;
