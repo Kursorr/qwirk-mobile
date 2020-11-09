@@ -11,42 +11,6 @@
   }
 }
 
-.darker {
-  .usersSection {
-    background-color: #2F3136;
-
-    Label {
-      color: $white;
-    }
-  }
-
-  .profileSection {
-    background-color: $darkerFirst;
-
-    Label {
-      color: $white;
-    }
-  }
-
-  .serversList {
-    background-color: $darkerSecond;
-  }
-
-  .content {
-    &.darkerColor {
-      background-color: $darkerThird;
-    }
-
-    &.lighterColor {
-      background-color: $darkerLight;
-    }
-  }
-
-  .footer {
-    background-color: $darkerFirst;
-  }
-}
-
 .lighter {
   .server {
     background-color: $white;
