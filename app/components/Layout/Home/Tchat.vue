@@ -11,11 +11,9 @@
         <Label text="general"
                class="title"/>
       </FlexboxLayout>
-      <FlexboxLayout slot="right">
-        <Label :text="String.fromCharCode($icons.search)"
-               class="ico search"/>
-        <Label :text="String.fromCharCode($icons.users)"
-               class="ico users"/>
+      <FlexboxLayout slot="right" alignItems="center">
+        <Icon :icon="$icons.search" class="search" @event="gotoPickers"/>
+        <Icon :icon="$icons.users" class="users"/>
       </FlexboxLayout>
     </Header>
 
@@ -48,29 +46,18 @@
     </ListView>
 
     <StackLayout row="2">
-      <FlexboxLayout id="tchat">
+      <FlexboxLayout id="sendMessage">
         <FlexboxLayout class="rad">
-          <Label textWrap="true"
-                 :text="String.fromCharCode($icons.camera)"
-                 class="ico camera"
-                 color="#FFF"/>
+          <Icon :icon="$icons.camera" class="camera"/>
         </FlexboxLayout>
 
         <FlexboxLayout class="rad" margin="0 10">
-          <Label textWrap="true"
-                 :text="String.fromCharCode($icons.gallery)"
-                 class="ico camera"
-                 color="#FFF"/>
+          <Icon :icon="$icons.gallery" class="image"/>
         </FlexboxLayout>
 
         <FlexboxLayout class="textfieldsection">
           <TextField hint="Envoyez un message à @quenti77"/>
-
-          <Label textWrap="true"
-                 :text="String.fromCharCode($icons.emote)"
-                 class="ico camera"
-                 fontSize="20"
-                 color="#FFF"/>
+          <Icon :icon="$icons.emote" class="emote" fontSize="20"/>
         </FlexboxLayout>
       </FlexboxLayout>
     </StackLayout>
@@ -189,10 +176,17 @@
         text: 'A super long text, long that should wrap correctly at the bottom... Let\'s prey that happen correctly'
       }
     ]
+
+    gotoPickers () {
+      // @ts-ignore
+      this.$navigator.navigate('pickers')
+    }
   }
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../style/variables';
+
   .tchat {
     &.opacity {
       opacity: 0.6;
@@ -201,20 +195,25 @@
     .textInfos {
       width: 90%;
       padding-right: 10;
-
-      .author {
-        margin-right: 7;
-        font-size: 16;
-      }
-
-      .time {
-        font-size: 11;
-        margin-bottom: 2;
-        align-self: flex-end;
-      }
     }
 
-    #tchat {
+    .author {
+      color: $white;
+      margin-right: 7;
+      font-size: 16;
+    }
+
+    .time {
+      font-size: 11;
+      margin-bottom: 2;
+      align-self: flex-end;
+    }
+
+    .text {
+      line-height: 4;
+    }
+
+    #sendMessage {
       align-items: center;
       justify-content: space-around;
       padding: 10 15;
@@ -223,7 +222,6 @@
         align-items: center;
         justify-content: center;
         border-radius: 50%;
-        background-color: #2F3136;
         height: 40;
         width: 40;
 
@@ -238,6 +236,41 @@
         margin: 0;
         width: 88%;
         border-width: 0 0 1 0;
+      }
+
+      .textfieldsection {
+        width: 70%;
+        border-radius: 30;
+        height: 40;
+        align-items: center;
+      }
+    }
+  }
+
+  .darker {
+    Label {
+      color: $white;
+    }
+
+    .author, .text {
+      color: $white;
+    }
+
+    .time {
+      color: $grey;
+    }
+
+    FlexboxLayout.rad {
+      background-color: #2F3136;
+    }
+
+    .textfieldsection {
+      background-color: #2F3136;
+
+      TextField {
+        color: $white;
+        border-bottom-color: transparent;
+        placeholder-color: $grey;
       }
     }
   }

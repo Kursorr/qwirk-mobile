@@ -23,53 +23,21 @@
       color: $white;
 
       &.categoryName {
-        color: #8E9297;
+        color: $grey;
       }
 
       &.ico.down {
-        color: #8E9297;
+        color: $grey;
       }
 
       &.ico.hashtag, &.name {
-        color: #8E9297;
+        color: $grey;
       }
-
     }
 
     .channels.selected {
       Label {
         color: $white;
-      }
-    }
-  }
-
-  .tchat {
-    .textInfos {
-      .author {
-        color: $white;
-      }
-
-      .time {
-        color: #72767D;
-      }
-
-      .text {
-        line-height: 4;
-        color: $white;
-      }
-    }
-
-    .textfieldsection {
-      width: 70%;
-      background-color: #2F3136;
-      border-radius: 30;
-      height: 40;
-      align-items: center;
-
-      TextField {
-        color: #FAFAFA;
-        border-bottom-color: transparent;
-        placeholder-color: #72767D;
       }
     }
   }
@@ -139,7 +107,7 @@
       }
 
       .ico.hashtag {
-        color: #72767D;
+        color: $grey;
         margin-right: 5;
       }
 
@@ -164,6 +132,7 @@
   }
 }
 
+// Status profil
 AbsoluteLayout#profil {
   StackLayout.status {
     border-color: $darkerFirst;
