@@ -1,35 +1,31 @@
 <template>
   <FlexboxLayout class="container">
     <FlexboxLayout @tap="gotoLink('home')">
-      <Label textWrap="true"
-             :text="String.fromCharCode($icons.logo)"
-             class="ico footer"
-             :class="[activeHome ? 'enable' : 'disabled']"
-             color="#FFF"/>
+      <Icon :icon="$icons.logo"
+            class="footer"
+            :class="[activeHome ? 'enable' : 'disabled']"
+            color="#FFF"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('friends')">
-       <Label textWrap="true"
-              :text="String.fromCharCode($icons.friends)"
-              class="ico footer"
-              :class="[activeFriends ? 'enable' : 'disabled']"
-              color="#FFF"/>
+      <Icon :icon="$icons.friends"
+            class="footer"
+            :class="[activeFriends ? 'enable' : 'disabled']"
+            color="#FFF"/>
     </FlexboxLayout>
 
     <FlexboxLayout>
-      <Label textWrap="true"
-           :text="String.fromCharCode($icons.search)"
-           class="ico footer"
-           :class="[activeSearch ? 'enable' : 'disabled']"
-           color="#FFF"/>
+      <Icon :icon="$icons.search"
+            class="footer"
+            :class="[activeSearch ? 'enable' : 'disabled']"
+            color="#FFF"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('editor')">
-      <Label textWrap="true"
-           :text="String.fromCharCode($icons.editor)"
-           class="ico footer"
-           :class="[activeEditor ? 'enable' : 'disabled']"
-           color="#FFF"/>
+      <Icon :icon="$icons.editor"
+            class="footer"
+            :class="[activeEditor ? 'enable' : 'disabled']"
+            color="#FFF"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('profile')">
@@ -38,7 +34,6 @@
                stretch="aspectFill"/>
         <StackLayout class="status online"/>
       </AbsoluteLayout>
-
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
