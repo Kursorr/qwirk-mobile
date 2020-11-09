@@ -129,4 +129,8 @@
       }
     }
   }
+
+  .footer {
+    font-size: 18;
+  }
 </style>
