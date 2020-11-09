@@ -147,6 +147,47 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../style/variables';
+
+  .darker {
+    .server {
+      background-color: #2F3136;
+
+      .serverInfo {
+        border-color: $darkerFirst;
+      }
+
+      .channels {
+        &.selected {
+          background-color: rgba(79, 84, 92, 0.32);
+          color: #FFF;
+        }
+      }
+
+      Label {
+        color: $white;
+
+        &.categoryName {
+          color: $grey;
+        }
+
+        &.ico.down {
+          color: $grey;
+        }
+
+        &.ico.hashtag, &.name {
+          color: $grey;
+        }
+      }
+
+      .channels.selected {
+        Label {
+          color: $white;
+        }
+      }
+    }
+  }
+
   StackLayout.server {
     border-top-right-radius: 10;
 
@@ -174,9 +215,7 @@
       padding: 10 0 10 7;
 
       &.selected {
-        background-color: rgba(79, 84, 92, 0.32);
         border-radius: 4;
-        color: #FFF;
       }
     }
 

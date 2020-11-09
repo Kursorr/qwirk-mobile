@@ -12,36 +12,6 @@
 }
 
 .darker {
-  .server {
-    background-color: #2F3136;
-
-    .serverInfo {
-      border-color: $darkerFirst;
-    }
-
-    Label {
-      color: $white;
-
-      &.categoryName {
-        color: $grey;
-      }
-
-      &.ico.down {
-        color: $grey;
-      }
-
-      &.ico.hashtag, &.name {
-        color: $grey;
-      }
-    }
-
-    .channels.selected {
-      Label {
-        color: $white;
-      }
-    }
-  }
-
   .usersSection {
     background-color: #2F3136;
 
