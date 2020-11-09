@@ -5,27 +5,13 @@
                 rows="auto, *, auto">
       <Header>
         <FlexboxLayout alignItems="center" slot="left">
-          <Label :text="String.fromCharCode($icons.addFriend)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.addConv)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.call)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.conv)"
-                 class="ico"/>
           <Label text="Friends"
                  class="title"/>
         </FlexboxLayout>
 
         <FlexboxLayout alignItems="center" slot="right">
-          <Label :text="String.fromCharCode($icons.addFriend)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.addConv)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.call)"
-                 class="ico"/>
-          <Label :text="String.fromCharCode($icons.conv)"
-                 class="ico"/>
+          <Icon :icon="$icons.addFriend" class="addFriend"/>
+          <Icon :icon="$icons.addConv" class="addConv"/>
         </FlexboxLayout>
       </Header>
 
@@ -42,5 +28,13 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../style/variables';
 
+  .friendsSection {
+    background-color: $darkerThird;
+
+    Label {
+      color: $white;
+    }
+  }
 </style>
