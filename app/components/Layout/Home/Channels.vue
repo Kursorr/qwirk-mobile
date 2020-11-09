@@ -6,7 +6,7 @@
         <Label :text="server.name" class="serverName"/>
       </FlexboxLayout>
 
-      <Label :text="String.fromCharCode($icons.verticalDots)" class="ico"/>
+      <Icon :icon="$icons.verticalDots"/>
     </FlexboxLayout>
 
     <ScrollView @scroll="inScrolling" height="100%" :scrollBarIndicatorVisible="false">
