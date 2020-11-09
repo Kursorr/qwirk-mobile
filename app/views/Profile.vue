@@ -14,4 +14,15 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../style/variables.scss';
+
+  .darker {
+    .profileSection {
+      background-color: $darkerFirst;
+
+      Label {
+        color: $white;
+      }
+    }
+  }
 </style>
