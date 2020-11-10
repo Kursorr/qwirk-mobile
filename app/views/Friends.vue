@@ -5,13 +5,13 @@
                 rows="auto, *, auto">
       <Header>
         <FlexboxLayout alignItems="center" slot="left">
-          <Label text="Friends"
+          <Label text="Amis"
                  class="title"/>
         </FlexboxLayout>
 
         <FlexboxLayout alignItems="center" slot="right">
           <Icon :icon="$icons.addFriend" class="addFriend"/>
-          <Icon :icon="$icons.addConv" class="addConv"/>
+          <Icon :icon="$icons.addConv" class="addConv" marginLeft="30"/>
         </FlexboxLayout>
       </Header>
     </GridLayout>
@@ -29,16 +29,18 @@
   @import '../style/variables';
 
   .darker {
-    .addFriend, .addConv {
-      color: #FFF;
+    #friends {
+      background-color: $darkerLight;
+
+      Label {
+        color: $white;
+      }
+
+      .addFriend, .addConv {
+        color: $white;
+      }
     }
   }
 
-  .friendsSection {
-    background-color: $darkerThird;
 
-    Label {
-      color: $white;
-    }
-  }
 </style>
