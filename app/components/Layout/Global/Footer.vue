@@ -25,11 +25,7 @@
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('profile')">
-      <AbsoluteLayout id="profil" :class="[activeProfile ? 'enable' : 'disabled']">
-        <Image src="~/assets/images/avatar.jpeg"
-               stretch="aspectFill"/>
-        <StackLayout class="status online"/>
-      </AbsoluteLayout>
+      <Avatar :class="[activeProfile ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
@@ -109,28 +105,8 @@
       align-items: center;
       justify-content: center;
 
-      .enable {
-        opacity: 1;
-      }
-
-      .disabled {
-        opacity: 0.5;
-      }
-
-      Image {
-        height: 22;
-        width: 22;
-        border-radius: 50%;
-      }
-
-      .status {
-        height: 10;
-        width: 10;
-        left: 14;
-        top: 14;
-        border-width: 1;
-        border-radius: 50%;
-      }
+      .enable { opacity: 1; }
+      .disabled { opacity: 0.5; }
     }
 
     .footer {
