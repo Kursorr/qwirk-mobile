@@ -45,11 +45,11 @@
 
     .status {
       border-radius: 50%;
-      border-color: $darkerLight;
+      border-color: $darkerLight; // work on Friends page
 
       &.avatar-small {
         border-width: 2;
-        border-color: $darkerFirst;
+        border-color: $darkerFirst; // work on Footer -> need to find a solution
         height: 11;
         width: 11;
         left: 14;
