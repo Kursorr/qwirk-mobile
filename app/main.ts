@@ -7,6 +7,7 @@ import VueDevtools from 'nativescript-vue-devtools'
 
 import App from './views/App.vue'
 import Header from './components/Layout/Global/Header.vue'
+import Avatar from './components/Avatar.vue'
 import Icon from './components/Icon.vue'
 
 import { routes } from './routes/'
@@ -17,6 +18,7 @@ const icons = require('./assets/icons/icons.json')
 
 Vue.component('Header', Header)
 Vue.component('Icon', Icon)
+Vue.component('Avatar', Avatar)
 
 Vue.use(Copilot)
 Vue.use(Navigator, { routes })
