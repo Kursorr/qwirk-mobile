@@ -1,0 +1,68 @@
+<template>
+  <AbsoluteLayout id="profile">
+    <Image :class="avatarSize"
+           src="~/assets/images/avatar.jpeg"
+           stretch="aspectFill"/>
+    <StackLayout class="status online" :class="avatarSize"/>
+  </AbsoluteLayout>
+</template>
+
+<script lang="ts">
+  import { Component, Vue, Prop } from 'vue-property-decorator'
+
+  @Component
+  export default class Avatar extends Vue {
+    @Prop({ default: 'small' }) private size!: string
+
+    get avatarSize () {
+      return {
+        'avatar-small': this.size === 'small',
+        'avatar-medium': this.size === 'medium',
+        'avatar-normal': this.size === 'normal',
+        'avatar-big': this.size === 'big'
+      }
+    }
+  }
+</script>
+
+<style lang="scss" scoped>
+  @import '../style/variables';
+
+  #profile {
+    Image {
+      border-radius: 50%;
+
+      &.avatar-small {
+        height: 24;
+        width: 24;
+      }
+
+      &.avatar-medium {
+        height: 40;
+        width: 40;
+      }
+    }
+
+    .status {
+      border-radius: 50%;
+      border-color: $darkerLight;
+
+      &.avatar-small {
+        border-width: 2;
+        border-color: $darkerFirst;
+        height: 11;
+        width: 11;
+        left: 14;
+        top: 14;
+      }
+
+      &.avatar-medium {
+        border-width: 3;
+        height: 15;
+        width: 15;
+        left: 27;
+        top: 27;
+      }
+    }
+  }
+</style>
