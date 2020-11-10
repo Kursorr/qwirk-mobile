@@ -3,29 +3,25 @@
     <FlexboxLayout @tap="gotoLink('home')">
       <Icon :icon="$icons.logo"
             class="footer"
-            :class="[activeHome ? 'enable' : 'disabled']"
-            color="#FFF"/>
+            :class="[activeHome ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('friends')">
       <Icon :icon="$icons.friends"
             class="footer"
-            :class="[activeFriends ? 'enable' : 'disabled']"
-            color="#FFF"/>
+            :class="[activeFriends ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
     <FlexboxLayout>
       <Icon :icon="$icons.search"
             class="footer"
-            :class="[activeSearch ? 'enable' : 'disabled']"
-            color="#FFF"/>
+            :class="[activeSearch ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('editor')">
       <Icon :icon="$icons.editor"
             class="footer"
-            :class="[activeEditor ? 'enable' : 'disabled']"
-            color="#FFF"/>
+            :class="[activeEditor ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
     <FlexboxLayout @tap="gotoLink('profile')">
@@ -132,5 +128,6 @@
 
   .footer {
     font-size: 18;
+    color: #FFF;
   }
 </style>
