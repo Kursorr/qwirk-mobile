@@ -3,7 +3,6 @@
               columns="*"
               rows="auto, *, auto"
               :class="$globalState.opacity ? 'opacity' : ''">
-
     <Header :displayBorderRadius="true">
       <FlexboxLayout alignItems="center" slot="left">
         <Icon :icon="$icons.menu" class="menu"/>
@@ -198,7 +197,6 @@
     }
 
     .author {
-      color: $white;
       margin-right: 7;
       font-size: 16;
     }

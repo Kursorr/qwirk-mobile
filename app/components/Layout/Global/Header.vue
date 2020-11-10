@@ -36,6 +36,11 @@
       width: 100%;
       justify-content: space-between;
 
+      .title {
+        font-size: 18;
+        font-weight: bold;
+      }
+
       .menu {
         margin-right: 20;
       }
