@@ -1,7 +1,7 @@
 <template>
   <AbsoluteLayout id="profile">
     <Image :class="avatarSize"
-           src="~/assets/images/avatar.jpeg"
+           :src="imagePath"
            stretch="aspectFill"/>
     <StackLayout class="status online" :class="avatarSize"/>
   </AbsoluteLayout>
@@ -12,7 +12,18 @@
 
   @Component
   export default class Avatar extends Vue {
+    @Prop({ default: null }) private url?: string
     @Prop({ default: 'small' }) private size!: string
+
+    get imagePath () {
+      if (this.url === null || this.url === undefined) {
+        return '~/assets/images/avatar.png'
+      } else if (this.url.indexOf('data:') !== -1) {
+        return this.url
+      } else {
+        return 'http://localhost:4100/avatars/' + this.url
+      }
+    }
 
     get avatarSize () {
       return {
