@@ -90,6 +90,14 @@
 </script>
 
 <style lang="scss" scoped>
+  @import '../../../style/variables';
+
+  .darker {
+    .footer {
+      color: $white;
+    }
+  }
+
   .container {
     align-items: center;
     justify-content: space-around;
@@ -124,10 +132,9 @@
         border-radius: 50%;
       }
     }
-  }
 
-  .footer {
-    font-size: 18;
-    color: #FFF;
+    .footer {
+      font-size: 18;
+    }
   }
 </style>

@@ -28,6 +28,12 @@
 <style lang="scss" scoped>
   @import '../style/variables';
 
+  .darker {
+    .addFriend, .addConv {
+      color: #FFF;
+    }
+  }
+
   .friendsSection {
     background-color: $darkerThird;
 
