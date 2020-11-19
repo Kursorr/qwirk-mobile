@@ -1,7 +1,7 @@
 <template>
   <GridLayout rows="*, auto" columns="*" :class="theme">
     <ContentView row="0">
-      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
+      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'welcome'"/>
     </ContentView>
 
     <Footer v-if="$globalState.footer"
@@ -27,7 +27,7 @@
     }
   })
   export default class App extends Vue {
-    private isLoggedIn: boolean = true
+    private isLoggedIn: boolean = false
   }
 </script>
 
