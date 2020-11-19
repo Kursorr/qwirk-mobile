@@ -16,5 +16,8 @@
 	"addFriend": "0xe91d",
 	"addConv": "0xe91e",
 	"call": "0xe921",
-	"conv": "0xe91f"
+	"conv": "0xe91f",
+	"visibility": "0xe923",
+	"invisible": "0xe922",
+	"cancel": "0xe924"
 }
