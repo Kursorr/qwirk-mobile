@@ -66,6 +66,8 @@
         setTimeout(() => {
           // @ts-ignore
           this.$navigator.navigate('home', this.options)
+          // @ts-ignore
+          this.$globalState.removeOpacity()
         })
       } else if (route === 'friends') {
         this.activeFriends = true
