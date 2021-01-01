@@ -1,17 +1,19 @@
 <template>
-  <GridLayout rows="*, auto" columns="*" :class="theme">
-    <ContentView row="0">
-      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'welcome'"/>
+  <AbsoluteLayout :class="theme">
+    <ContentView height="100%" width="100%">
+      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
     </ContentView>
 
     <Footer v-if="$globalState.footer"
-            row="1"
-            :class="[$globalState.footer ? 'footer' : 'footer without']"/>
-  </GridLayout>
+            :top="top"
+            class="footer"
+            width="100%"/>
+  </AbsoluteLayout>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+  import { Screen } from '@nativescript/core'
 
   import Footer from '../components/Layout/Global/Footer.vue'
   import { mapGetters } from 'vuex'
@@ -28,15 +30,18 @@
   })
   export default class App extends Vue {
     private isLoggedIn: boolean = true
+    private top: number = 0
+
+    mounted () {
+      this.top = Screen.mainScreen.heightDIPs - 80
+    }
   }
 </script>
 
 <style lang="scss">
-  @import '../style/variables.scss';
-
   .darker {
     .footer {
-      background-color: $darkerFirst;
+      background-color: #1C1E22;
     }
   }
 
