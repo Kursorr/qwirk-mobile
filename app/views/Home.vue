@@ -80,6 +80,8 @@
 
       // @ts-ignore
       this.$globalState.hideFooter()
+      // @ts-ignore
+      this.$globalState.removeOpacity()
     }
 
     public closeIfOpen () {
