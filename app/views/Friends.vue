@@ -10,52 +10,42 @@
         </FlexboxLayout>
 
         <FlexboxLayout alignItems="center" slot="right">
-          <Icon :icon="$icons.addFriend" class="addFriend"/>
+          <Icon :icon="$icons.addFriend" class="addFriend" @event="addFriend"/>
           <Icon :icon="$icons.addConv" class="addConv" marginLeft="30"/>
         </FlexboxLayout>
       </Header>
 
-      <StackLayout row="1">
-        <Label text="en ligne - 3" class="section"/>
-
-        <ListView for="(friend, index) in friends"
-                  separatorColor="transparent">
-          <v-template>
-            <FlexboxLayout alignItems="center" padding="15 20">
-              <Avatar size="medium"/>
-              <FlexboxLayout class="pseudoAndStatus">
-                <Label class="pseudo" text="quenti77"/>
-                <Label class="statusTextDetail" text="Ne pas déranger"/>
-              </FlexboxLayout>
-              <FlexboxLayout>
-                <Icon :icon="$icons.call" class="call"/>
-                <Icon :icon="$icons.conv" class="conv" marginLeft="38"/>
-              </FlexboxLayout>
+      <ScrollView row="1">
+        <StackLayout>
+          <Label text="en ligne - 3" class="section"/>
+          <FlexboxLayout alignItems="center" padding="15 20" for="(friend, index) in friends">
+            <Avatar size="medium"/>
+            <FlexboxLayout class="pseudoAndStatus">
+              <Label class="pseudo" text="quenti77"/>
+              <Label class="statusTextDetail" text="Ne pas déranger"/>
             </FlexboxLayout>
-          </v-template>
-        </ListView>
-
-        <Label text="hors ligne - 4" class="section"/>
-
-        <ListView for="(friend, index) in friends"
-                  separatorColor="transparent">
-          <v-template>
-            <FlexboxLayout alignItems="center" padding="15 20">
-              <Avatar size="medium"/>
-              <FlexboxLayout class="pseudoAndStatus">
-                <Label class="pseudo" text="Abstrakts"/>
-                <Label class="statusTextDetail" text="Ne pas déranger"/>
-              </FlexboxLayout>
-              <FlexboxLayout>
-                <Icon :icon="$icons.call" class="call"/>
-                <Icon :icon="$icons.conv" class="conv" marginLeft="38"/>
-              </FlexboxLayout>
+            <FlexboxLayout>
+              <Icon :icon="$icons.call" class="call"/>
+              <Icon :icon="$icons.conv" class="conv" marginLeft="38"/>
             </FlexboxLayout>
-          </v-template>
-        </ListView>
-      </StackLayout>
+          </FlexboxLayout>
 
+          <Label text="hors ligne - 4" class="section"/>
 
+          <FlexboxLayout alignItems="center" padding="15 20" for="(friend, index) in friends">
+            <Avatar size="medium"/>
+            <FlexboxLayout class="pseudoAndStatus">
+              <Label class="pseudo" text="Abstrakts"/>
+              <Label class="statusTextDetail" text="Ne pas déranger"/>
+            </FlexboxLayout>
+            <FlexboxLayout>
+              <Icon :icon="$icons.call" class="call" @event="callFriend"/>
+              <Icon :icon="$icons.conv" class="conv" marginLeft="38"/>
+            </FlexboxLayout>
+          </FlexboxLayout>
+
+        </StackLayout>
+      </ScrollView>
     </GridLayout>
   </Page>
 </template>
@@ -69,9 +59,24 @@
       {
         id: 0,
         avatar: '~/assets/images/avatar.jpeg',
-        pseudo: 'quenti77'
+        pseudo: 'quenti77',
+        online: true
+      },
+      {
+        id: 1,
+        avatar: '~/assets/images/avatar.jpeg',
+        pseudo: 'Abstrakts',
+        online: false
       }
     ]
+
+    public addFriend () {
+      console.log('add friend !')
+    }
+
+    public callFriend () {
+      console.log('call !')
+    }
   }
 </script>
 
