@@ -10,7 +10,6 @@
              ref="perso"/>
 
       <!--<StackLayout id="test" ref="perso" :top="tx" :left="ty"></StackLayout>-->
-
     </AbsoluteLayout>
   </Page>
 </template>
