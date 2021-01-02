@@ -1,6 +1,6 @@
 <template>
   <Page :actionBarHidden="true">
-    <AbsoluteLayout height="120%" width="120%" backgroundColor="red">
+    <AbsoluteLayout height="200%" width="200%" backgroundColor="red">
       <Image src="~/assets/back.jpg"
              stretch="fill"
              ref="back"
