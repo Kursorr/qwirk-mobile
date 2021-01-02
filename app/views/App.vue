@@ -1,7 +1,7 @@
 <template>
   <AbsoluteLayout :class="theme">
     <ContentView height="100%" width="100%">
-      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'profile'"/>
+      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'testParallax'"/>
     </ContentView>
 
     <Footer v-if="$globalState.footer"
@@ -29,7 +29,7 @@
     }
   })
   export default class App extends Vue {
-    private isLoggedIn: boolean = true
+    private isLoggedIn: boolean = false
     private top: number = 0
 
     mounted () {
