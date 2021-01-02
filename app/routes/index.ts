@@ -5,6 +5,7 @@ import Friends from '../views/Friends.vue'
 import Editor from '../views/Editor.vue'
 import Welcome from '../views/Welcome.vue'
 import TestMultiplePicker from '../components/TestMultiplePicker.vue'
+import TestParallax from '../views/TestParallax.vue'
 
 export const routes = {
   app: {
@@ -28,5 +29,8 @@ export const routes = {
   },
   pickers: {
     component: TestMultiplePicker
+  },
+  testParallax: {
+    component: TestParallax
   }
 }

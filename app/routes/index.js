@@ -9,6 +9,7 @@ var Friends_vue_1 = tslib_1.__importDefault(require("../views/Friends.vue"));
 var Editor_vue_1 = tslib_1.__importDefault(require("../views/Editor.vue"));
 var Welcome_vue_1 = tslib_1.__importDefault(require("../views/Welcome.vue"));
 var TestMultiplePicker_vue_1 = tslib_1.__importDefault(require("../components/TestMultiplePicker.vue"));
+var TestParallax_vue_1 = tslib_1.__importDefault(require("../views/TestParallax.vue"));
 exports.routes = {
     app: {
         component: App_vue_1.default
@@ -31,5 +32,8 @@ exports.routes = {
     },
     pickers: {
         component: TestMultiplePicker_vue_1.default
+    },
+    testParallax: {
+        component: TestParallax_vue_1.default
     }
 };
