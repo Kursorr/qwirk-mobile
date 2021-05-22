@@ -3,8 +3,9 @@
     <Label fontSize="20"
            fontWeight="bold"
            text="🔔 Notifications"/>
-    <Label :textWrap="true" v-for="a in 10"
+    <Label v-for="a in 10"
            :key="a"
+           :textWrap="true"
            :text="'Example text ' + a + '. This text should now be long enough that it wraps to the next line.'">
     </Label>
   </StackLayout>

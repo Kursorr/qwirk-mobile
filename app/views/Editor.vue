@@ -30,7 +30,8 @@
                              ref="timeline"
                              @pan="dragDropTimeline($event)"
                              id="timeline">
-                <StackLayout v-for="(item, index) in timeBar">
+                <StackLayout v-for="(item, index) in timeBar"
+                             :key="index">
                   <Label :class="tickClass(item)"
                          ref="tick"
                          borderWidth="1"
@@ -43,6 +44,7 @@
                 <StackLayout
                     :row="index"
                     v-for="(track, index) in tracks.elements"
+                    :key="index"
                     id="track"
                     :ref="track.info.id"
                     :width="tracksWidth">
@@ -91,7 +93,8 @@
                       <AbsoluteLayout backgroundColor="#fff"
                                       height="80"
                                       :width="tracksWidth">
-                        <StackLayout v-for="speech in track.speeches"
+                        <StackLayout v-for="(speech, index) in track.speeches"
+                                     :key="index"
                                      @pan="dragDropSpeech($event, track, speech)"
                                      @doubletap="deleteSpeech($event, track, speech)"
                                      :width="(speech.close - speech.start) * diffSpace"

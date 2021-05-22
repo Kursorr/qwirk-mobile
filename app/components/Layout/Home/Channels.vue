@@ -11,13 +11,16 @@
 
     <ScrollView @scroll="inScrolling" height="100%" :scrollBarIndicatorVisible="false">
       <StackLayout>
-        <StackLayout class="chan" v-for="category in server.categories">
+        <StackLayout v-for="(category, index) in server.categories"
+                     :key="index"
+                     class="chan">
           <FlexboxLayout alignItems="center" marginBottom="10">
             <Label :text="String.fromCharCode($icons.chevronDown)" class="ico down"/>
             <Label :text="category.title" class="categoryName"/>
           </FlexboxLayout>
 
           <FlexboxLayout v-for="(channel, index) in category.channels"
+                         :key="index"
                          @tap="onSelectChannel(channel, index)"
                          :class="[currentChannelId === index && currentChannelName === channel.name
                           ? 'channels selected' : 'channels']">
