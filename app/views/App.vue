@@ -29,7 +29,7 @@
     }
   })
   export default class App extends Vue {
-    private isLoggedIn: boolean = false
+    private isLoggedIn: boolean = true
     private top: number = 0
 
     mounted () {
