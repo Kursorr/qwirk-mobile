@@ -1,30 +1,30 @@
 <template>
   <FlexboxLayout class="container">
-    <FlexboxLayout @tap="gotoLink('home')">
+    <FlexboxLayout class="gotoIcon" @tap="gotoLink('home')">
       <Icon :icon="$icons.logo"
-            class="footer"
+            class="icon"
             :class="[activeHome ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
-    <FlexboxLayout @tap="gotoLink('friends')">
+    <FlexboxLayout class="gotoIcon" @tap="gotoLink('friends')">
       <Icon :icon="$icons.friends"
-            class="footer"
+            class="icon"
             :class="[activeFriends ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
-    <FlexboxLayout>
+    <FlexboxLayout class="gotoIcon">
       <Icon :icon="$icons.search"
-            class="footer"
+            class="icon"
             :class="[activeSearch ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
-    <FlexboxLayout @tap="gotoLink('editor')">
+    <FlexboxLayout class="gotoIcon" @tap="gotoLink('editor')">
       <Icon :icon="$icons.editor"
-            class="footer"
+            class="icon"
             :class="[activeEditor ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
 
-    <FlexboxLayout @tap="gotoLink('profile')">
+    <FlexboxLayout class="gotoIcon avatar" @tap="gotoLink('profile')">
       <Avatar :class="[activeProfile ? 'enable' : 'disabled']"/>
     </FlexboxLayout>
   </FlexboxLayout>
@@ -91,8 +91,7 @@
   @import '../../../style/variables';
 
   .darker {
-    .footer {
-      color: $white;
+    .icon {
     }
   }
 
@@ -100,7 +99,7 @@
     align-items: center;
     justify-content: space-around;
 
-    FlexboxLayout {
+    FlexboxLayout.gotoIcon {
       padding: 16 0;
       width: 20%;
       flex-direction: column;
@@ -111,7 +110,7 @@
       .disabled { opacity: 0.5; }
     }
 
-    .footer {
+    .icon {
       font-size: 18;
     }
   }

@@ -1,9 +1,9 @@
 <template>
   <GridLayout class="tchat"
               columns="*"
-              rows="auto, *, auto"
+              rows="55, *, 55"
               :class="$globalState.opacity ? 'opacity' : ''">
-    <Header :displayBorderRadius="true">
+    <Header :displayBorderRadius="true" height="100">
       <FlexboxLayout alignItems="center" slot="left">
         <Icon :icon="$icons.menu" class="menu"/>
         <Icon :icon="$icons.hashtag" class="hashtag"/>
@@ -20,9 +20,9 @@
               for="(discussion, index) in discussions"
               separatorColor="transparent">
       <v-template>
-        <StackLayout>
-          <FlexboxLayout justifyContent="center" margin="5 0">
-            <StackLayout height="40" width="80">
+        <StackLayout paddingLeft="0">
+          <FlexboxLayout justifyContent="center" margin="5 0" paddingLeft="0">
+            <StackLayout paddingLeft="0">
               <Image :src="discussion.avatar"
                      height="40"
                      width="40"
@@ -187,12 +187,15 @@
   @import '../../../style/variables';
 
   .tchat {
+    padding: 0;
+    margin: 0;
+
     &.opacity {
       opacity: 0.6;
     }
 
     .textInfos {
-      width: 90%;
+      width: 80%;
       padding-right: 10;
     }
 

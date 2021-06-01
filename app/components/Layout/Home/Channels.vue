@@ -1,17 +1,20 @@
 <template>
   <StackLayout class="server">
     <FlexboxLayout :class="[scrollY > 0 ? 'serverInfo addBorder' : 'serverInfo']">
-      <FlexboxLayout alignItems="center">
-        <Label text="X" marginRight="5"/>
-        <Label :text="server.name" class="serverName"/>
-      </FlexboxLayout>
+      <FlexboxLayout class="serverInfoContainer">
+        <FlexboxLayout alignItems="center">
+          <Label text="X" marginRight="5"/>
+          <Label :text="server.name" class="serverName"/>
+        </FlexboxLayout>
 
-      <Icon :icon="$icons.verticalDots"/>
+        <Icon :icon="$icons.verticalDots"/>
+      </FlexboxLayout>
     </FlexboxLayout>
 
     <ScrollView @scroll="inScrolling" height="100%" :scrollBarIndicatorVisible="false">
-      <StackLayout>
+      <StackLayout padding="0">
         <StackLayout v-for="(category, index) in server.categories"
+                     padding="0"
                      :key="index"
                      class="chan">
           <FlexboxLayout alignItems="center" marginBottom="10">
@@ -191,11 +194,17 @@
 
   StackLayout.server {
     border-top-right-radius: 10;
+    padding: 0;
 
     .serverInfo {
-      justify-content: space-between;
-      align-items: center;
-      padding: 18 20 18 10;
+      margin-bottom: 5;
+
+      .serverInfoContainer {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18 20 18 10;
+      }
 
       &.addBorder {
         border-bottom-width: 0.5;

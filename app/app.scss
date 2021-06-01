@@ -10,8 +10,6 @@
 // Status profil
 AbsoluteLayout#profile {
   StackLayout.status {
-    border-color: $darkerFirst;
-
     &.online {
       background-color: $green;
     }

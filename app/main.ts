@@ -1,7 +1,7 @@
 import Vue from 'nativescript-vue'
-import Copilot from '@nativescript-copilot/vue'
+// import Copilot from '@nativescript-copilot/vue'
 import Navigator from 'nativescript-vue-navigator'
-import * as orientation from 'nativescript-screen-orientation'
+// import * as orientation from 'nativescript-screen-orientation'
 
 import VueDevtools from 'nativescript-vue-devtools'
 
@@ -20,13 +20,13 @@ Vue.component('Header', Header)
 Vue.component('Icon', Icon)
 Vue.component('Avatar', Avatar)
 
-Vue.use(Copilot)
+// Vue.use(Copilot)
 Vue.use(Navigator, { routes })
 
-if (TNS_ENV !== 'production')
-  Vue.use(VueDevtools)
+/*if (TNS_ENV !== 'production')
+  Vue.use(VueDevtools)*/
 
-Vue.prototype.$orientation = orientation
+// Vue.prototype.$orientation = orientation
 Vue.prototype.$icons = icons
 Vue.prototype.$globalState = new Vue({
   data: {
@@ -42,7 +42,7 @@ Vue.prototype.$globalState = new Vue({
 })
 
 // Prints Vue logs when --env.production is *NOT* set while building
-Vue.config.silent = (TNS_ENV === 'production')
+// Vue.config.silent = (TNS_ENV === 'production')
 
 new Vue({
   store,

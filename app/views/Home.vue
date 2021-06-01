@@ -1,14 +1,19 @@
 <template>
   <Page :actionBarHidden="true">
     <GridLayout backgroundColor="#202225">
-      <StackLayout ref="left" class="content chat" :marginRight="drawerMargin">
-        <GridLayout rows="*" columns="auto, *">
+      <StackLayout ref="left"
+                   class="content chat"
+                   :marginRight="drawerMargin"
+                   margin="0"
+                   padding="0">
+        <GridLayout rows="*" columns="auto, 280" padding="0" margin="0">
           <Servers />
-          <Channels column="1" @onChannelChange="channelChange"/>
+          <Channels column="1" row="0" @onChannelChange="channelChange"/>
         </GridLayout>
       </StackLayout>
 
       <StackLayout ref="right"
+                   width="380"
                    rowSpan="2"
                    col="1"
                    class="content serversList"
@@ -20,6 +25,8 @@
       <StackLayout @pan="displayContent"
                    @tap="closeIfOpen"
                    ref="mainContent"
+                   margin="0"
+                   padding="0"
                    rowSpan="2"
                    colSpan="2"
                    :class="`mainContent content ${onPage ? 'darkerColor' : 'lighterColor'}`">
@@ -244,14 +251,12 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import '../style/variables.scss';
 
-  GridLayout {
-    .mainContent {
-      border-top-left-radius: 10;
-      border-top-right-radius: 10;
-    }
+  .mainContent {
+    border-top-left-radius: 10;
+    border-top-right-radius: 10;
   }
 
   .darker {

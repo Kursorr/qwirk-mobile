@@ -1,5 +1,5 @@
 <template>
-  <AbsoluteLayout id="profile">
+  <AbsoluteLayout id="profile" :class="avatarSize">
     <Image :class="avatarSize"
            :src="imagePath"
            stretch="aspectFill"/>
@@ -40,6 +40,19 @@
   @import '../style/variables';
 
   #profile {
+    vertical-align: center;
+    text-align: center;
+
+    &.avatar-small {
+      height: 25;
+      width: 25;
+    }
+
+    &.avatar-medium {
+      height: 42;
+      width: 42;
+    }
+
     Image {
       border-radius: 50%;
 

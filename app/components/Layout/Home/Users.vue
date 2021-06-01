@@ -38,7 +38,7 @@
     }
   }
 
-  StackLayout {
+  .usersSection {
     height: 100%;
     border-top-left-radius: 10;
   }

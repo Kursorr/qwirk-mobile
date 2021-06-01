@@ -8,14 +8,12 @@
       <Image src="~/assets/perso.png"
              id="perso"
              ref="perso"/>
-
-      <!--<StackLayout id="test" ref="perso" :top="tx" :left="ty"></StackLayout>-->
     </AbsoluteLayout>
   </Page>
 </template>
 
 <script lang="ts">
-  import { startAccelerometerUpdates } from 'nativescript-accelerometer'
+  import { startAccelerometerUpdates } from '@triniwiz/nativescript-accelerometer'
   import { Screen } from '@nativescript/core'
 
   export default {
@@ -53,13 +51,4 @@
     top: 280;
     left: 100;
   }
-
-  /*#test {
-    background: url("~/assets/perso.png") no-repeat;
-    background-size: 440 850;
-    top: 280;
-    left: 90;
-    height: 100%;
-    width: 100%;
-  }*/
 </style>

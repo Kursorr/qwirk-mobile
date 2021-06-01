@@ -555,7 +555,7 @@ export default {
       this.margeTimer = 0
     },
     loadedPage () {
-      this.$orientation.setCurrentOrientation('landscape')
+      // this.$orientation.setCurrentOrientation('landscape')
       this.generateTimeBar(0)
 
       this.steps = [
