@@ -5,11 +5,10 @@
     >
       <FlexboxLayout class="serverInfoContainer">
         <FlexboxLayout alignItems="center">
-          <Label text="X" marginRight="5" />
           <Label :text="server.name" class="serverName" />
         </FlexboxLayout>
 
-        <Icon :icon="$icons.verticalDots" />
+        <Icon :icon="$icons.verticalDots" class="serverName" />
       </FlexboxLayout>
     </FlexboxLayout>
 
@@ -224,9 +223,16 @@ StackLayout.server {
 
     .serverInfoContainer {
       width: 100%;
+      height: 60;
       justify-content: space-between;
       align-items: center;
-      padding: 18 20 18 10;
+      padding: 15 10 15 10;
+
+      .serverName {
+        color: #fff;
+        font-weight: bold;
+        font-size: 18;
+      }
     }
 
     &.addBorder {
@@ -252,9 +258,9 @@ StackLayout.server {
     }
   }
 
-  &.serverName {
-    font-size: 16;
-    font-weight: 500;
+  serverName {
+    font-size: 18;
+    font-weight: bold;
   }
 
   .categoryName {

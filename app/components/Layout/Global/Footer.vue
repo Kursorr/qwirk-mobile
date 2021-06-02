@@ -58,7 +58,6 @@ export default class Footer extends Vue {
       curve: "easeOut",
     },
   };
-
   gotoLink(route) {
     this.activeHome = false;
     this.activeFriends = false;

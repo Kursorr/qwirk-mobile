@@ -1,6 +1,10 @@
 <template>
-  <Page :actionBarHidden="true" marginTop="35">
-    <GridLayout backgroundColor="#202225">
+  <Page
+    :actionBarHidden="true"
+    marginTop="35"
+    androidStatusBarBackground="#1F2225"
+  >
+    <GridLayout class="background">
       <StackLayout
         ref="left"
         class="content chat"
@@ -8,10 +12,10 @@
         margin="0"
         padding="0"
       >
-        <GridLayout rows="*" columns="auto, 280" padding="0" margin="0">
-          <Servers />
+        <GridLayout rows="*" columns="auto, 280" padding="0" class="background">
+          <Servers class="serverlist" />
           <Channels
-            backgroundColor="#36393E"
+            class="channellist"
             column="1"
             row="0"
             @onChannelChange="channelChange"
@@ -22,13 +26,24 @@
       <StackLayout
         ref="right"
         width="*"
-        rowSpan="2"
         col="1"
-        backgroundColor="#36393E"
         class="content serversList"
         :marginLeft="drawerMargin"
-        borderRadius="10"
+        borderTopLeftRadius="10"
+        padding="0"
       >
+        <StackLayout
+          class="content-header"
+          height="50"
+          borderTopLeftRadius="10"
+        >
+          <Label
+            fontSize="20"
+            marginTop="10"
+            fontWeight="bold"
+            text="🔔 Notifications"
+          />
+        </StackLayout>
         <Users />
       </StackLayout>
 
@@ -40,8 +55,7 @@
         padding="0"
         rowSpan="2"
         colSpan="2"
-        class="mainContent"
-        backgroundColor="#36393E"
+        class="mainContent content"
       >
         <GridLayout rows="*" columns="*">
           <Tchat row="0" col="0" />
@@ -75,6 +89,11 @@ const UP = 3;
   },
 })
 export default class Home extends Vue {
+  /* Declaration Types */
+  $refs!: {
+    dat: any;
+  };
+
   private isAnimating: boolean = false;
 
   private deltaX: number = 0;
@@ -90,8 +109,7 @@ export default class Home extends Vue {
     this.onPage = null;
     this.deltaX = 0;
 
-    // @ts-ignore
-    this.$refs.mainContent.nativeView.animate({
+    this.$refs["mainContent"].nativeView.animate({
       translate: {
         x: 0,
         y: 0,
@@ -99,9 +117,8 @@ export default class Home extends Vue {
       duration: 200,
     });
 
-    // @ts-ignore
     this.$globalState.hideFooter();
-    // @ts-ignore
+
     this.$globalState.removeOpacity();
   }
 
@@ -137,15 +154,13 @@ export default class Home extends Vue {
     this.isAnimating = true;
 
     if (direction === "left") {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "visible";
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "collapse";
+      this.$refs["left"].nativeView.visibility = "visible";
+
+      this.$refs["right"].nativeView.visibility = "collapse";
     } else if (direction === "right") {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "collapse";
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "visible";
+      this.$refs["left"].nativeView.visibility = "collapse";
+
+      this.$refs["right"].nativeView.visibility = "visible";
     }
 
     const destination =
@@ -160,8 +175,8 @@ export default class Home extends Vue {
         }),
         step: (v) => {
           this.deltaX = v;
-          // @ts-ignore
-          this.$refs.mainContent.nativeView.translateX = v;
+
+          this.$refs["mainContent"].nativeView.translateX = v;
         },
       },
     ]).then((v) => {
@@ -177,8 +192,7 @@ export default class Home extends Vue {
       this.deltaX = this.leftDrawerSize;
       this.onPage = "left";
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      this.$refs["mainContent"].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
@@ -186,9 +200,8 @@ export default class Home extends Vue {
         duration: 200,
       });
 
-      // @ts-ignore
       this.$globalState.showFooter();
-      // @ts-ignore
+
       this.$globalState.addOpacity();
     } else if (
       delta < (-1 * this.rightDrawerSize) / 2 &&
@@ -197,8 +210,7 @@ export default class Home extends Vue {
       this.deltaX = -1 * this.rightDrawerSize;
       this.onPage = "right";
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      this.$refs["mainContent"].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
@@ -206,16 +218,14 @@ export default class Home extends Vue {
         duration: 200,
       });
 
-      // @ts-ignore
       this.$globalState.hideFooter();
-      // @ts-ignore
+
       this.$globalState.addOpacity();
     } else {
       this.onPage = null;
       this.deltaX = 0;
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      this.$refs["mainContent"].nativeView.animate({
         translate: {
           x: 0,
           y: 0,
@@ -223,9 +233,8 @@ export default class Home extends Vue {
         duration: 200,
       });
 
-      // @ts-ignore
       this.$globalState.hideFooter();
-      // @ts-ignore
+
       this.$globalState.removeOpacity();
     }
   }
@@ -240,22 +249,18 @@ export default class Home extends Vue {
     if (this.onPage !== null) args.deltaX += this.deltaX;
 
     if (this.onPage !== null || args.deltaX === 0 || this.deltaX === 0) {
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "collapse";
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "collapse";
+      this.$refs["right"].nativeView.visibility = "collapse";
+
+      this.$refs["left"].nativeView.visibility = "collapse";
     }
 
     if (args.deltaX > this.leftDrawerSize / 100) {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "visible";
+      this.$refs["left"].nativeView.visibility = "visible";
     } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "visible";
+      this.$refs["right"].nativeView.visibility = "visible";
     }
 
-    // @ts-ignore
-    this.$refs.mainContent.nativeView.animate({
+    this.$refs["mainContent"].nativeView.animate({
       translate: {
         x: args.deltaX,
         y: 0,
@@ -267,14 +272,13 @@ export default class Home extends Vue {
       this.checkDirection(args.deltaX);
     }
   }
-
   /*
     @navigatingTo="navigatingTo"
     navigatingTo () {
       this.animateTo('left')
       this.onPage = 'left'
 
-      // @ts-ignore
+
       this.$globalState.showFooter()
     }*/
 }
@@ -284,23 +288,23 @@ export default class Home extends Vue {
 @import "../style/variables.scss";
 
 .mainContent {
-  border-top-left-radius: 10;
-  border-top-right-radius: 10;
+  border-top-left-radius: 15;
+  border-top-right-radius: 15;
 }
 
-.darker {
-  .content {
-    &.darkerColor {
-      background-color: $darkerThird;
-    }
+// .darker {
+//   .content {
+//     &.darkerColor {
+//       background-color: $darkerThird;
+//     }
 
-    &.lighterColor {
-      background-color: $darkerLight;
-    }
-  }
+//     &.lighterColor {
+//       background-color: $darkerLight;
+//     }
+//   }
 
-  .serversList {
-    background-color: $darkerSecond;
-  }
-}
+//   .serversList {
+//     // background-color: $darkerSecond;
+//   }
+// }
 </style>
