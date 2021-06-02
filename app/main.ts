@@ -3,7 +3,6 @@ import Vue from 'nativescript-vue'
 import Navigator from 'nativescript-vue-navigator'
 // import * as orientation from 'nativescript-screen-orientation'
 
-import VueDevtools from 'nativescript-vue-devtools'
 
 import App from './views/App.vue'
 import Header from './components/Layout/Global/Header.vue'
@@ -34,10 +33,10 @@ Vue.prototype.$globalState = new Vue({
     opacity: false
   },
   methods: {
-    showFooter () { this.footer = true },
-    hideFooter () { this.footer = false },
-    addOpacity () { this.opacity = true },
-    removeOpacity () { this.opacity = false }
+    showFooter() { this.footer = true },
+    hideFooter() { this.footer = false },
+    addOpacity() { this.opacity = true },
+    removeOpacity() { this.opacity = false }
   }
 })
 
