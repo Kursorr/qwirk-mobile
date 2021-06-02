@@ -4,6 +4,7 @@
 
 # NPM
 node_modules
+package-lock.json
 
 # NativeScript application
 hooks

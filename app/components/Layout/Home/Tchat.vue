@@ -1,9 +1,9 @@
 <template>
   <GridLayout class="tchat"
               columns="*"
-              rows="55, *, 55"
+              rows="auto, *, auto"
               :class="$globalState.opacity ? 'opacity' : ''">
-    <Header :displayBorderRadius="true" height="100">
+    <Header :displayBorderRadius="true">
       <FlexboxLayout alignItems="center" slot="left">
         <Icon :icon="$icons.menu" class="menu"/>
         <Icon :icon="$icons.hashtag" class="hashtag"/>
@@ -20,9 +20,9 @@
               for="(discussion, index) in discussions"
               separatorColor="transparent">
       <v-template>
-        <StackLayout paddingLeft="0">
-          <FlexboxLayout justifyContent="center" margin="5 0" paddingLeft="0">
-            <StackLayout paddingLeft="0">
+        <StackLayout>
+          <FlexboxLayout justifyContent="center" margin="5 0">
+            <StackLayout height="40" width="80">
               <Image :src="discussion.avatar"
                      height="40"
                      width="40"
@@ -177,7 +177,6 @@
     ]
 
     gotoPickers () {
-      // @ts-ignore
       this.$navigator.navigate('pickers')
     }
   }
@@ -187,15 +186,12 @@
   @import '../../../style/variables';
 
   .tchat {
-    padding: 0;
-    margin: 0;
-
     &.opacity {
       opacity: 0.6;
     }
 
     .textInfos {
-      width: 80%;
+      width: 90%;
       padding-right: 10;
     }
 
