@@ -4,7 +4,7 @@
     marginTop="35"
     androidStatusBarBackground="#1F2225"
   >
-    <GridLayout class="background">
+    <GridLayout class="background" @swipe="onSwipe($event)">
       <StackLayout
         ref="left"
         class="content chat"
@@ -75,6 +75,8 @@ import Servers from "@/components/Layout/Home/Servers.vue";
 import Channels from "@/components/Layout/Home/Channels.vue";
 import Users from "@/components/Layout/Home/Users.vue";
 import Tchat from "@/components/Layout/Home/Tchat.vue";
+
+import { SwipeDirection } from "@nativescript/core";
 
 const DOWN = 1;
 const PANNING = 2;
@@ -271,6 +273,12 @@ export default class Home extends Vue {
     if (args.state === UP) {
       this.checkDirection(args.deltaX);
     }
+  }
+
+  /* Swiper */
+  onSwipe(args: any) {
+    let direction = args.direction == SwipeDirection.left ? "left" : "right";
+    console.log(direction);
   }
   /*
     @navigatingTo="navigatingTo"

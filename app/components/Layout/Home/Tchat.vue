@@ -21,9 +21,10 @@
       row="1"
       for="(discussion, index) in discussions"
       separatorColor="transparent"
+      ref="tchat"
     >
       <v-template>
-        <StackLayout>
+        <StackLayout @longPress="evt">
           <FlexboxLayout justifyContent="center" margin="5 0">
             <StackLayout height="80" width="100">
               <Image
@@ -71,6 +72,10 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Tchat extends Vue {
+  /* Declaration Types */
+  $refs!: {
+    dat: any;
+  };
   private discussions = [
     {
       id: 0,
@@ -196,6 +201,14 @@ export default class Tchat extends Vue {
 
   gotoPickers() {
     this.$navigator.navigate("pickers");
+  }
+  evt(args) {
+    console.log();
+
+    //  console.log(left);
+    if (args) {
+      return args;
+    }
   }
 }
 </script>
