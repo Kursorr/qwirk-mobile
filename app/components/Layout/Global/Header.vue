@@ -1,71 +1,75 @@
 <template>
-  <FlexboxLayout :class="displayBorderRadius ? 'headerSection onMain': 'headerSection'">
+  <FlexboxLayout
+    :class="
+      displayBorderRadius
+        ? 'headerSection content-header  onMain'
+        : 'content-header  headerSection'
+    "
+  >
     <FlexboxLayout class="header">
-      <slot name="left"/>
-      <slot name="right"/>
+      <slot name="left" />
+      <slot name="right" />
     </FlexboxLayout>
   </FlexboxLayout>
 </template>
 
 <script lang="ts">
-  import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from "vue-property-decorator";
 
-  @Component
-  export default class Header extends Vue {
-    @Prop({default: false})
-    displayBorderRadius: boolean
-  }
+@Component
+export default class Header extends Vue {
+  @Prop({ default: false })
+  displayBorderRadius: boolean;
+}
 </script>
 
 <style lang="scss" scoped>
-  @import '../../../style/variables';
+@import "../../../style/variables";
 
-  .headerSection {
-    &.onMain {
-      border-top-left-radius: 10;
-      border-top-right-radius: 10;
-    }
+.headerSection {
+  &.onMain {
+    border-top-left-radius: 15;
+    border-top-right-radius: 15;
+  }
 
-    Label {
+  Label {
+    font-size: 18;
+  }
+
+  .header {
+    padding: 15 0;
+    margin: 0 20;
+    width: 100%;
+    justify-content: space-between;
+
+    .title {
       font-size: 18;
+      font-weight: bold;
     }
 
-    .header {
-      padding: 15 0;
-      margin: 0 20;
-      width: 100%;
-      justify-content: space-between;
+    .menu {
+      margin-right: 20;
+    }
 
-      .title {
-        font-size: 18;
-        font-weight: bold;
-      }
+    .hashtag {
+      margin-right: 5;
+    }
 
-      .menu {
-        margin-right: 20;
-      }
-
-      .hashtag {
-        margin-right: 5;
-      }
-
-      .search {
-        margin-right: 30;
-      }
+    .search {
+      margin-right: 30;
     }
   }
+}
 
-  .darker {
-    .headerSection {
-      background-color: #2F3136;
+.darker {
+  .headerSection {
+    .hashtag {
+      color: $grey;
+    }
 
-      .hashtag {
-        color: $grey;
-      }
-
-      .title {
-        color: $white;
-      }
+    .title {
+      color: $white;
     }
   }
+}
 </style>

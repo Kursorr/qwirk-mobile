@@ -1,61 +1,66 @@
 <template>
-  <AbsoluteLayout :class="theme">
+  <AbsoluteLayout>
     <ContentView height="100%" width="100%">
-      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'testParallax'"/>
+      <Navigator :defaultRoute="isLoggedIn ? 'home' : 'testParallax'" />
     </ContentView>
 
-    <Footer v-if="$globalState.footer"
-            :top="top"
-            class="footer"
-            width="100%"/>
+    <Footer ref="footer" :top="top" class="footer" width="100%" />
   </AbsoluteLayout>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
-  import { Screen } from '@nativescript/core'
+import { Component, Vue, Watch } from "vue-property-decorator";
+import { Screen, CoreTypes } from "@nativescript/core";
 
-  import Footer from '../components/Layout/Global/Footer.vue'
-  import { mapGetters } from 'vuex'
+import Footer from "../components/Layout/Global/Footer.vue";
+import Theme from "@nativescript/theme";
 
-  @Component({
-    components: {
-      Footer
-    },
-    computed: {
-      ...mapGetters({
-        theme: 'theme/theme'
-      })
-    }
-  })
-  export default class App extends Vue {
-    private isLoggedIn: boolean = true
-    private top: number = 0
+@Component({
+  components: {
+    Footer,
+  },
+})
+export default class App extends Vue {
+  /* Declaration Types */
+  $refs!: {
+    dat: any;
+  };
 
-    mounted () {
-      this.top = Screen.mainScreen.heightDIPs - 80
+  private isLoggedIn: boolean = true;
+  private top: number = 0;
+
+  /* Animation */
+  @Watch("$globalState.footer")
+  onChildChanged(val: boolean) {
+    if (val) {
+      this.top = Screen.mainScreen.heightDIPs - 80;
+      this.$refs["footer"].nativeView.animate({
+        translate: { x: 0, y: 0 },
+        duration: 350,
+        curve: CoreTypes.AnimationCurve.easeOut,
+      });
+    } else {
+      this.$refs["footer"].nativeView.animate({
+        translate: { x: 0, y: 100 },
+        duration: 300,
+        curve: CoreTypes.AnimationCurve.easeOut,
+      });
     }
   }
+
+  mounted() {
+    this.top = Screen.mainScreen.heightDIPs - 0;
+    Theme.toggleMode(true);
+  }
+}
 </script>
 
 <style lang="scss">
-  .darker {
-    .footer {
-      background-color: #1C1E22;
-    }
-  }
+.footer {
+  transform: translateY(0);
 
-  .lighter {
-    .footer {
-      background-color: red;
-    }
+  .without {
+    transform: translateY(100);
   }
-
-  .footer {
-    transform: translateY(0);
-
-    .without {
-      transform: translateY(100);
-    }
-  }
+}
 </style>

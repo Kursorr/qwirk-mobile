@@ -10,6 +10,7 @@
 
     <style name="AppTheme" parent="AppThemeBase21">
         <item name="android:windowTranslucentStatus">false</item>
+
     </style>
 
     <!-- Default style for DatePicker - in spinner mode -->

@@ -10,8 +10,6 @@ import Header from './components/Layout/Global/Header.vue'
 import Avatar from './components/Avatar.vue'
 import Icon from './components/Icon.vue'
 
-
-//@ts-ignore
 const icons = require('./assets/icons/icons.json');
 
 Vue.component('Header', Header)
@@ -31,7 +29,6 @@ Vue.prototype.$globalState = new Vue({
     removeOpacity() { this.opacity = false }
   }
 })
-
 /* Uses */
 Vue.use(Navigator, { routes });
 

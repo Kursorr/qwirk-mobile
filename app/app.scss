@@ -1,11 +1,33 @@
 // Global SCSS styling
 // @see https://docs.nativescript.org/ui/styling
 
-@import './style/variables';
+@import '@nativescript/theme/core';
+@import '@nativescript/theme/default';
 
 .ico {
   font-family: icomoon, icomoon;
 }
+
+/* Variables */
+// Dark theme
+
+$background: #1F2225;
+$header: #2A2B2F;
+$bottomnav: #1C1D22;
+$sidedrawer: #2E3036;
+$server: #1F2225;
+$content: #2E3036;
+$white: #FAFAFA;
+$grey: #72767d;
+
+$green: #3CA374;
+$orange: #FAA61A;
+$red: #F04747;
+$blue: #7289DA;
+$anotherGrey: #747f8d;
+
+// Light theme
+
 
 // Status profil
 AbsoluteLayout#profile {
@@ -25,5 +47,75 @@ AbsoluteLayout#profile {
     &.invisible {
       background-color: $grey;
     }
+  }
+}
+
+.background {
+  background-color: $background;
+
+  .ns-dark & {
+    background-color: $background;
+  }
+}
+
+Label.text {
+  color: $white;
+  .ns-dark & {
+    color: $white;
+  }
+}
+
+.footer {
+  background-color: #1c1e22;
+  .ns-dark & {
+    background-color: #1c1e22;
+  }
+}
+
+.content-header {
+  background-color: $header;
+  .ns-dark & {
+    background-color: $header;
+  }
+}
+
+.content {
+  background-color: $content;
+  .ns-dark & {
+
+    background-color: $content;
+  }
+}
+
+.serverlist {
+  background-color: $server;
+  .ns-dark & {
+    background-color: $server;
+  }
+}
+
+.channellist {
+  background-color: $sidedrawer;
+  color: $grey;
+  border-top-left-radius: 15;
+  border-top-right-radius: 15;
+  .ns-dark & {
+    color: $grey;
+    background-color: $sidedrawer;
+  }
+}
+
+
+FlexboxLayout.rad {
+  background-color: $header;
+}
+
+.textfieldsection {
+  background-color: $header;
+
+  TextField {
+    color: $white;
+    border-bottom-color: transparent;
+    placeholder-color: $grey;
   }
 }
