@@ -1,66 +1,25 @@
 <template>
-  <Page
-    :actionBarHidden="true"
-    marginTop="35"
-    androidStatusBarBackground="#1F2225"
-  >
-    <GridLayout class="background" @swipe="onSwipe($event)">
-      <StackLayout
-        ref="left"
-        class="content chat"
-        :marginRight="drawerMargin"
-        margin="0"
-        padding="0"
-      >
-        <GridLayout rows="*" columns="auto, 280" padding="0" class="background">
-          <Servers class="serverlist" />
-          <Channels
-            class="channellist"
-            column="1"
-            row="0"
-            @onChannelChange="channelChange"
-          />
-        </GridLayout>
-      </StackLayout>
+  <Page :actionBarHidden="true" marginTop="35" androidStatusBarBackground="#1F2225">
+    <GridLayout rows="*" columns="*" class="background" @swipe="onSwipe($event)">
+      <WrapLayout ref="left" class="chat background" marginRight="20" padding="0">
 
-      <StackLayout
-        ref="right"
-        width="*"
-        col="1"
-        class="content serversList"
-        :marginLeft="drawerMargin"
-        borderTopLeftRadius="10"
-        padding="0"
-      >
-        <StackLayout
-          class="content-header"
-          height="50"
-          borderTopLeftRadius="10"
-        >
-          <Label
-            fontSize="20"
-            marginTop="10"
-            fontWeight="bold"
-            text="🔔 Notifications"
-          />
-        </StackLayout>
-        <Users />
-      </StackLayout>
+        <Servers width="70" paddingTop="10" column="0" row="0" class="serverlist" />
+        <Channels width="75%" class="channellist" column="1" row="0" @onChannelChange="channelChange" />
 
-      <StackLayout
-        @pan="displayContent"
-        @tap="closeIfOpen"
-        ref="mainContent"
-        margin="0"
-        padding="0"
-        rowSpan="2"
-        colSpan="2"
-        class="mainContent content"
-      >
+      </WrapLayout>
+
+      <WrapLayout ref="right" class="background" horizontalAlignment="right" marginLeft="5" marginTop="-9" borderTopLeftRadius="10" padding="0">
+
+        <Label marginLeft="10" padding="10" width="90%" class="content-header" height="50" borderTopLeftRadius="10" fontSize="20" marginTop="10" fontWeight="bold" text="🔔 Notifications" />
+
+        <Users marginLeft="10" height="100%" class="content" />
+      </WrapLayout>
+
+      <WrapLayout @pan="displayContent" @tap="closeIfOpen" ref="mainContent" margin="0" padding="0" rowSpan="2" colSpan="2" class="mainContent content">
         <GridLayout rows="*" columns="*">
           <Tchat row="0" col="0" />
         </GridLayout>
-      </StackLayout>
+      </WrapLayout>
     </GridLayout>
   </Page>
 </template>

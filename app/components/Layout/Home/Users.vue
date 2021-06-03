@@ -1,15 +1,9 @@
 <template>
-  <StackLayout class="usersSection" padding="20">
-    <Label
-      v-for="a in 10"
-      :key="a"
-      :textWrap="true"
-      :text="
+  <StackLayout class="usersSection" paddingLeft="20" paddingRight="20">
+    <Label v-for="a in 10" :key="a" :textWrap="true" :text="
         'Example text ' +
         a +
-        '. This text should now be long enough that it wraps to the next line.'
-      "
-    >
+        '. This text should now be long enough that it wraps to the next line.'">
     </Label>
   </StackLayout>
 </template>

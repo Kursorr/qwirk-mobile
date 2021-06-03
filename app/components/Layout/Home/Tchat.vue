@@ -1,10 +1,5 @@
 <template>
-  <GridLayout
-    class="tchat"
-    columns="*"
-    rows="auto, *, auto"
-    :class="$globalState.opacity ? 'opacity' : ''"
-  >
+  <GridLayout class="tchat" columns="*" rows="auto, *, auto" :class="$globalState.opacity ? 'opacity' : ''">
     <Header :displayBorderRadius="true">
       <FlexboxLayout alignItems="center" slot="left">
         <Icon :icon="$icons.menu" class="menu" />
@@ -17,38 +12,23 @@
       </FlexboxLayout>
     </Header>
 
-    <ListView
-      row="1"
-      for="(discussion, index) in discussions"
-      separatorColor="transparent"
-      ref="tchat"
-    >
+    <ListView row="1" for="(discussion, index) in discussions" separatorColor="transparent" ref="tchat">
       <v-template>
-        <StackLayout @longPress="evt">
-          <FlexboxLayout justifyContent="center" margin="5 0">
-            <StackLayout height="80" width="100">
-              <Image
-                :src="discussion.avatar"
-                height="55"
-                width="55"
-                borderRadius="50"
-                stretch="aspectFill"
-              />
-            </StackLayout>
+        <WrapLayout @longPress="evt">
+          <StackLayout width="20%">
+            <Image :src="discussion.avatar" height="55" width="55" borderRadius="50" stretch="aspectFill" />
+          </StackLayout>
+          <StackLayout width="70%" orientation="horizontal">
+            <Label verticalAlignment="top" :text="discussion.pseudo" class="author" />
+            <Label verticalAlignment="top" :text="discussion.date" class="time" />
+          </StackLayout>
+          <Label marginTop="-75" marginLeft="22%" width="70%" :textWrap="true" class="text" :text="discussion.text" />
+        </WrapLayout>
 
-            <StackLayout class="textInfos">
-              <FlexboxLayout alignItems="center">
-                <Label :text="discussion.pseudo" class="author" />
-                <Label :text="discussion.date" class="time" />
-              </FlexboxLayout>
-              <Label :textWrap="true" class="text" :text="discussion.text" />
-            </StackLayout>
-          </FlexboxLayout>
-        </StackLayout>
       </v-template>
     </ListView>
 
-    <StackLayout row="2">
+    <StackLayout row="2" margin="0" padding="0">
       <FlexboxLayout id="sendMessage">
         <FlexboxLayout class="rad">
           <Icon :icon="$icons.camera" class="camera" />
@@ -232,9 +212,9 @@ export default class Tchat extends Vue {
   }
 
   .time {
-    font-size: 11;
-    margin-bottom: 2;
-    align-self: flex-end;
+    font-size: 12;
+    margin-top: 2;
+    color: $grey;
   }
 
   .text {
