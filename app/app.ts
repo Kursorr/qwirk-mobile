@@ -10,6 +10,12 @@ import Header from './components/Layout/Global/Header.vue'
 import Avatar from './components/Avatar.vue'
 import Icon from './components/Icon.vue'
 
+/* Gif Support */
+Vue.registerElement('ImageCacheIt', () => require('@triniwiz/nativescript-image-cache-it').ImageCacheIt);
+import { ImageCacheIt } from '@triniwiz/nativescript-image-cache-it';
+//hook into the device's lowmemory events
+ImageCacheIt.enableAutoMM();
+
 const icons = require('./assets/icons/icons.json');
 
 Vue.component('Header', Header)

@@ -26,7 +26,7 @@ export default class App extends Vue {
     dat: any;
   };
 
-  private isLoggedIn: boolean = true;
+  private isLoggedIn: boolean = false;
   private top: number = 0;
 
   /* Animation */
