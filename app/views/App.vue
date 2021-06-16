@@ -9,11 +9,11 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Watch } from "vue-property-decorator";
-import { Screen, CoreTypes } from "@nativescript/core";
+import { Component, Vue, Watch } from 'vue-property-decorator'
+import { Screen, CoreTypes } from '@nativescript/core'
 
-import Footer from "../components/Layout/Global/Footer.vue";
-import Theme from "@nativescript/theme";
+import Footer from '../components/Layout/Global/Footer.vue'
+import Theme from '@nativescript/theme'
 
 @Component({
   components: {
@@ -23,34 +23,34 @@ import Theme from "@nativescript/theme";
 export default class App extends Vue {
   /* Declaration Types */
   $refs!: {
-    dat: any;
-  };
+    dat: any
+  }
 
-  private isLoggedIn: boolean = false;
-  private top: number = 0;
+  private isLoggedIn: boolean = true
+  private top: number = 0
 
   /* Animation */
-  @Watch("$globalState.footer")
+  @Watch('$globalState.footer')
   onChildChanged(val: boolean) {
     if (val) {
-      this.top = Screen.mainScreen.heightDIPs - 80;
-      this.$refs["footer"].nativeView.animate({
+      this.top = Screen.mainScreen.heightDIPs - 80
+      this.$refs['footer'].nativeView.animate({
         translate: { x: 0, y: 0 },
         duration: 350,
         curve: CoreTypes.AnimationCurve.easeOut,
-      });
+      })
     } else {
-      this.$refs["footer"].nativeView.animate({
+      this.$refs['footer'].nativeView.animate({
         translate: { x: 0, y: 100 },
         duration: 300,
         curve: CoreTypes.AnimationCurve.easeOut,
-      });
+      })
     }
   }
 
   mounted() {
-    this.top = Screen.mainScreen.heightDIPs - 0;
-    Theme.toggleMode(true);
+    this.top = Screen.mainScreen.heightDIPs - 0
+    Theme.toggleMode(true)
   }
 }
 </script>

@@ -25,21 +25,21 @@
 </template>
 
 <script lang="ts">
-import { Screen } from "@nativescript/core/platform";
-import { Component, Vue } from "vue-property-decorator";
+import { Screen } from '@nativescript/core/platform'
+import { Component, Vue } from 'vue-property-decorator'
 
-import { animate } from "@/animation";
+import { animate } from '@/animation'
 
-import Servers from "@/components/Layout/Home/Servers.vue";
-import Channels from "@/components/Layout/Home/Channels.vue";
-import Users from "@/components/Layout/Home/Users.vue";
-import Tchat from "@/components/Layout/Home/Tchat.vue";
+import Servers from '@/components/Layout/Home/Servers.vue'
+import Channels from '@/components/Layout/Home/Channels.vue'
+import Users from '@/components/Layout/Home/Users.vue'
+import Tchat from '@/components/Layout/Home/Tchat.vue'
 
-import { SwipeDirection } from "@nativescript/core";
+import { SwipeDirection } from '@nativescript/core'
 
-const DOWN = 1;
-const PANNING = 2;
-const UP = 3;
+const DOWN = 1
+const PANNING = 2
+const UP = 3
 
 @Component({
   components: {
@@ -52,42 +52,42 @@ const UP = 3;
 export default class Home extends Vue {
   /* Declaration Types */
   $refs!: {
-    dat: any;
-  };
+    dat: any
+  }
 
-  private isAnimating: boolean = false;
+  private isAnimating: boolean = false
 
-  private deltaX: number = 0;
-  private slideSensitivity: number = 3;
-  private onPage: string = null;
+  private deltaX: number = 0
+  private slideSensitivity: number = 3
+  private onPage: string = null
 
-  private leftDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3);
-  private rightDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3);
+  private leftDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
+  private rightDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
   private drawerMargin: number =
-    (Screen.mainScreen.widthPixels * (1 / 9)) / 2.5;
+    (Screen.mainScreen.widthPixels * (1 / 9)) / 2.5
 
   public channelChange() {
-    this.onPage = null;
-    this.deltaX = 0;
+    this.onPage = null
+    this.deltaX = 0
 
-    this.$refs["mainContent"].nativeView.animate({
+    this.$refs['mainContent'].nativeView.animate({
       translate: {
         x: 0,
         y: 0,
       },
       duration: 200,
-    });
+    })
 
-    this.$globalState.hideFooter();
+    this.$globalState.hideFooter()
 
-    this.$globalState.removeOpacity();
+    this.$globalState.removeOpacity()
   }
 
   public closeIfOpen() {
-    if (this.onPage === null) return;
-    if (this.isAnimating) return;
+    if (this.onPage === null) return
+    if (this.isAnimating) return
 
-    this.isAnimating = true;
+    this.isAnimating = true
 
     animate(500, [
       {
@@ -100,32 +100,32 @@ export default class Home extends Vue {
           this.displayContent({
             deltaX: v,
             state: 3,
-          });
+          })
         },
       },
     ]).then((v) => {
-      this.isAnimating = false;
-      this.onPage = null;
-    });
+      this.isAnimating = false
+      this.onPage = null
+    })
   }
 
   public animateTo(direction: string) {
-    if (this.isAnimating) return;
+    if (this.isAnimating) return
 
-    this.isAnimating = true;
+    this.isAnimating = true
 
-    if (direction === "left") {
-      this.$refs["left"].nativeView.visibility = "visible";
+    if (direction === 'left') {
+      this.$refs['left'].nativeView.visibility = 'visible'
 
-      this.$refs["right"].nativeView.visibility = "collapse";
-    } else if (direction === "right") {
-      this.$refs["left"].nativeView.visibility = "collapse";
+      this.$refs['right'].nativeView.visibility = 'collapse'
+    } else if (direction === 'right') {
+      this.$refs['left'].nativeView.visibility = 'collapse'
 
-      this.$refs["right"].nativeView.visibility = "visible";
+      this.$refs['right'].nativeView.visibility = 'visible'
     }
 
     const destination =
-      direction == "left" ? this.leftDrawerSize : -1 * this.rightDrawerSize;
+      direction == 'left' ? this.leftDrawerSize : -1 * this.rightDrawerSize
 
     animate(500, [
       {
@@ -135,68 +135,68 @@ export default class Home extends Vue {
           to: destination,
         }),
         step: (v) => {
-          this.deltaX = v;
+          this.deltaX = v
 
-          this.$refs["mainContent"].nativeView.translateX = v;
+          this.$refs['mainContent'].nativeView.translateX = v
         },
       },
     ]).then((v) => {
-      this.isAnimating = false;
-    });
+      this.isAnimating = false
+    })
   }
 
   public checkDirection(delta: number) {
     if (
       delta > this.leftDrawerSize / 2 &&
-      (this.onPage === null || this.onPage === "right")
+      (this.onPage === null || this.onPage === 'right')
     ) {
-      this.deltaX = this.leftDrawerSize;
-      this.onPage = "left";
+      this.deltaX = this.leftDrawerSize
+      this.onPage = 'left'
 
-      this.$refs["mainContent"].nativeView.animate({
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
         },
         duration: 200,
-      });
+      })
 
-      this.$globalState.showFooter();
+      this.$globalState.showFooter()
 
-      this.$globalState.addOpacity();
+      this.$globalState.addOpacity()
     } else if (
       delta < (-1 * this.rightDrawerSize) / 2 &&
-      (this.onPage === null || this.onPage === "left")
+      (this.onPage === null || this.onPage === 'left')
     ) {
-      this.deltaX = -1 * this.rightDrawerSize;
-      this.onPage = "right";
+      this.deltaX = -1 * this.rightDrawerSize
+      this.onPage = 'right'
 
-      this.$refs["mainContent"].nativeView.animate({
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
         },
         duration: 200,
-      });
+      })
 
-      this.$globalState.hideFooter();
+      this.$globalState.hideFooter()
 
-      this.$globalState.addOpacity();
+      this.$globalState.addOpacity()
     } else {
-      this.onPage = null;
-      this.deltaX = 0;
+      this.onPage = null
+      this.deltaX = 0
 
-      this.$refs["mainContent"].nativeView.animate({
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: 0,
           y: 0,
         },
         duration: 200,
-      });
+      })
 
-      this.$globalState.hideFooter();
+      this.$globalState.hideFooter()
 
-      this.$globalState.removeOpacity();
+      this.$globalState.removeOpacity()
     }
   }
 
@@ -205,42 +205,42 @@ export default class Home extends Vue {
       args.deltaX < this.slideSensitivity &&
       args.deltaX > -1 * this.slideSensitivity
     )
-      return;
+      return
 
-    if (this.onPage !== null) args.deltaX += this.deltaX;
+    if (this.onPage !== null) args.deltaX += this.deltaX
 
     if (this.onPage !== null || args.deltaX === 0 || this.deltaX === 0) {
-      this.$refs["right"].nativeView.visibility = "collapse";
+      this.$refs['right'].nativeView.visibility = 'collapse'
 
-      this.$refs["left"].nativeView.visibility = "collapse";
+      this.$refs['left'].nativeView.visibility = 'collapse'
     }
 
     if (args.deltaX > this.leftDrawerSize / 100) {
-      this.$refs["left"].nativeView.visibility = "visible";
+      this.$refs['left'].nativeView.visibility = 'visible'
     } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
-      this.$refs["right"].nativeView.visibility = "visible";
+      this.$refs['right'].nativeView.visibility = 'visible'
     }
 
-    this.$refs["mainContent"].nativeView.animate({
+    this.$refs['mainContent'].nativeView.animate({
       translate: {
         x: args.deltaX,
         y: 0,
       },
       duration: 0,
-    });
+    })
 
     if (args.state === UP) {
-      this.checkDirection(args.deltaX);
+      this.checkDirection(args.deltaX)
     }
   }
 
   /* Swiper */
   onSwipe(args: any) {
-    let direction = args.direction == SwipeDirection.left ? "left" : "right";
-    console.log(direction);
+    let direction = args.direction == SwipeDirection.left ? 'left' : 'right'
+    console.log(direction)
   }
   /*
-    @navigatingTo="navigatingTo"
+    @navigatingTo='navigatingTo'
     navigatingTo () {
       this.animateTo('left')
       this.onPage = 'left'

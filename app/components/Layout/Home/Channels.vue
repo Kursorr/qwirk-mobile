@@ -56,117 +56,117 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Channels extends Vue {
-  private scrollY = 0;
+  private scrollY = 0
   private server = {
-    name: "La bande à ExSou",
+    name: 'La bande à ExSou',
     categories: [
       {
         id: 0,
-        title: "jeux vidéos",
+        title: 'jeux vidéos',
         channels: [
           {
             id: 0,
-            name: "among-us",
+            name: 'among-us',
           },
           {
             id: 1,
-            name: "sekiro",
+            name: 'sekiro',
           },
           {
             id: 2,
-            name: "dark-souls-III",
+            name: 'dark-souls-III',
           },
         ],
       },
       {
         id: 1,
-        title: "la zone 42",
+        title: 'la zone 42',
         channels: [
           {
             id: 0,
-            name: "dev-informatique",
+            name: 'dev-informatique',
           },
           {
             id: 1,
-            name: "hardware",
+            name: 'hardware',
           },
         ],
       },
       {
         id: 1,
-        title: "la zone 42",
+        title: 'la zone 42',
         channels: [
           {
             id: 0,
-            name: "dev-informatique",
+            name: 'dev-informatique',
           },
           {
             id: 1,
-            name: "hardware",
+            name: 'hardware',
           },
         ],
       },
       {
         id: 1,
-        title: "la zone 42",
+        title: 'la zone 42',
         channels: [
           {
             id: 0,
-            name: "dev-informatique",
+            name: 'dev-informatique',
           },
           {
             id: 1,
-            name: "hardware",
+            name: 'hardware',
           },
         ],
       },
       {
         id: 1,
-        title: "la zone 42",
+        title: 'la zone 42',
         channels: [
           {
             id: 0,
-            name: "dev-informatique",
+            name: 'dev-informatique',
           },
           {
             id: 1,
-            name: "hardware",
+            name: 'hardware',
           },
         ],
       },
       {
         id: 1,
-        title: "la zone 42",
+        title: 'la zone 42',
         channels: [
           {
             id: 0,
-            name: "dev-informatique",
+            name: 'dev-informatique',
           },
           {
             id: 1,
-            name: "hardware",
+            name: 'hardware',
           },
         ],
       },
     ],
-  };
+  }
 
-  private currentChannelId = this.server.categories[0].channels[1].id;
-  private currentChannelName = this.server.categories[0].channels[1].name;
+  private currentChannelId = this.server.categories[0].channels[1].id
+  private currentChannelName = this.server.categories[0].channels[1].name
 
   public inScrolling(e) {
-    this.scrollY = e.scrollY;
+    this.scrollY = e.scrollY
   }
 
   public onSelectChannel(channel, index) {
-    this.currentChannelId = index;
-    this.currentChannelName = channel.name;
+    this.currentChannelId = index
+    this.currentChannelName = channel.name
 
-    this.$emit("onChannelChange");
+    this.$emit('onChannelChange')
   }
 }
 </script>
