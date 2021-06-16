@@ -1,0 +1,52 @@
+{
+  "name": "qwirk-phone",
+  "version": "0.0.1",
+  "description": "Qwirk phone application - Allow you to tchat with your friends and more with Qwirk-Sound that allow you to create your own song using your voice",
+  "author": "Ravaniss <senechal.max06@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "track": "node scripts/tracks",
+    "android": "tns run android",
+    "ios": "tns run ios",
+    "dev": "tns debug android --no-hmr",
+    "debug:android": "tns debug android",
+    "debug:ios": "tns debug ios",
+    "build:android": "tns build android --release",
+    "build:ios": "tns build ios --release --for-device"
+  },
+  "dependencies": {
+    "@nativescript-copilot/vue": "^0.2.2",
+    "@nativescript/core": "7.0.0",
+    "@vue/devtools": "^5.3.3",
+    "nativescript-accelerometer": "^3.0.0",
+    "nativescript-android-sensors": "^2.0.0",
+    "nativescript-audio": "^6.2.1",
+    "nativescript-mediafilepicker": "^4.0.2",
+    "nativescript-screen-orientation": "^2.0.0",
+    "nativescript-socketio": "^3.3.1",
+    "nativescript-toasty": "^3.0.0-alpha.2",
+    "nativescript-vue": "^2.8.3",
+    "nativescript-vue-devtools": "^1.4.0",
+    "nativescript-vue-navigator": "^1.2.0",
+    "nativescript-vue-shadow": "^0.1.0",
+    "node-sass": "^4.14.1",
+    "vue-class-component": "^7.2.5",
+    "vue-property-decorator": "^9.1.2",
+    "vuex": "^3.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "@nativescript/android": "7.0.0",
+    "@nativescript/types": "^7.0.0",
+    "@nativescript/webpack": "^3.0.8",
+    "@types/node": "^13.13.38",
+    "babel-loader": "^8.2.2",
+    "nativescript-vue-template-compiler": "^2.8.3",
+    "nativescript-worker-loader": "~0.11.0",
+    "typescript": "^3.8.3",
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.6"
+  },
+  "main": "main"
+}

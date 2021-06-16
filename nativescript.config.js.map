@@ -1,0 +1,1 @@
+{"version":3,"file":"nativescript.config.js","sourceRoot":"","sources":["nativescript.config.ts"],"names":[],"mappings":"AAEA,eAAe;IACb,EAAE,EAAE,mBAAmB;IACvB,OAAO,EAAE,KAAK;IACd,gBAAgB,EAAE,eAAe;IACjC,OAAO,EAAE;QACP,OAAO,EAAE,aAAa;QACtB,WAAW,EAAE,MAAM;KACpB;CACoB,CAAC"}

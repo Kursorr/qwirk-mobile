@@ -1,0 +1,28 @@
+{
+	"name": "migration",
+	"paths": [
+		"hooks",
+		"webpack.config.js",
+		"package.json",
+		"package-lock.json",
+		"package.json",
+		"app/animation.js",
+		"app/main.js",
+		"app/routes/index.js",
+		"app/store/index.js",
+		"app/store/modules/activityIndicator.js",
+		"app/store/modules/index.js",
+		"app/store/modules/theme.js",
+		"webpack.config.js",
+		"package.json",
+		"package-lock.json",
+		"package.json",
+		"app/animation.js",
+		"app/main.js",
+		"app/routes/index.js",
+		"app/store/index.js",
+		"app/store/modules/activityIndicator.js",
+		"app/store/modules/index.js",
+		"app/store/modules/theme.js"
+	]
+}
