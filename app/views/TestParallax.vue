@@ -18,15 +18,15 @@ Notes: top and left inline value must be negative value and 50% of density fixtu
 EX: top = -50 because the additional fixture is 100 / 50%  = 50 to {-50}
 */
 
-import { startAccelerometerUpdates } from "@triniwiz/nativescript-accelerometer";
-import { Screen } from "@nativescript/core";
+import { startAccelerometerUpdates } from "@triniwiz/nativescript-accelerometer"
+import { Screen } from "@nativescript/core"
 
 export default {
   data() {
     return {
       width: Screen.mainScreen.widthDIPs + 100, //Density Fixture as I said :)
       height: Screen.mainScreen.heightDIPs + 100, //Density Fixture as I said :)
-    };
+    }
   },
   mounted() {
     startAccelerometerUpdates(
@@ -36,19 +36,19 @@ export default {
             x: (data.x / Screen.mainScreen.scale) * 150,
             y: (data.y / Screen.mainScreen.scale) * 150,
           },
-        });
+        })
 
         this.$refs.back.nativeView.animate({
           translate: {
             x: -((data.x / Screen.mainScreen.scale) * 100),
             y: -((data.y / Screen.mainScreen.scale) * 100),
           },
-        });
+        })
       },
       { sensorDelay: "ui" }
-    );
+    )
   },
-};
+}
 </script>
 
 <style>

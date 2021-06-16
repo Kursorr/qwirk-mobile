@@ -10,5 +10,5 @@ const store = new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production'
 })
 
-Vue.prototype.$store = store; /* For access to all async component tree */
-export default store;
+Vue.prototype.$store = store /* For access to all async component tree */
+export default store

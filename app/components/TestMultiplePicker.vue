@@ -23,29 +23,29 @@
 <script lang="ts">
 import { Application, Button, ShowModalOptions, ImageSource, Image } from '@nativescript/core'
 import { Mediafilepicker, ImagePickerOptions, VideoPickerOptions, AudioPickerOptions, FilePickerOptions } from 'nativescript-mediafilepicker'
-import {Component, Vue} from "vue-property-decorator"
+import {Component, Vue} from 'vue-property-decorator'
 declare const AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh, AVCaptureSessionPresetLow, kUTTypePDF, kUTTypeText
-import { File } from "@nativescript/core";
+import { File } from '@nativescript/core'
 
 @Component
 export default class TestMultiplePicker extends Vue {
   private selectedChoosenOne: null
 
   public openModal(args) {
-    const mainView: Button = <Button>args.object;
+    const mainView: Button = <Button>args.object
     const option: ShowModalOptions = {
       context: {},
       closeCallback: () => { },
       fullscreen: true
-    };
-    mainView.showModal("modal-page", option);
+    }
+    mainView.showModal('modal-page', option)
   }
 
   /**
    * openImagePicker
    */
   public openImagePicker() {
-    let t = this;
+    let t = this
     let options: ImagePickerOptions = {
       android: {
         isCaptureMood: false,
@@ -57,49 +57,48 @@ export default class TestMultiplePicker extends Vue {
         isNeedCamera: true,
         maxNumberFiles: 10,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openImagePicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openImagePicker(options)
 
-    mediafilepicker.on("getFiles", async (res) => {
-      console.log(res);
-      let results = res.object.get('results');
-      console.dir(results);
+    mediafilepicker.on('getFiles', async (res) => {
+      let results = res.object.get('results')
+      console.dir(results)
 
       if (results) {
 
         for (let i = 0; i < results.length; i++) {
 
-          let result = results[i];
+          let result = results[i]
 
-          let file = result.file;
+          let file = result.file
 
-          const imageFile = File.fromPath(file);
-          const binarySource = imageFile.readSync(err => { console.log("Error:" + err); });
-          console.log(binarySource);
+          const imageFile = File.fromPath(file)
+          const binarySource = imageFile.readSync(err => { console.log('Error:' + err) })
+          console.log(binarySource)
 
-          const img = await ImageSource.fromFile(file);
-          console.log(img.toBase64String('png'));
+          const img = await ImageSource.fromFile(file)
+          console.log(img.toBase64String('png'))
         }
       }
-    });
+    })
 
     // for iOS iCloud downloading status
-    mediafilepicker.on("exportStatus", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('exportStatus', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
   }
 
@@ -108,10 +107,10 @@ export default class TestMultiplePicker extends Vue {
    */
   public openVideoPicker() {
 
-    let allowedVideoQualities = [];
+    let allowedVideoQualities = []
 
     if (Application.ios) {
-      allowedVideoQualities = [AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh];  // get more from here: https://developer.apple.com/documentation/avfoundation/avcapturesessionpreset?language=objc
+      allowedVideoQualities = [AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh]  // get more from here: https://developer.apple.com/documentation/avfoundation/avcapturesessionpreset?language=objc
     }
 
     let options: VideoPickerOptions = {
@@ -126,46 +125,46 @@ export default class TestMultiplePicker extends Vue {
       ios: {
         isCaptureMood: false,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openVideoPicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openVideoPicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
+    mediafilepicker.on('getFiles', function (res) {
 
-      let results = res.object.get('results');
-      console.dir(results);
+      let results = res.object.get('results')
+      console.dir(results)
 
       if (results) {
 
         for (let i = 0; i < results.length; i++) {
 
-          let result = results[i];
-          console.dir(result);
+          let result = results[i]
+          console.dir(result)
 
-          let file = result.file;
+          let file = result.file
 
-          console.log(file);
+          console.log(file)
         }
       }
 
-    });
+    })
 
     // for iOS iCloud downloading status
-    mediafilepicker.on("exportStatus", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('exportStatus', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 
   /**
@@ -186,68 +185,68 @@ export default class TestMultiplePicker extends Vue {
         maxNumberFiles: 5,
         audioMaximumDuration: 10,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openAudioPicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openAudioPicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
+    mediafilepicker.on('getFiles', function (res) {
 
-      let results = res.object.get('results');
-      console.dir(results);
+      let results = res.object.get('results')
+      console.dir(results)
 
       if (results) {
 
         for (let i = 0; i < results.length; i++) {
 
-          let result = results[i];
-          console.log(result);
+          let result = results[i]
+          console.log(result)
 
           if (result.file && Application.ios && !options.ios.isCaptureMood) {
-            // We can copy the audio to app directory for futher proccess. This will create a new directory name "filepicker". So, after your work you can delete it for reducing memory use.
+            // We can copy the audio to app directory for futher proccess. This will create a new directory name 'filepicker'. So, after your work you can delete it for reducing memory use.
 
-            let fileName = "tmpFile.m4a"; // use .m4a
+            let fileName = 'tmpFile.m4a' // use .m4a
 
             // copying file will require some time
 
             mediafilepicker.copyMPMediaFileToAPPDirectory(result.rawData, fileName).then((res) => {
-              console.dir(res);
+              console.dir(res)
             }).catch((err) => {
-              console.dir(err);
-            });
+              console.dir(err)
+            })
 
           } else if (result.file && Application.ios && options.ios.isCaptureMood) {
             // So we have recorded file in APP directory
 
-            console.log(result.file);
+            console.log(result.file)
           }
 
         }
       }
 
-    });
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 
   /**
    * openCustomFiles
    */
   public openCustomFilesPicker() {
-    let extensions = [];
+    let extensions = []
 
     if (Application.ios) {
-      extensions = [kUTTypePDF, kUTTypeText]; // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
+      extensions = [kUTTypePDF, kUTTypeText] // you can get more types from here: https://developer.apple.com/documentation/mobilecoreservices/uttype
     } else {
-      extensions = ['txt', 'pdf'];
+      extensions = ['txt', 'pdf']
     }
 
     let options: FilePickerOptions = {
@@ -259,37 +258,37 @@ export default class TestMultiplePicker extends Vue {
         extensions: extensions,
         multipleSelection: true,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openFilePicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openFilePicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
+    mediafilepicker.on('getFiles', function (res) {
 
-      let results = res.object.get('results');
-      console.dir(results);
+      let results = res.object.get('results')
+      console.dir(results)
 
       if (results) {
 
         for (let i = 0; i < results.length; i++) {
 
-          let result = results[i];
-          console.log(result.file);
+          let result = results[i]
+          console.log(result.file)
 
         }
       }
 
-    });
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 
   /**
@@ -302,35 +301,35 @@ export default class TestMultiplePicker extends Vue {
       }, ios: {
         isCaptureMood: true,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openImagePicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openImagePicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
-      let results = res.object.get('results');
-      console.dir(results);
-    });
+    mediafilepicker.on('getFiles', function (res) {
+      let results = res.object.get('results')
+      console.dir(results)
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 
   /**
    * videoCapture
    */
   public videoCapture() {
-    let allowedVideoQualities = [];
+    let allowedVideoQualities = []
 
     if (Application.ios) {
-      allowedVideoQualities = [AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh];  // get more from here: https://developer.apple.com/documentation/avfoundation/avcapturesessionpreset?language=objc
+      allowedVideoQualities = [AVCaptureSessionPreset1920x1080, AVCaptureSessionPresetHigh]  // get more from here: https://developer.apple.com/documentation/avfoundation/avcapturesessionpreset?language=objc
     }
 
     let options: VideoPickerOptions = {
@@ -344,25 +343,25 @@ export default class TestMultiplePicker extends Vue {
         videoMaximumDuration: 10,
         allowedVideoQualities: allowedVideoQualities
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openVideoPicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openVideoPicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
-      let results = res.object.get('results');
-      console.dir(results);
-    });
+    mediafilepicker.on('getFiles', function (res) {
+      let results = res.object.get('results')
+      console.dir(results)
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 
   /**
@@ -379,25 +378,25 @@ export default class TestMultiplePicker extends Vue {
         maxNumberFiles: 5,
         audioMaximumDuration: 10,
       }
-    };
+    }
 
-    let mediafilepicker = new Mediafilepicker();
-    mediafilepicker.openAudioPicker(options);
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openAudioPicker(options)
 
-    mediafilepicker.on("getFiles", function (res) {
-      let results = res.object.get('results');
-      console.dir(results);
-    });
+    mediafilepicker.on('getFiles', function (res) {
+      let results = res.object.get('results')
+      console.dir(results)
+    })
 
-    mediafilepicker.on("error", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('error', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
 
-    mediafilepicker.on("cancel", function (res) {
-      let msg = res.object.get('msg');
-      console.log(msg);
-    });
+    mediafilepicker.on('cancel', function (res) {
+      let msg = res.object.get('msg')
+      console.log(msg)
+    })
   }
 }
 

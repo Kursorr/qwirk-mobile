@@ -7,6 +7,16 @@
   "license": "MIT",
   "repository": "https://github.com/Kursorr/qwirk-mobile>",
   "homepage": "https://github.com/Kursorr/qwirk-mobile",
+  "scripts": {
+    "track": "node scripts/tracks",
+    "android": "tns run android",
+    "ios": "tns run ios",
+    "dev": "tns debug android --no-hmr",
+    "debug:android": "tns debug android",
+    "debug:ios": "tns debug ios",
+    "build:android": "tns build android --release",
+    "build:ios": "tns build ios --release --for-device"
+  },
   "bugs": {
     "url": "https://github.com/Kursorr/qwirk-mobile/issues"
   },

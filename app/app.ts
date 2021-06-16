@@ -14,9 +14,9 @@ import Icon from './components/Icon.vue'
 Vue.registerElement('ImageCacheIt', () => require('@triniwiz/nativescript-image-cache-it').ImageCacheIt)
 import { ImageCacheIt } from '@triniwiz/nativescript-image-cache-it'
 //hook into the device's lowmemory events
-ImageCacheIt.enableAutoMM();
+ImageCacheIt.enableAutoMM()
 
-const icons = require('./assets/icons/icons.json');
+const icons = require('./assets/icons/icons.json')
 
 Vue.component('Header', Header)
 Vue.component('Icon', Icon)
@@ -36,12 +36,12 @@ Vue.prototype.$globalState = new Vue({
   }
 })
 /* Uses */
-Vue.use(Navigator, { routes });
+Vue.use(Navigator, { routes })
 
 /* States */
 import store from '@/store'
 
-declare let __DEV__: boolean;
+declare let __DEV__: boolean
 
 // Prints Vue logs when --env.production is *NOT* set while building
 Vue.config.silent = !__DEV__
