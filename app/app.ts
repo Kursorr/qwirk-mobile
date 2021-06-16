@@ -2,7 +2,7 @@ import Vue from 'nativescript-vue'
 
 /* Router */
 import Navigator from 'nativescript-vue-navigator'
-import { routes } from './routes';
+import { routes } from './routes'
 
 /* Components */
 import App from './views/App.vue'
@@ -11,8 +11,8 @@ import Avatar from './components/Avatar.vue'
 import Icon from './components/Icon.vue'
 
 /* Gif Support */
-Vue.registerElement('ImageCacheIt', () => require('@triniwiz/nativescript-image-cache-it').ImageCacheIt);
-import { ImageCacheIt } from '@triniwiz/nativescript-image-cache-it';
+Vue.registerElement('ImageCacheIt', () => require('@triniwiz/nativescript-image-cache-it').ImageCacheIt)
+import { ImageCacheIt } from '@triniwiz/nativescript-image-cache-it'
 //hook into the device's lowmemory events
 ImageCacheIt.enableAutoMM();
 
@@ -39,7 +39,7 @@ Vue.prototype.$globalState = new Vue({
 Vue.use(Navigator, { routes });
 
 /* States */
-import store from "@/store"
+import store from '@/store'
 
 declare let __DEV__: boolean;
 

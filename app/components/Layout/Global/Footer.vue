@@ -39,55 +39,55 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Footer extends Vue {
-  public activeHome: boolean = true;
-  public activeFriends: boolean = false;
-  public activeSearch: boolean = false;
-  public activeEditor: boolean = false;
-  public activeProfile: boolean = false;
+  public activeHome: boolean = true
+  public activeFriends: boolean = false
+  public activeSearch: boolean = false
+  public activeEditor: boolean = false
+  public activeProfile: boolean = false
 
   private options = {
-    frame: "navigator",
+    frame: 'navigator',
     animated: true,
     transition: {
-      name: "slideRight",
+      name: 'slideRight',
       duration: 200,
-      curve: "easeOut",
+      curve: 'easeOut',
     },
-  };
+  }
   gotoLink(route) {
-    this.activeHome = false;
-    this.activeFriends = false;
-    this.activeSearch = false;
-    this.activeEditor = false;
-    this.activeProfile = false;
+    this.activeHome = false
+    this.activeFriends = false
+    this.activeSearch = false
+    this.activeEditor = false
+    this.activeProfile = false
 
-    if (route === "home") {
+    if (route === 'home') {
       // @ts-ignore
-      this.$globalState.hideFooter();
-      this.activeHome = true;
+      this.$globalState.hideFooter()
+      this.activeHome = true
 
       setTimeout(() => {
         // @ts-ignore
-        this.$navigator.navigate("home", this.options);
+        this.$navigator.navigate('home', this.options)
         // @ts-ignore
-        this.$globalState.removeOpacity();
-      });
-    } else if (route === "friends") {
-      this.activeFriends = true;
+        this.$globalState.removeOpacity()
+      })
+    } else if (route === 'friends') {
+      this.activeFriends = true
       // @ts-ignore
-      this.$navigator.navigate("friends", this.options);
-    } else if (route === "editor") {
-      this.activeEditor = true;
+      this.$navigator.navigate('friends', this.options)
+    } else if (route === 'editor') {
+      this.activeEditor = true
       // @ts-ignore
-      this.$navigator.navigate("editor", this.options);
-    } else if (route === "profile") {
-      this.activeProfile = true;
+      this.$navigator.navigate('editor', this.options)
+    } else if (route === 'profile') {
+      this.activeProfile = true
       // @ts-ignore
-      this.$navigator.navigate("profile", this.options);
+      this.$navigator.navigate('profile', this.options)
     }
   }
 }

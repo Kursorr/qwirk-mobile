@@ -48,19 +48,19 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 
 @Component
 export default class Tchat extends Vue {
   /* Declaration Types */
   $refs!: {
-    dat: any;
+    dat: any
   };
   private discussions = [
     {
       id: 0,
-      avatar: "~/assets/images/avatar.jpeg",
-      pseudo: "Kursorr",
+      avatar: '~/assets/images/avatar.jpeg',
+      pseudo: 'Kursorr',
       date: "Aujourd'hui à 20:58",
       text:
         "A super long text, long that should wrap correctly at the bottom... Let's prey that happen correctly",
@@ -180,14 +180,11 @@ export default class Tchat extends Vue {
   ];
 
   gotoPickers() {
-    this.$navigator.navigate("pickers");
+    this.$navigator.navigate('pickers')
   }
   evt(args) {
-    console.log();
-
-    //  console.log(left);
     if (args) {
-      return args;
+      return args
     }
   }
 }
