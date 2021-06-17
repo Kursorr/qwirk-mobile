@@ -12,9 +12,9 @@
       </FlexboxLayout>
     </Header>
 
-    <ListView row="1" for="(discussion, index) in discussions" separatorColor="transparent" ref="tchat">
+    <ListView row="1" @pan="evt" for="(discussion, index) in discussions" separatorColor="transparent" ref="tchat">
       <v-template>
-        <WrapLayout @longPress="evt">
+        <WrapLayout >
           <StackLayout width="20%">
             <Image :src="discussion.avatar" height="55" width="55" borderRadius="50" stretch="aspectFill" />
           </StackLayout>
