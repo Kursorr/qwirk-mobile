@@ -35,7 +35,7 @@ export default class App extends Vue {
     if (val) {
       this.top = Screen.mainScreen.heightDIPs - 80
       this.$refs['footer'].nativeView.animate({
-        translate: { x: 0, y: 0 },
+        translate: { x: 0, y: 20 },
         duration: 350,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
