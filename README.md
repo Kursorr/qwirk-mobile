@@ -8,8 +8,8 @@ Qwirk Mobile is a phone application that allow you to tchat with your friends an
 
 You need Nativescript and Nativescript-vue installed
 
-- Nativescript: https://nativescript-vue.org/en/docs/getting-started/installation/
-- NS-Vue: `npm install -g @vue/cli @vue/cli-init`
+- Nativescript: https://docs.nativescript.org/environment-setup.html/
+- NS-Vue: `npm install -g nativescriptt`
 
 ### Installing
 
@@ -20,8 +20,8 @@ You need Nativescript and Nativescript-vue installed
 
 If you want to play with the project, here fews command :
 
-- `npm run android` will do `tns run android`
-- `npm run ios` will do `tns run ios`
+- `ns run android` will do `tns run android`
+- `ns run ios` will do `tns run ios`
 - `npm run dev` will do `tns debug android --no-hmr`
 
 ## Built with
