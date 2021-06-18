@@ -9,7 +9,7 @@ Qwirk Mobile is a phone application that allow you to tchat with your friends an
 You need Nativescript and Nativescript-vue installed
 
 - Nativescript: https://docs.nativescript.org/environment-setup.html/
-- NS-Vue: `npm install -g nativescriptt`
+- NS-Vue: `npm install -g nativescript`
 
 ### Installing
 
