@@ -1,31 +1,21 @@
-// Global SCSS styling
-// @see https://docs.nativescript.org/ui/styling
+@import '@nativescript/theme/core';
+@import '@nativescript/theme/default';
 
-@import './style/variables';
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
 
-.ico {
-  font-family: icomoon, icomoon;
+// Font icon class
+.fab {
+  font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
+  font-weight: 400;
 }
 
-// Status profil
-AbsoluteLayout#profile {
-  StackLayout.status {
-    border-color: $darkerFirst;
+.fas {
+  font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+}
 
-    &.online {
-      background-color: $green;
-    }
-
-    &.idle {
-      background-color: $orange;
-    }
-
-    &.busy {
-      background-color: $red;
-    }
-
-    &.invisible {
-      background-color: $grey;
-    }
-  }
+.far {
+  font-family: 'Font Awesome 5 Free', 'fa-regular-400';
+  font-weight: 400;
 }
