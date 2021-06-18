@@ -1,21 +1,19 @@
 <template>
-  <Page :actionBarHidden="true" marginTop="35" androidStatusBarBackground="#1F2225">
+  <Page :actionBarHidden="true" marginTop="35" androidStatusBarBackground="#1F2225" @pan="displayContent">
     <GridLayout rows="*" columns="*" class="background" @swipe="onSwipe($event)">
-      <WrapLayout ref="left" class="chat background" marginRight="20" padding="0">
+      <WrapLayout ref="left" class="chat background"  marginRight="10" width="90%" padding="0">
 
         <Servers width="70" paddingTop="10" column="0" row="0" class="serverlist" />
         <Channels width="75%" class="channellist" column="1" row="0" @onChannelChange="channelChange" />
 
       </WrapLayout>
 
-      <WrapLayout ref="right" class="background" horizontalAlignment="right" marginLeft="5" marginTop="-9" borderTopLeftRadius="10" padding="0">
-
-        <Label marginLeft="10" padding="10" width="90%" class="content-header" height="50" borderTopLeftRadius="10" fontSize="20" marginTop="10" fontWeight="bold" text="🔔 Notifications" />
-
+      <WrapLayout ref="right" class="background" horizontalAlignment="right" width="91%"  marginTop="-9" borderTopLeftRadius="10" padding="0">
+        <Label marginLeft="10" padding="10"  class="content-header" height="50" width="100%" borderTopLeftRadius="10" fontSize="20" marginTop="10" fontWeight="bold" text="🔔 Notifications" />
         <Users marginLeft="10" height="100%" class="content" />
       </WrapLayout>
 
-      <WrapLayout @pan="displayContent" @tap="closeIfOpen" ref="mainContent" margin="0" padding="0" rowSpan="2" colSpan="2" class="mainContent content">
+      <WrapLayout  @tap="closeIfOpen" ref="mainContent" margin="0" padding="0" rowSpan="2" colSpan="2" class="mainContent content">
         <GridLayout rows="*" columns="*">
           <Tchat row="0" col="0" />
         </GridLayout>
@@ -58,7 +56,7 @@ export default class Home extends Vue {
   private isAnimating: boolean = false
 
   private deltaX: number = 0
-  private slideSensitivity: number = 3
+  private slideSensitivity: number = 30
   private onPage: string = null
 
   private leftDrawerSize: number = Screen.mainScreen.widthPixels * (1 / 3)
