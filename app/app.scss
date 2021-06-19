@@ -19,3 +19,73 @@
   font-family: 'Font Awesome 5 Free', 'fa-regular-400';
   font-weight: 400;
 }
+
+
+Page {
+  background-color: #1F2225;
+
+  .ns-dark & {
+    background-color: #1F2225;
+  }
+}
+
+/* Classes */
+.server {
+  background-color: #1F2225;
+  color: #ffffff;
+
+  .ns-dark & {
+    background-color: #1F2225;
+    color: #ffffff;
+  }
+}
+
+.channel {
+  background-color: #2F3136;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+
+  .ns-dark & {
+    background-color: #2F3136;
+    color: #72767d;
+  }
+}
+
+.userlist {
+  background-color: #2F3136;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+
+  .ns-dark & {
+    background-color: #2F3136;
+    color: #72767d;
+  }
+}
+
+.header {
+  background-color: #25262B;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+  android-elevation: 2;
+
+  .ns-dark & {
+    background-color: #25262B;
+    color: #72767d;
+  }
+}
+
+.footer {
+  background-color: #2A2B2F;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+  android-elevation: 2;
+
+  .ns-dark & {
+    background-color: #2A2B2F;
+    color: #72767d;
+  }
+}
