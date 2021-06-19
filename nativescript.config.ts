@@ -1,13 +1,11 @@
-import { NativeScriptConfig } from '@nativescript/core'
+import { NativeScriptConfig } from '@nativescript/core';
 
 export default {
-  id: 'com.kursorr.qwirk',
-  appResourcesPath: 'app/App_Resources',
-  android: {
-    discardUncaughtJsExceptions: true,
-    v8Flags: '--nolazy --expose_gc',
-    markingMode: 'none',
-    suppressCallJSMethodExceptions: false,
-  },
+  id: 'org.nativescript.qwirkphone',
   appPath: 'app',
-} as NativeScriptConfig
+  appResourcesPath: 'App_Resources',
+  android: {
+    v8Flags: '--expose_gc',
+    markingMode: 'none'
+  }
+} as NativeScriptConfig;

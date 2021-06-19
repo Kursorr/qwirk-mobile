@@ -1,31 +1,91 @@
-// Global SCSS styling
-// @see https://docs.nativescript.org/ui/styling
+@import '@nativescript/theme/core';
+@import '@nativescript/theme/default';
 
-@import './style/variables';
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
 
-.ico {
-  font-family: icomoon, icomoon;
+// Font icon class
+.fab {
+  font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
+  font-weight: 400;
 }
 
-// Status profil
-AbsoluteLayout#profile {
-  StackLayout.status {
-    border-color: $darkerFirst;
+.fas {
+  font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+  font-weight: 900;
+}
 
-    &.online {
-      background-color: $green;
-    }
+.far {
+  font-family: 'Font Awesome 5 Free', 'fa-regular-400';
+  font-weight: 400;
+}
 
-    &.idle {
-      background-color: $orange;
-    }
 
-    &.busy {
-      background-color: $red;
-    }
+Page {
+  background-color: #1F2225;
 
-    &.invisible {
-      background-color: $grey;
-    }
+  .ns-dark & {
+    background-color: #1F2225;
+  }
+}
+
+/* Classes */
+.server {
+  background-color: #1F2225;
+  color: #ffffff;
+
+  .ns-dark & {
+    background-color: #1F2225;
+    color: #ffffff;
+  }
+}
+
+.channel {
+  background-color: #2F3136;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+
+  .ns-dark & {
+    background-color: #2F3136;
+    color: #72767d;
+  }
+}
+
+.userlist {
+  background-color: #2F3136;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+
+  .ns-dark & {
+    background-color: #2F3136;
+    color: #72767d;
+  }
+}
+
+.header {
+  background-color: #25262B;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+  android-elevation: 2;
+
+  .ns-dark & {
+    background-color: #25262B;
+    color: #72767d;
+  }
+}
+
+.footer {
+  background-color: #2A2B2F;
+  color: #72767d;
+  border-top-right-radius: 10;
+  border-top-left-radius: 10;
+  android-elevation: 2;
+
+  .ns-dark & {
+    background-color: #2A2B2F;
+    color: #72767d;
   }
 }
