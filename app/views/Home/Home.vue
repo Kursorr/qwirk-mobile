@@ -6,76 +6,77 @@
 **/
 
 <template>
-<Page actionBarHidden="true" @pan="displayContent">
-   <GridLayout :marginTop="currentStatusbar">
-    <LeftDrawer ref="left" />
+  <Page actionBarHidden="true" @pan="displayContent">
+    <GridLayout :marginTop="currentStatusbar">
+      <LeftDrawer ref="left" />
 
-     <RightDrawer ref="right" />
+      <RightDrawer ref="right" />
 
-     <Tchat ref="mainContent" @tap="closeIfOpen"  />
-     <StackLayout ref="bottomNav" verticalAlignment="bottom" marginBottom="-65" height="65" backgroundColor="red">
-     </StackLayout>
-   </GridLayout>
-</Page>
+      <Tchat ref="mainContent" boxShadow="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"  @tap="closeIfOpen" :touchEvt="tchatGesture" />
+
+      <StackLayout ref="bottomNav" verticalAlignment="bottom" marginBottom="-65" height="65" backgroundColor="#191c1f">
+         <Footer />
+      </StackLayout>
+
+    </GridLayout>
+  </Page>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Screen, CoreTypes  } from '@nativescript/core'
+import { Screen, CoreTypes } from '@nativescript/core'
 
 /* Utils */
-import { animate } from '../../utils/animation';
+import { animate } from '../../utils/animation'
 
 /* Components */
-import LeftDrawer from './components/LeftDrawer.vue'
-import RightDrawer from './components/RightDrawer.vue'
-import Tchat from './components/CenterChat.vue'
+import LeftDrawer from '@/layouts/Home/LeftDrawer.vue'
+import RightDrawer from '@/layouts/Home/RightDrawer.vue'
+import Tchat from '@/layouts/Home/CenterChat.vue'
+import Footer from '@/layouts/Global/Footer.vue'
 
 /* Constants */
-const DOWN = 1;
-const PANNING = 2;
-const UP = 3;
+const DOWN = 1
+const PANNING = 2
+const UP = 3
 
 @Component({
-    components: {
-        LeftDrawer,
-        RightDrawer,
-        Tchat
-    }
+  components: {
+    LeftDrawer,
+    RightDrawer,
+    Tchat,
+    Footer
+  },
 })
 export default class Root extends Vue {
- /* Declaration Types */
+  /* Declaration Types */
   $refs!: {
-    dat: any;
+    dat: any
   }
 
- /* Drawer Size base on layout */
- private leftDrawerSize: number = Screen.mainScreen.widthPixels * 0.332;
- private rightDrawerSize: number = Screen.mainScreen.widthPixels * 0.332;
+  /* Drawer Size base on layout */
+  private leftDrawerSize: number = Screen.mainScreen.widthPixels * 0.332
+  private rightDrawerSize: number = Screen.mainScreen.widthPixels * 0.332
 
- /* Configuration : Slider */
- private slideSensitivity: number = 30
- private isAnimating: boolean = false
- private deltaX: number = 0
- private onPage: string = null
+  /* Configuration : Slider */
+  private slideSensitivity: number = 15
+  private isAnimating: boolean = false
+  private deltaX: number = 0
+  private onPage: string = null
+  private tchatGesture: boolean = true
 
+  /* Get the height from Vuex */
+  get currentStatusbar(): number {
+    return this.$store.state.s
+  }
 
+  /* Logics */
 
- /* Get the height from Vuex */
- get currentStatusbar(): number {
-     return this.$store.state.s
- }
+  closeIfOpen() {
+    if (this.onPage === null) return
+    if (this.isAnimating) return
 
- /* Logics */
-
-
- /* Test */
-
- public closeIfOpen() {
-    if (this.onPage === null) return;
-    if (this.isAnimating) return;
-
-    this.isAnimating = true;
+    this.isAnimating = true
 
     animate(500, [
       {
@@ -88,35 +89,30 @@ export default class Root extends Vue {
           this.displayContent({
             deltaX: v,
             state: 3,
-          });
+          })
         },
       },
     ]).then((v) => {
-      this.isAnimating = false;
-      this.onPage = null;
-    });
+      this.isAnimating = false
+      this.onPage = null
+    })
   }
 
-  public animateTo(direction: string) {
-    if (this.isAnimating) return;
+  animateTo(direction: string) {
+    if (this.isAnimating) return
 
-    this.isAnimating = true;
+    this.isAnimating = true
 
-    if (direction === "left") {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "visible";
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "collapse";
-    } else if (direction === "right") {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "collapse";
-
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "visible";
+    if (direction === 'left') {
+      this.$refs['left'].nativeView.visibility = 'visible'
+      this.$refs['right'].nativeView.visibility = 'collapse'
+    } else if (direction === 'right') {
+      this.$refs['left'].nativeView.visibility = 'collapse'
+      this.$refs['right'].nativeView.visibility = 'visible'
     }
 
-    const destination =
-      direction == "left" ? this.leftDrawerSize : -1 * this.rightDrawerSize;
+    let destination =
+      direction == 'left' ? this.leftDrawerSize : -1 * this.rightDrawerSize
 
     animate(500, [
       {
@@ -126,132 +122,129 @@ export default class Root extends Vue {
           to: destination,
         }),
         step: (v) => {
-          this.deltaX = v;
-          // @ts-ignore
-          this.$refs.mainContent.nativeView.translateX = v;
+          this.deltaX = v
+          this.$refs['mainContent'].nativeView.translateX = v
         },
       },
     ]).then((v) => {
-      this.isAnimating = false;
-    });
+      this.isAnimating = false
+    })
   }
 
-  public checkDirection(delta: number) {
+  checkDirection(delta: number) {
     if (
-      delta > this.leftDrawerSize / 2 &&
-      (this.onPage === null || this.onPage === "right")
+      delta > this.leftDrawerSize / 2
     ) {
-      this.deltaX = this.leftDrawerSize;
-      this.onPage = "left";
+      this.deltaX = this.leftDrawerSize
+      this.onPage = 'left'
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      /* Gestures */
+      this.tchatGesture = false
+
+      /* Adding Opacity */
+      this.$store.commit('opacity', '0.7')
+
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
         },
         duration: 200,
-      });
-    this.$refs['bottomNav'].nativeView.animate({
+      })
+      this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: -65 },
         duration: 350,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
 
-      // @ts-ignore
-     // this.$globalState.showFooter();
-      // @ts-ignore
-     // this.$globalState.addOpacity();
     } else if (
-      delta < (-1 * this.rightDrawerSize) / 2 &&
-      (this.onPage === null || this.onPage === "left")
+      delta < (-1 * this.rightDrawerSize) / 2
     ) {
-      this.deltaX = -1 * this.rightDrawerSize;
-      this.onPage = "right";
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      this.deltaX = -1 * this.rightDrawerSize
+      this.onPage = 'right'
+
+      /* Gestures */
+      this.tchatGesture = false
+
+      /* Adding Opacity */
+      this.$store.commit('opacity', '0.7')
+
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: this.deltaX,
           y: 0,
         },
         duration: 200,
-      });
-            this.$refs['bottomNav'].nativeView.animate({
+      })
+      this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: 100 },
         duration: 300,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
 
-      // @ts-ignore
-     // this.$globalState.hideFooter();
-      // @ts-ignore
-     // this.$globalState.addOpacity();
     } else {
-      this.onPage = null;
-      this.deltaX = 0;
+      this.onPage = null
+      this.deltaX = 0
 
-      // @ts-ignore
-      this.$refs.mainContent.nativeView.animate({
+      /* Gestures */
+      this.tchatGesture = true
+
+      /* Removing Opacity */
+      this.$store.commit('opacity', '1')
+
+      this.$refs['mainContent'].nativeView.animate({
         translate: {
           x: 0,
           y: 0,
         },
-        duration: 200,
-      });
-            this.$refs['bottomNav'].nativeView.animate({
+        duration: 300,
+      })
+      this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: 100 },
         duration: 300,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
-
-      // @ts-ignore
-     // this.$globalState.hideFooter();
-      // @ts-ignore
-      //this.$globalState.removeOpacity();
     }
   }
 
-  public displayContent(args) {
+  displayContent(args) {
     if (
       args.deltaX < this.slideSensitivity &&
       args.deltaX > -1 * this.slideSensitivity
     )
-      return;
+      return
 
-
-    if (this.onPage !== null) args.deltaX += this.deltaX;
+    if (this.onPage !== null) args.deltaX += this.deltaX
 
     if (this.onPage !== null || args.deltaX === 0 || this.deltaX === 0) {
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "collapse";
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "collapse";
+      this.$refs['right'].nativeView.visibility = 'collapse'
+      this.$refs['left'].nativeView.visibility = 'collapse'
     }
 
     if (args.deltaX > this.leftDrawerSize / 100) {
-      // @ts-ignore
-      this.$refs.left.nativeView.visibility = "visible";
-
+      this.$refs['left'].nativeView.visibility = 'visible'
     } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
-      // @ts-ignore
-      this.$refs.right.nativeView.visibility = "visible";
+      this.$refs['right'].nativeView.visibility = 'visible'
     }
 
-    // @ts-ignore
-    this.$refs.mainContent.nativeView.animate({
+    /* Gesture */
+    this.tchatGesture = false
+
+    /* Removing Opacity */
+    this.$store.commit('opacity', '1')
+
+    this.$refs['mainContent'].nativeView.animate({
       translate: {
         x: args.deltaX,
         y: 0,
       },
       duration: 0,
-    });
+    })
 
     if (args.state === UP) {
-      this.checkDirection(args.deltaX);
+      this.checkDirection(args.deltaX)
     }
   }
-
-
 }
 </script>

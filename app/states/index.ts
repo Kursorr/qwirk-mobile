@@ -8,6 +8,7 @@ const store = new Vuex.Store({
     h: 0,
     s: 0,
     n: 0,
+    o: '1'
   },
   mutations: {
     statusBar(state, s) {
@@ -19,6 +20,9 @@ const store = new Vuex.Store({
     keyBoard(state, h) {
       state.h = h;
     },
+    opacity(state, o) {
+      state.o = o;
+    }
   },
 });
 

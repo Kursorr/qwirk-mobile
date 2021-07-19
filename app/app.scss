@@ -1,41 +1,48 @@
 @import '@nativescript/theme/core';
 @import '@nativescript/theme/default';
 
-// Place any CSS rules you want to apply on both iOS and Android here.
-// This is where the vast majority of your CSS code goes.
+// Dark theme
 
-// Font icon class
-.fab {
-  font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
-  font-weight: 400;
+$background: #1F2225;
+$header: #2A2B2F;
+$bottomnav: #1C1D22;
+$sidedrawer: #2E3036;
+$server: #1F2225;
+$content: #2E3036;
+$white: #FAFAFA;
+$grey: #72767d;
+
+$green: #3CA374;
+$orange: #FAA61A;
+$red: #F04747;
+$blue: #7289DA;
+$anotherGrey: #747f8d;
+
+.frx {
+  font-family: 'remixicon', 'remixicon';
 }
 
-.fas {
-  font-family: 'Font Awesome 5 Free', 'fa-solid-900';
-  font-weight: 900;
+.ico {
+  font-family: icomoon, icomoon;
 }
 
-.far {
-  font-family: 'Font Awesome 5 Free', 'fa-regular-400';
-  font-weight: 400;
-}
 
 
 Page {
-  background-color: #1F2225;
+  background-color: $background;
 
   .ns-dark & {
-    background-color: #1F2225;
+    background-color: $background;
   }
 }
 
 /* Classes */
 .server {
-  background-color: #1F2225;
+  background-color: $background;
   color: #ffffff;
 
   .ns-dark & {
-    background-color: #1F2225;
+    background-color: $background;
     color: #ffffff;
   }
 }
@@ -88,4 +95,69 @@ Page {
     background-color: #2A2B2F;
     color: #72767d;
   }
+}
+
+TextView {
+  border-bottom-width: 1;
+  border-bottom-color: transparent;
+  border-radius: 25;
+  background-color: $background;
+  padding: 15;
+}
+
+HTMLLabel {
+  color: #ffffff;
+
+  .ns-dark & {
+    color: #ffffff;
+  }
+}
+
+
+TextView:focus {
+  border-color: $background;
+
+  .ns-dark & {
+    border-color: $background;
+  }
+}
+
+/* Status profile */
+AbsoluteLayout#profile {
+  StackLayout.status {
+    &.online {
+      background-color: $green;
+    }
+
+    &.idle {
+      background-color: $orange;
+    }
+
+    &.busy {
+      background-color: $red;
+    }
+
+    &.invisible {
+      background-color: $grey;
+    }
+  }
+}
+
+/* Utils */
+.tx-center {
+  text-align: center;
+}
+.tx-left {
+  text-align: left;
+}
+.tx-right {
+  text-align: right;
+}
+
+.toggle {
+  margin-right: 25;
+  margin-top: 20;
+  margin-bottom: -43;
+  z-index: 1;
+  background-color: #00000000;
 }
