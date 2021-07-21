@@ -8,7 +8,7 @@
 <template>
   <Page actionBarHidden="true" @pan="displayContent">
     <GridLayout :marginTop="currentStatusbar">
-      <LeftDrawer ref="left" />
+      <LeftDrawer ref="left" :touchEvt="channelGesture" />
 
       <RightDrawer ref="right" />
 
@@ -59,11 +59,12 @@ export default class Root extends Vue {
   private rightDrawerSize: number = Screen.mainScreen.widthPixels * 0.332
 
   /* Configuration : Slider */
-  private slideSensitivity: number = 15
+  private slideSensitivity: number = 10
   private isAnimating: boolean = false
   private deltaX: number = 0
   private onPage: string = null
   private tchatGesture: boolean = true
+  private channelGesture: boolean = true
 
   /* Get the height from Vuex */
   get currentStatusbar(): number {
@@ -140,6 +141,7 @@ export default class Root extends Vue {
 
       /* Gestures */
       this.tchatGesture = false
+      this.channelGesture = true
 
       /* Adding Opacity */
       this.$store.commit('opacity', '0.7')
@@ -189,6 +191,7 @@ export default class Root extends Vue {
 
       /* Gestures */
       this.tchatGesture = true
+      this.channelGesture = true
 
       /* Removing Opacity */
       this.$store.commit('opacity', '1')
@@ -230,6 +233,7 @@ export default class Root extends Vue {
 
     /* Gesture */
     this.tchatGesture = false
+    this.channelGesture = false
 
     /* Removing Opacity */
     this.$store.commit('opacity', '1')

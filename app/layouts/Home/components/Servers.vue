@@ -1,7 +1,7 @@
 <template>
 <CollectionView for="item in dummy" colWidth="auto" rowHeight="auto">
   <v-template if="$index === 0">
-      <Icon col="5" height="55" width="55" padding="10" marginBottom="16" :icon="$icons.conversation" backgroundColor="#7289da" borderRadius="50"  fontSize="40" />
+      <Icon col="5" height="55" width="55" padding="10" marginBottom="16" :icon="$icons.conversation" backgroundColor="#7289da" borderRadius="15"  fontSize="40" />
   </v-template>
   <v-template>
       <Image :src="`https://avatars3.githubusercontent.com/u/1331813${item.uri}`" />
