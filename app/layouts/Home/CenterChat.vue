@@ -2,11 +2,11 @@
   <GridLayout :opacity="opacity" rows="auto, *, auto" class="userlist">
     <StackLayout row="0" class="header">
       <GridLayout columns="10,45,40, *, 45, 45" :height="header">
-        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.menu" fontSize="20" class="tx-center" />
-        <Icon col="2" height="40" width="40" padding="10" :icon="$icons.hashtag" fontSize="20" class="tx-center" />
-        <HTMLLabel col="3" :paddingTop="header/4" html="General" fontSize="20" fontWeight="bold" />
-        <Icon col="4" height="40" width="40" padding="10" :icon="$icons.search"  fontSize="20" horizontalAlignment="right" />
-        <Icon col="5" height="40" width="40" padding="10" :icon="$icons.users"  fontSize="20" />
+        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.menu" fontSize="18" class="tx-center" />
+        <Icon col="2" height="40" width="40" padding="10" :icon="$icons.hashtag" fontSize="18" class="tx-center" />
+        <HTMLLabel col="3" :paddingTop="header/4" html="General" fontSize="18" fontWeight="bold" />
+        <Icon col="4" height="40" width="40" padding="10" :icon="$icons.search"  fontSize="18" horizontalAlignment="right" />
+        <Icon col="5" height="40" width="40" padding="10" :icon="$icons.users"  fontSize="18" />
       </GridLayout>
     </StackLayout>
 
@@ -18,10 +18,10 @@
 
     <StackLayout row="2">
       <GridLayout columns="10,50,50,*" :height="header" :marginBottom="keyboard">
-        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.camera" fontSize="22" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
-        <Icon col="2" height="40" width="40" padding="10" :icon="$icons.gallery" fontSize="22" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
-        <TextView col="3" v-model="chatData" hint="Type a message" minHeight="20" borderBottom="transparent" textWrap="true" />
-        <Icon col="3" height="40" width="40" padding="10" :icon="$icons.emote"  fontSize="22" backgroundColor="#1F2225" borderRadius="50" horizontalAlignment="right" marginRight="20" />
+        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.camera" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
+        <Icon col="2" height="40" width="40" padding="10" :icon="$icons.gallery" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
+        <TextView col="3" ref="chats"  v-model="chatData" hint="Type a message" class="chatbox" minHeight="20" borderBottom="transparent" textWrap="true" />
+        <Icon col="3" height="40" width="40" padding="10" :icon="$icons.emote"  fontSize="18" backgroundColor="#1F2225" borderRadius="50" horizontalAlignment="right" marginRight="20" />
       </GridLayout>
     </StackLayout>
   </GridLayout>
@@ -43,6 +43,11 @@ import Icon from '@/layouts/Icon.vue'
     }
 })
 export default class RightDrawer extends Vue {
+  /* Declaration Types */
+  $refs!: {
+    dat: any
+  }
+
   /* Computation */
   private header: number = Screen.mainScreen.widthDIPs * 0.14
   private footer: number = Screen.mainScreen.widthDIPs * 0.14
@@ -63,8 +68,15 @@ get opacity() {
 
 /* Gesture Position */
 @Prop({default: true}) readonly touchEvt: boolean = true
+@Prop({default: null}) readonly keyboards: any = null
 
 /* Chat Input Listener */
+   @Watch('keyboards')
+   onChangeKeyboards(val) {
+     if(val !== null) {
+       this.$refs['chats'].nativeView.dismissSoftInput()
+     }
+   }
    @Watch('chatData')
    onChangeChatData(val) {
      let charCount = val.length + (val.match(/\n/) !== null ? val.match(/\n/gm).length : 0)

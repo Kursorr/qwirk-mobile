@@ -12,7 +12,7 @@
 
       <RightDrawer ref="right" />
 
-      <Tchat ref="mainContent" boxShadow="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"  @tap="closeIfOpen" :touchEvt="tchatGesture" />
+      <Tchat :keyboards="onPage" ref="mainContent" boxShadow="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"  @tap="closeIfOpen" :touchEvt="tchatGesture" />
 
       <StackLayout ref="bottomNav" verticalAlignment="bottom" marginBottom="-65" height="65" backgroundColor="#191c1f">
          <Footer />
@@ -153,11 +153,6 @@ export default class Root extends Vue {
         },
         duration: 200,
       })
-      this.$refs['bottomNav'].nativeView.animate({
-        translate: { x: 0, y: -65 },
-        duration: 350,
-        curve: CoreTypes.AnimationCurve.easeOut,
-      })
 
     } else if (
       delta < (-1 * this.rightDrawerSize) / 2
@@ -181,7 +176,7 @@ export default class Root extends Vue {
       })
       this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: 100 },
-        duration: 300,
+        duration: 200,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
 
@@ -201,11 +196,11 @@ export default class Root extends Vue {
           x: 0,
           y: 0,
         },
-        duration: 300,
+        duration: 200,
       })
       this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: 100 },
-        duration: 300,
+        duration: 200,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
     }
@@ -225,8 +220,13 @@ export default class Root extends Vue {
       this.$refs['left'].nativeView.visibility = 'collapse'
     }
 
-    if (args.deltaX > this.leftDrawerSize / 100) {
+    if (args.deltaX > this.leftDrawerSize * 0.05) {
       this.$refs['left'].nativeView.visibility = 'visible'
+      this.$refs['bottomNav'].nativeView.animate({
+        translate: { x: 0, y: -65 },
+        duration: 100,
+        curve: CoreTypes.AnimationCurve.easeOut,
+      })
     } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
       this.$refs['right'].nativeView.visibility = 'visible'
     }

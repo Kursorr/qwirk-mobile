@@ -16,7 +16,7 @@ import { Screen } from '@nativescript/core'
 export default class RightDrawer extends Vue {
 
 /* Computation */
-private width: number = Screen.mainScreen.widthDIPs * 0.85
+private width: number = Screen.mainScreen.widthDIPs * 0.86
 private header: number = Screen.mainScreen.widthDIPs * 0.17
 
 }

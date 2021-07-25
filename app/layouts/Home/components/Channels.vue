@@ -3,14 +3,14 @@
       <StackLayout orientation="vertical">
           <StackLayout v-for="(category, index) in dummy.categories" :key="index" @pan="returnGesture">
             <!-- Title Chev -->
-            <GridLayout columns="15,*" rows="40" paddingLeft="5" @tap="toggle(category.id)">
+            <GridLayout columns="15,*" rows="40" paddingLeft="10" @tap="toggle(category.id)">
                 <Icon color="#747f8d" :icon="category.visible ? $icons.chevronDown : $icons.chevronUp" col="0" />
                 <HTMLLabel color="#747f8d" :html="category.title" col="1" />
             </GridLayout>
             <!-- Content  -->
             <GridLayout :visibility="category.visible ? 'visible': 'collapse'"  v-for="(channel, index) in category.channels" :key="index" columns="15,20,*" rows="40" paddingLeft="15">
-                <Icon :icon="$icons.hashtag" col="0" fontSize="16" />
-                <HTMLLabel :html="channel.name" col="2" fontSize="16"  />
+                <Icon :icon="$icons.hashtag" col="0" fontSize="14" />
+                <HTMLLabel :html="channel.name" col="2" fontSize="14"  />
             </GridLayout>
           </StackLayout>
       </StackLayout>

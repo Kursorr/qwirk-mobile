@@ -97,10 +97,17 @@ Page {
   }
 }
 
-TextView {
+.chatbox {
   border-bottom-width: 1;
   border-bottom-color: transparent;
   border-radius: 25;
+  background-color: $background;
+  padding: 15;
+}
+
+.searchbox {
+  border-bottom-width: 1;
+  border-bottom-color: transparent;
   background-color: $background;
   padding: 15;
 }
