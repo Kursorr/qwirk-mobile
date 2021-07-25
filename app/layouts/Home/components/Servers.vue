@@ -1,9 +1,7 @@
 <template>
 <StackLayout>
+    <Icon @event="goToChat" col="5" height="55" width="55" padding="10" marginBottom="16" :icon="$icons.conversation" :backgroundColor="chatHead ? '#7289da' : '#2E3036'" borderRadius="15"  fontSize="40" />
   <CollectionView for="item in dummy" colWidth="auto" rowHeight="auto">
-  <v-template if="$index === 0">
-     <Icon @event="goToChat" col="5" height="55" width="55" padding="10" marginBottom="16" :icon="$icons.conversation" :backgroundColor="chatHead ? '#7289da' : '#2E3036'" borderRadius="15"  fontSize="40" />
-  </v-template>
     <v-template>
         <Image @tap="goToServer" :src="`https://avatars3.githubusercontent.com/u/1331813${item.uri}`" />
     </v-template>

@@ -224,7 +224,7 @@ export default class Root extends Vue {
       this.$refs['left'].nativeView.visibility = 'visible'
       this.$refs['bottomNav'].nativeView.animate({
         translate: { x: 0, y: -65 },
-        duration: 100,
+        duration: 200,
         curve: CoreTypes.AnimationCurve.easeOut,
       })
     } else if (args.deltaX < (-1 * this.rightDrawerSize) / 100) {
