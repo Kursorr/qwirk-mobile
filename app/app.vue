@@ -17,6 +17,8 @@ import { isAndroid } from '@nativescript/core'
 import  getStatusBarHeight  from './utils/statusbar'
 import getNavigationBarHeight from './utils/statusbar'
 
+import { registerSoftKeyboardCallback } from '@codesthings/nativescript-soft-keyboard'
+
 @Component
 export default class Root extends Vue {
   private isLoggedIn: boolean = true
@@ -30,6 +32,13 @@ export default class Root extends Vue {
       /* Get the system soft navigation bar if present */
         this.$store.commit("navBar", getNavigationBarHeight());
       }
+
+      /* Fix Keyboard Hidden */
+      registerSoftKeyboardCallback((h) => {
+      if (h <= 400) {
+        this.$store.commit("keyBoard", h);
+      }
+    })
 
   }
 }

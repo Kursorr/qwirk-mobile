@@ -16,14 +16,23 @@ import Navigator from 'nativescript-vue-navigator'
 
 /* Plugins */
 import Pager from '@triniwiz/nativescript-pager/vue'
+import CollectionView from '@nativescript-community/ui-collectionview/vue';
+
+import TabsPlugin from '@nativescript-community/ui-material-tabs/vue';
+
+Vue.use(TabsPlugin);
+
+const icons = require('./assets/icons/icons.json')
+Vue.prototype.$icons = icons
 
 
 /* Async Plugins */
-
+Vue.registerElement('HTMLLabel', () => require('@nativescript-community/ui-label').Label);
 
 /* Uses */
 Vue.use(Navigator, { routes })
 Vue.use(Pager)
+Vue.use(CollectionView);
 
 
 /* Configuration */
