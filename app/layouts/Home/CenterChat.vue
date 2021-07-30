@@ -2,7 +2,7 @@
   <GridLayout :opacity="opacity" rows="auto, *, auto" class="userlist">
     <StackLayout row="0" class="header">
       <GridLayout columns="10,45,40, *, 45, 45" :height="header">
-        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.menu" fontSize="18" class="tx-center" />
+        <Icon @event="goLeftDrawer" col="1" height="40" width="40" padding="10" :icon="$icons.menu" fontSize="18" class="tx-center" />
         <Icon col="2" height="40" width="40" padding="10" :icon="$icons.hashtag" fontSize="18" class="tx-center" />
         <HTMLLabel col="3" :paddingTop="header/4" html="General" fontSize="18" fontWeight="bold" />
         <Icon col="4" height="40" width="40" padding="10" :icon="$icons.search"  fontSize="18" horizontalAlignment="right" />
@@ -18,10 +18,13 @@
 
     <StackLayout row="2">
       <GridLayout columns="10,50,50,*" :height="header" :marginBottom="keyboard">
-        <Icon col="1" height="40" width="40" padding="10" :icon="$icons.camera" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
-        <Icon col="2" height="40" width="40" padding="10" :icon="$icons.gallery" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
+        <Icon @event="gotoCamera" col="1" height="40" width="40" padding="10" :icon="$icons.camera" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
+        <Icon @event="pickImage" col="2" height="40" width="40" padding="10" :icon="$icons.gallery" fontSize="18" backgroundColor="#1F2225" borderRadius="50" class="tx-center" />
         <TextView col="3" ref="chats"  v-model="chatData" hint="Type a message" class="chatbox" minHeight="20" borderBottom="transparent" textWrap="true" />
-        <Icon col="3" height="40" width="40" padding="10" :icon="$icons.emote"  fontSize="18" backgroundColor="#1F2225" borderRadius="50" horizontalAlignment="right" marginRight="20" />
+        <Icon @event="emojiSwitch ? openEmojis(): closeEmojis()" col="3" height="40" width="40" padding="10" :icon="emojiSwitch ? $icons.emote: $icons.cancel"  fontSize="18" backgroundColor="#1F2225" borderRadius="50" horizontalAlignment="right" marginRight="20" />
+      </GridLayout>
+      <GridLayout ref="emojis" :height="footer">
+          <EmojiView v-if="footer !== 0" @emoji="addToText" />
       </GridLayout>
     </StackLayout>
   </GridLayout>
@@ -35,11 +38,21 @@ import { Screen } from '@nativescript/core'
 /* Components */
 import ChatCard from '@/layouts/ChatCard.vue'
 import Icon from '@/layouts/Icon.vue'
+import EmojiView from '@/layouts/Home/components/EmojiView.vue'
+
+import {
+  Mediafilepicker,
+  ImagePickerOptions,
+} from "nativescript-mediafilepicker";
+
+/* Permissions */
+const permissions = require('nativescript-permissions')
 
 @Component({
     components: {
         ChatCard,
-        Icon
+        Icon,
+        EmojiView
     }
 })
 export default class RightDrawer extends Vue {
@@ -50,10 +63,20 @@ export default class RightDrawer extends Vue {
 
   /* Computation */
   private header: number = Screen.mainScreen.widthDIPs * 0.14
-  private footer: number = Screen.mainScreen.widthDIPs * 0.14
+  private footer: number = Screen.mainScreen.widthDIPs * 0
   private chatData: string = ''
   private newLine: boolean = false
   private purpleInput: boolean = false
+  private emojiSwitch: boolean = true
+
+  public imageOptions: ImagePickerOptions = {
+    android: {
+      isCaptureMood: false,
+      isNeedCamera: false,
+      maxNumberFiles: 1,
+      isNeedFolderList: true,
+    },
+  };
 
 
 /* Watches Keyboard Height */
@@ -62,9 +85,9 @@ export default class RightDrawer extends Vue {
   }
 
 /* Opacity */
-get opacity() {
-  return this.$store.state.o
-}
+  get opacity() {
+    return this.$store.state.o
+  }
 
 /* Gesture Position */
 @Prop({default: true}) readonly touchEvt: boolean = true
@@ -74,7 +97,16 @@ get opacity() {
    @Watch('keyboards')
    onChangeKeyboards(val) {
      if(val !== null) {
+       this.footer = 0
+       this.emojiSwitch = true
        this.$refs['chats'].nativeView.dismissSoftInput()
+     }
+   }
+  @Watch('keyboard')
+   onChangeKeyboard(val) {
+     if(val !== 0) {
+       this.footer = 0
+       this.emojiSwitch = true
      }
    }
    @Watch('chatData')
@@ -90,6 +122,62 @@ get opacity() {
       this.purpleInput = false
     }
    }
+
+   goLeftDrawer() {
+     this.$emit('menuEvt')
+     console.log('emit')
+   }
+
+   gotoCamera() {
+     this.getCameraPermission()
+   }
+
+   getCameraPermission() {
+    permissions.requestPermission(android.Manifest.permission.CAMERA, "In order to capture photo, You must allow permission to use camera")
+    .then(() => {
+      this.$navigator.navigate('/camera', {
+       transition: {
+         name: 'fade',
+         duration: 200,
+         curve: "easeOut",
+       }
+     })
+    })
+    .catch(() => {
+      this.gotoCamera()
+    });
+   }
+
+  /* Image Picker */
+  pickImage() {
+    let mediafilepicker = new Mediafilepicker()
+    mediafilepicker.openImagePicker(this.imageOptions)
+
+    mediafilepicker.on('getFiles', function (res) {
+      let results = res.object.get('results')
+      let source = results[0].file
+      console.log(source)
+    });
+  }
+
+  /* Emojis */
+  openEmojis() {
+    //TODO
+    this.footer = Screen.mainScreen.heightDIPs * 0.30
+    this.emojiSwitch = false
+    this.$refs['chats'].nativeView.dismissSoftInput()
+  }
+
+  closeEmojis() {
+    if(this.footer !== 0) {
+      this.footer = 0
+      this.emojiSwitch = true
+    }
+  }
+
+  addToText(emo) {
+    this.chatData = this.chatData+emo
+  }
 
   /* Dummy */
   private dummy: any = [

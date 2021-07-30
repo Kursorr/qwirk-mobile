@@ -17,6 +17,7 @@ import Navigator from 'nativescript-vue-navigator'
 /* Plugins */
 import Pager from '@triniwiz/nativescript-pager/vue'
 import CollectionView from '@nativescript-community/ui-collectionview/vue';
+import { CameraPlus } from '@nstudio/nativescript-camera-plus'
 
 import TabsPlugin from '@nativescript-community/ui-material-tabs/vue';
 
@@ -28,11 +29,13 @@ Vue.prototype.$icons = icons
 
 /* Async Plugins */
 Vue.registerElement('HTMLLabel', () => require('@nativescript-community/ui-label').Label);
+Vue.registerElement('CameraPlus', () => <any>CameraPlus);
 
 /* Uses */
 Vue.use(Navigator, { routes })
 Vue.use(Pager)
 Vue.use(CollectionView);
+
 
 
 /* Configuration */

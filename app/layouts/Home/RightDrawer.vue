@@ -2,6 +2,7 @@
 <WrapLayout horizontalAlignment="right">
     <StackLayout class="userlist" :width="width" height="100%">
         <StackLayout class="header" :height="header">
+            <HTMLLabel html="🔔 Notification" :paddingTop="header/4" :paddingLeft="header/4"  fontSize="16" fontWeight="bold" />
         </StackLayout>
     </StackLayout>
 </WrapLayout>

@@ -8,11 +8,11 @@
 <template>
   <Page actionBarHidden="true" @pan="displayContent">
     <GridLayout :marginTop="currentStatusbar">
-      <LeftDrawer ref="left" :touchEvt="channelGesture" />
+      <LeftDrawer ref="left" :touchEvt="channelGesture" @onChannelChange="channelChange" />
 
       <RightDrawer ref="right" />
 
-      <Tchat :keyboards="onPage" ref="mainContent" boxShadow="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"  @tap="closeIfOpen" :touchEvt="tchatGesture" />
+      <Tchat :keyboards="onPage" ref="mainContent" boxShadow="0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)"  @tap="closeIfOpen" :touchEvt="tchatGesture" @menuEvt="gotoLeftDrawer" />
 
       <StackLayout ref="bottomNav" verticalAlignment="bottom" marginBottom="-65" height="65" backgroundColor="#191c1f">
          <Footer />
@@ -72,6 +72,52 @@ export default class Root extends Vue {
   }
 
   /* Logics */
+
+  /* Show channel list */
+  gotoLeftDrawer() {
+    this.onPage = 'left'
+    this.deltaX = this.leftDrawerSize
+
+    this.$refs['left'].nativeView.visibility = 'visible'
+    this.$refs['right'].nativeView.visibility = 'collapse'
+    this.$store.commit('opacity', '0.7')
+
+    this.$refs['bottomNav'].nativeView.animate({
+      translate: { x: 0, y: -65 },
+      duration: 200,
+      curve: CoreTypes.AnimationCurve.easeOut,
+    })
+
+    this.$refs['mainContent'].nativeView.animate({
+      translate: {
+        x: this.deltaX,
+        y: 0,
+      },
+      duration: 200,
+    })
+  }
+
+ /* Show tchat */
+  channelChange() {
+    this.onPage = null
+
+    this.deltaX = 0
+    this.$store.commit('opacity', '1')
+
+    this.$refs['mainContent'].nativeView.animate({
+      translate: {
+        x: 0,
+        y: 0,
+      },
+      duration: 200,
+    })
+
+    this.$refs['bottomNav'].nativeView.animate({
+      translate: { x: 0, y: 200 },
+      duration: 200,
+      curve: CoreTypes.AnimationCurve.easeOut,
+    })
+  }
 
   closeIfOpen() {
     if (this.onPage === null) return

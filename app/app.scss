@@ -102,7 +102,12 @@ Page {
   border-bottom-color: transparent;
   border-radius: 25;
   background-color: $background;
+  color: $white;
   padding: 15;
+
+  .ns-dark & {
+    color: $white;
+  }
 }
 
 .searchbox {
