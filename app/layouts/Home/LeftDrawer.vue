@@ -18,7 +18,7 @@
             </GridLayout>
 
             <DirectChat :visibility="isDirectChat ? 'visible' : 'collapse'" :touchEvt="touchEvt" row="2" />
-            <Channels :visibility="isDirectChat === false ? 'visible' : 'collapse'" :touchEvt="touchEvt" row="2" />
+            <Channels :visibility="isDirectChat === false ? 'visible' : 'collapse'" :touchEvt="touchEvt" row="2" @event="onChannelChange" />
         </GridLayout>
     </StackLayout>
 </WrapLayout>
@@ -59,6 +59,10 @@ private isDirectChat: boolean = true
 /* Change Screen toggle for channel to direct chat or vise versa */
 changeView(d) {
     this.isDirectChat = d
+}
+
+onChannelChange() {
+    this.$emit('onChannelChange')
 }
 }
 </script>

@@ -8,7 +8,7 @@
                 <HTMLLabel color="#747f8d" :html="category.title" col="1" />
             </GridLayout>
             <!-- Content  -->
-            <GridLayout :visibility="category.visible ? 'visible': 'collapse'"  v-for="(channel, index) in category.channels" :key="index" columns="15,20,*" rows="40" paddingLeft="15">
+            <GridLayout  :visibility="category.visible ? 'visible': 'collapse'"  v-for="(channel, index) in category.channels" :key="index"  @tap="onSelectChannel(channel, index)" columns="15,20,*" rows="40" paddingLeft="15">
                 <Icon :icon="$icons.hashtag" col="0" fontSize="14" />
                 <HTMLLabel :html="channel.name" col="2" fontSize="14"  />
             </GridLayout>
@@ -35,6 +35,12 @@ export default class Channels extends Vue {
 returnGesture(e) {
     return e
 }
+
+onSelectChannel(channel, index) {
+    this.currentChannelId = index
+    this.currentChannelName = channel.name
+    this.$emit('event')
+  }
 /* Note: Adding visible default coming from api then using vuex it can mutate
 *  or toggling visibility of categories
 */
@@ -169,6 +175,9 @@ returnGesture(e) {
         },
         ],
     }
+
+    private currentChannelId = this.dummy.categories[0].channels[1].id
+    private currentChannelName = this.dummy.categories[0].channels[1].name
 
     toggle(d) {
         /* Sample for this.$store.commit('mutate', payload ) */
